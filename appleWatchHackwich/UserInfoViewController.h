@@ -9,7 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UserInfoViewController : UIViewController
-@property NSInteger age;
-@property NSInteger gender;
-@property NSInteger ADHD;
+
 @end

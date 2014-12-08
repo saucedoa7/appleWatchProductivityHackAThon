@@ -12,7 +12,5 @@
 @interface InterfaceController : WKInterfaceController
 -(void)doneWorking:(NSTimer *)timer;
 
-@property NSInteger age;
-@property NSInteger gender;
-@property NSInteger ADHD;
+
 @end

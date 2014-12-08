@@ -14,8 +14,18 @@
 @property (strong, nonatomic) IBOutlet UITextField *txtAge;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapTohideKB;
 @property (strong, nonatomic) IBOutlet UISwitch *SwtchADHDSwitch;
+@property (strong, nonatomic) IBOutlet UISlider *sldStudySlider;
+@property (strong, nonatomic) IBOutlet UISlider *sldBreakSlider;
+@property (strong, nonatomic) IBOutlet UILabel *lblStudyTime;
+@property (strong, nonatomic) IBOutlet UILabel *lblBreakTime;
+
 @property NSArray *genders;
 
+@property NSInteger age;
+@property NSInteger gender;
+@property NSInteger ADHD;
+@property NSInteger studySliderInt;
+@property NSInteger breakSliderInt;
 
 @end
 
@@ -34,7 +44,6 @@
                                                                action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:self.tapTohideKB];
     NSLog(@"%ld", (long)self.age);
-
 }
 
 -(void)hideKeyboard{
@@ -89,11 +98,24 @@
     [currentSettings setInteger:self.age forKey:@"CurrentAge"];
     [currentSettings setInteger:self.gender forKey:@"CurrentGender"];
     [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
+    [currentSettings setInteger:self.studySliderInt forKey:@"CurrentStudyInt"];
+    [currentSettings setInteger:self.breakSliderInt forKey:@"CurrentBreakInt"];
     [currentSettings synchronize];
 
     NSLog(@"0 Current Age %ld", (long)self.age);
     NSLog(@"0 Current Gender %ld", (long)self.gender);
     NSLog(@"0 Current ADHD %ld", (long)self.ADHD);
+}
+- (IBAction)onStudySlide:(UISlider *)sender {
+    self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", self.sldStudySlider.value];
+    self.txtAge.text = @"0";
+    [self.SwtchADHDSwitch setOn:NO animated:YES];
+    [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+}
+- (IBAction)onBreakTime:(UISlider *)sender {
+    self.lblBreakTime.text = [[NSString alloc] initWithFormat:@"%.0fm", self.sldBreakSlider.value];
+    [self.SwtchADHDSwitch setOn:NO animated:YES];
+    [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
 }
 
 

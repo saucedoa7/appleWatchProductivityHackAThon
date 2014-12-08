@@ -15,13 +15,19 @@
 @property (strong, nonatomic) IBOutlet WKInterfaceButton *btnPause;
 @property (strong, nonatomic) IBOutlet WKInterfaceButton *btnRestart;
 
-@property NSTimeInterval productivityTime;
+@property NSTimeInterval studyTime;
 @property NSTimeInterval breakTime;
 @property (nonatomic)  NSTimer *timerHasFinished;
 @property NSDate *initialDate;
-@property BOOL isRest;
+
+@property BOOL isRestarting;
 @property BOOL isPaused;
 
+@property NSInteger age;
+@property NSInteger gender;
+@property NSInteger ADHD;
+@property NSInteger studySliderInt;
+@property NSInteger breakSliderInt;
 
 @end
 
@@ -31,7 +37,7 @@
     self = [super initWithContext:context];
     if (self){
         NSLog(@"%@ initWithContext", self);
-        self.isRest = false;
+        self.isRestarting = false;
         self.isPaused = false;
     }
     return self;
@@ -47,8 +53,6 @@
     NSLog(@"%@ did deactivate", self);
 }
 
-
-
 - (IBAction)onStartStopTimer {
     [self.btnStartStop setEnabled:NO];
 
@@ -60,92 +64,108 @@
     NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
     NSInteger newGender = [currentSettings integerForKey:@"CurrentGender"];
     NSInteger newADHD = [currentSettings integerForKey:@"CurrentADHD"];
+    NSInteger newStudy = [currentSettings integerForKey:@"CurrentStudyInt"];
+    NSInteger newBreak = [currentSettings integerForKey:@"CurrentBreakInt"];
 
     self.age = newAge;
     self.gender = newGender;
     self.ADHD = newADHD;
+    self.studySliderInt = newStudy;
+    self.breakSliderInt = newBreak;
 
     NSLog(@"1 Current Age %ld", (long)self.age);
     NSLog(@"1 Current Gender %ld", (long)self.gender);
     NSLog(@"1 Current ADHD %ld", (long)self.ADHD);
+    NSLog(@"1 Current Study %ld", (long)self.studySliderInt);
+    NSLog(@"1 Current Break %ld", (long)self.breakSliderInt);
 
-    self.productivityTime = 20;
+
+    // if ((self.studySliderInt == 0) && (self.breakSliderInt == 0)) {
+    self.studyTime = 20;
     self.breakTime = 5;
+    NSLog(@"Current Age %ld", (long)self.age);
+    //  } else {
+
+    //      self.studyTime = self.studySliderInt;
+    //      self.breakTime = self.breakSliderInt;
 
     if (self.age < 12) {
-        self.productivityTime = self.productivityTime + 100;
+        self.studyTime = self.studyTime + 100;
         self.breakTime = self.breakTime + 0;
-        NSLog(@"Productivity TIme %.2f minutes", self.productivityTime);
+        NSLog(@"12 Productivity TIme %.2f minutes", self.studyTime);
         NSLog(@"Break TIme %.2f minutes", self.breakTime);
-    } else if ((self.age > 12) && (self.age < 24)) {
-        self.productivityTime = self.productivityTime + 90;
+    } else if (self.age >= 13 && self.age <= 24) {
+        self.studyTime = self.studyTime + 90;
         self.breakTime = self.breakTime + 5;
-        NSLog(@"Productivity TIme %.2f minutes", self.productivityTime);
+        NSLog(@"13 - 24 Productivity TIme %.2f minutes", self.studyTime);
         NSLog(@"Break TIme %.2f minutes", self.breakTime);
-    } else if ((self.age > 25) && (self.age < 30)) {
-        self.productivityTime = self.productivityTime + 80;
+    } else if (self.age >= 25 && self.age <= 30) {
+        self.studyTime = self.studyTime + 80;
         self.breakTime = self.breakTime + 10;
-        NSLog(@"Productivity TIme %.2f minutes", self.productivityTime);
+        NSLog(@"25 - 30 Productivity TIme %.2f minutes", self.studyTime);
         NSLog(@"Break TIme %.2f minutes", self.breakTime);
-    } else if ((self.age > 31) && (self.age < 35)) {
-        self.productivityTime = self.productivityTime + 70;
+    } else if (self.age >= 31 && self.age <= 35) {
+        self.studyTime = self.studyTime + 70;
         self.breakTime = self.breakTime + 20;
-        NSLog(@"Productivity TIme %.2f minutes", self.productivityTime);
+        NSLog(@"31 - 35 Productivity TIme %.2f minutes", self.studyTime);
         NSLog(@"Break TIme %.2f minutes", self.breakTime);
     }
 
-    self.gender  = 0;
+    //self.gender  = 0;
     if (self.gender == 0) {
-        self.productivityTime = self.productivityTime + 6;
-        NSLog(@"Productivity TIme %.2f minutes", self.productivityTime);
+        self.studyTime = self.studyTime + 6;
+        NSLog(@"Male Productivity TIme %.2f minutes", self.studyTime);
     } else {
-        self.productivityTime = self.productivityTime + 9;
-        NSLog(@"Productivity TIme %.2f minutes", self.productivityTime);
+        self.studyTime = self.studyTime + 9;
+        NSLog(@"Female Productivity TIme %.2f minutes", self.studyTime);
     }
 
-    self.ADHD = 0;
+    //self.ADHD = 0;
     if (self.ADHD == 0) {
-        self.productivityTime = self.productivityTime + 6;
-        NSLog(@"Productivity TIme %.2f minutes", self.productivityTime);
+        self.studyTime = self.studyTime + 0;
+        NSLog(@"w/o ADHD Productivity TIme %.2f minutes", self.studyTime);
     } else {
-        self.productivityTime = self.productivityTime + 9;
-        NSLog(@"Productivity TIme %.2f minutes", self.productivityTime);
+        self.studyTime = self.studyTime + 15;
+        NSLog(@"W/ ADHD Productivity TIme %.2f minutes", self.studyTime);
     }
 
-    if (self.isRest == false) {
-        self.productivityTime = self.productivityTime * 0.1;
-        self.initialDate = [[NSDate alloc] initWithTimeIntervalSinceNow:self.productivityTime];
+    NSLog(@"Current Study Time %.0f \n", self.studyTime);
+
+    if (self.isRestarting == false) {
+        self.studyTime = self.studyTime * .25;
+        self.initialDate = [[NSDate alloc] initWithTimeIntervalSinceNow:self.studyTime];
         [self.lblTimer setDate:self.initialDate];
         [self.btnStartStop setColor:[UIColor colorWithRed:0.29 green:0.4 blue:0.62 alpha:1]];
-        [self.btnStartStop setTitle:@"Werk Time!"];
-    } else if (self.isRest == true) {
-        self.breakTime = self.breakTime * 60;
+        [self.btnStartStop setTitle:@"Study Time!"];
+    } else if (self.isRestarting == true) {
+        self.breakTime = self.breakTime * .25;
         self.initialDate = [[NSDate alloc] initWithTimeIntervalSinceNow:self.breakTime];
         [self.lblTimer setDate:self.initialDate];
         [self.btnStartStop setColor:[UIColor colorWithRed:0.29 green:0.4 blue:0.62 alpha:1]];
         [self.btnStartStop setTitle:@"Break time!!"];
     }
 
-    [self.lblTimer setDate:self.initialDate];
     [self.lblTimer start];
+    [self.lblTimer setDate:self.initialDate];
 
-    self.timerHasFinished = [NSTimer scheduledTimerWithTimeInterval:self.productivityTime
+    self.timerHasFinished = [NSTimer scheduledTimerWithTimeInterval:self.studyTime
                                                              target:self
                                                            selector:@selector(doneWorking:)
                                                            userInfo:nil
                                                             repeats:false];
 }
+//}
 
 -(void)doneWorking:(NSTimer *)timer{
     [self.btnStartStop setEnabled:YES];
-    if (self.isRest == false) {
+    if (self.isRestarting == false) {
         [self.btnStartStop setColor:[UIColor colorWithRed:0.19 green:0.22 blue:0.36 alpha:1]];
         [self.btnStartStop setTitle:@"Take a Break!"];
-        self.isRest = true;
-    } else if (self.isRest == true) {
+        self.isRestarting = true;
+    } else if (self.isRestarting == true) {
         [self.btnStartStop setColor:[UIColor colorWithRed:0.82 green:0.89 blue:0.95 alpha:1]];
-        [self.btnStartStop setTitle:@"Back to werk!"];
-        self.isRest = false;
+        [self.btnStartStop setTitle:@"Back to Study!"];
+        self.isRestarting = false;
     }
 }
 
