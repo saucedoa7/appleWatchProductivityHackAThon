@@ -17,6 +17,7 @@
                                 <action selector="onStartStopTimer" destination="AgC-eL-Hgc" id="GiK-iL-tom"/>
                             </connections>
                         </button>
+                        <label alignment="left" hidden="YES" text="Label" id="jlp-4U-Cut"/>
                         <timer width="131.5" height="51.5" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="0" format="abbreviated" id="Of2-vG-2Gu">
                             <color key="textColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </timer>
@@ -44,6 +45,7 @@
                         <outlet property="btnPause" destination="x8Z-4X-hbH" id="cv5-eb-uuT"/>
                         <outlet property="btnRestart" destination="IuS-ur-FFi" id="Ftt-mj-OJa"/>
                         <outlet property="btnStartStop" destination="HJd-yn-XUh" id="tqL-zx-aYf"/>
+                        <outlet property="lblTest" destination="jlp-4U-Cut" id="ykX-WW-tmC"/>
                         <outlet property="lblTimer" destination="Of2-vG-2Gu" id="JT4-dF-Q0e"/>
                     </connections>
                 </controller>

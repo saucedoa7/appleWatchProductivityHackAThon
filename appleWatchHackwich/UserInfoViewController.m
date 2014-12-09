@@ -27,6 +27,7 @@
 @property NSInteger studySliderInt;
 @property NSInteger breakSliderInt;
 
+
 @end
 
 @implementation UserInfoViewController
@@ -36,6 +37,12 @@
     // Do any additional setup after loading the view.
 
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+
+    self.studySliderInt = 60;
+    self.breakSliderInt = 15;
+
+    NSLog(@"1st %ld", (long)self.studySliderInt);
+    NSLog(@"1st %ld", (long)self.breakSliderInt);
 
 
     self.genders = @[@"-",@"Male", @"Female"];
@@ -96,6 +103,21 @@
     }
 
 }
+
+- (IBAction)onStudySlide:(UISlider *)sender {
+    self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", self.sldStudySlider.value];
+    self.studySliderInt = self.sldStudySlider.value;
+    self.txtAge.text = @"0";
+    [self.SwtchADHDSwitch setOn:NO animated:YES];
+    [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+}
+- (IBAction)onBreakTime:(UISlider *)sender {
+    self.lblBreakTime.text = [[NSString alloc] initWithFormat:@"%.0fm", self.sldBreakSlider.value];
+    self.breakSliderInt = self.sldBreakSlider.value;
+    [self.SwtchADHDSwitch setOn:NO animated:YES];
+    [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+}
+
 - (IBAction)onDoneButtonPressed:(UIButton *)sender {
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
     [currentSettings setInteger:self.age forKey:@"CurrentAge"];
@@ -108,18 +130,10 @@
     NSLog(@"0 Current Age %ld", (long)self.age);
     NSLog(@"0 Current Gender %ld", (long)self.gender);
     NSLog(@"0 Current ADHD %ld", (long)self.ADHD);
+    NSLog(@"0 Current Study %ld", (long)self.studySliderInt);
+    NSLog(@"0 Current Break %ld", (long)self.breakSliderInt);
 }
-- (IBAction)onStudySlide:(UISlider *)sender {
-    self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", self.sldStudySlider.value];
-    self.txtAge.text = @"0";
-    [self.SwtchADHDSwitch setOn:NO animated:YES];
-    [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
-}
-- (IBAction)onBreakTime:(UISlider *)sender {
-    self.lblBreakTime.text = [[NSString alloc] initWithFormat:@"%.0fm", self.sldBreakSlider.value];
-    [self.SwtchADHDSwitch setOn:NO animated:YES];
-    [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
-}
+
 
 
 @end
