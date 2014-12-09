@@ -35,6 +35,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+
+
     self.genders = @[@"-",@"Male", @"Female"];
     self.ADHD = 0;
     self.pickGenderPicker.dataSource = self;

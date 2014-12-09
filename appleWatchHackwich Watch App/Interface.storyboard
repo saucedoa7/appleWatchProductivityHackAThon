@@ -11,25 +11,27 @@
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController">
                     <items>
                         <button width="1" alignment="left" title="Lets Start!" id="HJd-yn-XUh">
-                            <color key="titleColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="backgroundColor" red="0.52156862745098043" green="0.6470588235294118" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onStartStopTimer" destination="AgC-eL-Hgc" id="GiK-iL-tom"/>
                             </connections>
                         </button>
-                        <timer width="131.5" height="43.5" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="0" format="abbreviated" id="Of2-vG-2Gu"/>
+                        <timer width="131.5" height="51.5" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="0" format="abbreviated" id="Of2-vG-2Gu">
+                            <color key="textColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </timer>
                         <group width="1" alignment="left" verticalAlignment="bottom" hasDetent="YES" id="9bK-6K-aaR">
                             <items>
                                 <button width="0.50000000000000011" alignment="left" verticalAlignment="bottom" title="Pause" id="x8Z-4X-hbH">
                                     <color key="titleColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" red="0.52156862745098043" green="0.6470588235294118" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
                                         <action selector="onPause" destination="AgC-eL-Hgc" id="UVI-s6-Ibo"/>
                                     </connections>
                                 </button>
                                 <button width="0.50000000000000011" alignment="left" title="Restart" id="IuS-ur-FFi">
                                     <color key="titleColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" red="0.52156862745098043" green="0.6470588235294118" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
                                         <action selector="onRestart" destination="AgC-eL-Hgc" id="1Fi-9H-0dm"/>
                                     </connections>
@@ -37,7 +39,7 @@
                             </items>
                         </group>
                     </items>
-                    <color key="backgroundColor" red="0.18431372549019609" green="0.20392156862745098" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.33333333333333331" green="0.53333333333333333" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="btnPause" destination="x8Z-4X-hbH" id="cv5-eb-uuT"/>
                         <outlet property="btnRestart" destination="IuS-ur-FFi" id="Ftt-mj-OJa"/>
@@ -46,7 +48,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="235" y="347"/>
+            <point key="canvasLocation" x="235" y="373"/>
         </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">

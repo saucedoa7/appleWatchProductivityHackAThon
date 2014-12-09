@@ -37,6 +37,8 @@
     self = [super initWithContext:context];
     if (self){
         NSLog(@"%@ initWithContext", self);
+        //self. = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+
         self.isRestarting = false;
         self.isPaused = false;
     }
@@ -111,7 +113,6 @@
         NSLog(@"Break TIme %.2f minutes", self.breakTime);
     }
 
-    //self.gender  = 0;
     if (self.gender == 0) {
         self.studyTime = self.studyTime + 6;
         NSLog(@"Male Productivity TIme %.2f minutes", self.studyTime);
@@ -120,7 +121,6 @@
         NSLog(@"Female Productivity TIme %.2f minutes", self.studyTime);
     }
 
-    //self.ADHD = 0;
     if (self.ADHD == 0) {
         self.studyTime = self.studyTime + 0;
         NSLog(@"w/o ADHD Productivity TIme %.2f minutes", self.studyTime);
@@ -132,13 +132,13 @@
     NSLog(@"Current Study Time %.0f \n", self.studyTime);
 
     if (self.isRestarting == false) {
-        self.studyTime = self.studyTime * .25;
+        self.studyTime = self.studyTime * 20;
         self.initialDate = [[NSDate alloc] initWithTimeIntervalSinceNow:self.studyTime];
         [self.lblTimer setDate:self.initialDate];
         [self.btnStartStop setColor:[UIColor colorWithRed:0.29 green:0.4 blue:0.62 alpha:1]];
         [self.btnStartStop setTitle:@"Study Time!"];
     } else if (self.isRestarting == true) {
-        self.breakTime = self.breakTime * .25;
+        self.breakTime = self.breakTime * 20;
         self.initialDate = [[NSDate alloc] initWithTimeIntervalSinceNow:self.breakTime];
         [self.lblTimer setDate:self.initialDate];
         [self.btnStartStop setColor:[UIColor colorWithRed:0.29 green:0.4 blue:0.62 alpha:1]];
