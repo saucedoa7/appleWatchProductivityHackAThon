@@ -17,10 +17,8 @@
                                 <action selector="onStartStopTimer" destination="AgC-eL-Hgc" id="GiK-iL-tom"/>
                             </connections>
                         </button>
+                        <timer width="1" height="0.40000000000000013" alignment="center" verticalAlignment="center" textAlignment="center" format="abbreviated" id="6gy-IS-CQg"/>
                         <label alignment="left" hidden="YES" text="Label" id="jlp-4U-Cut"/>
-                        <timer width="131.5" height="51.5" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="0" format="abbreviated" id="Of2-vG-2Gu">
-                            <color key="textColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </timer>
                         <group width="1" alignment="left" verticalAlignment="bottom" hasDetent="YES" id="9bK-6K-aaR">
                             <items>
                                 <button width="0.50000000000000011" alignment="left" verticalAlignment="bottom" title="Pause" id="x8Z-4X-hbH">
@@ -46,7 +44,7 @@
                         <outlet property="btnRestart" destination="IuS-ur-FFi" id="Ftt-mj-OJa"/>
                         <outlet property="btnStartStop" destination="HJd-yn-XUh" id="tqL-zx-aYf"/>
                         <outlet property="lblTest" destination="jlp-4U-Cut" id="ykX-WW-tmC"/>
-                        <outlet property="lblTimer" destination="Of2-vG-2Gu" id="JT4-dF-Q0e"/>
+                        <outlet property="lblTimer" destination="6gy-IS-CQg" id="gYe-mC-Wxh"/>
                     </connections>
                 </controller>
             </objects>

@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Albert Saucedo. All rights reserved.
 //
 
+//Yes
+
+
 #import "InterfaceController.h"
 #import "UserInfoViewController.h"
 
@@ -59,12 +62,13 @@
 }
 
 - (IBAction)onStartStopTimer {
-    [self.btnStartStop setEnabled:NO];
+    [self.btnStartStop setEnabled:YES];
 
     [self startTImer];
 }
 
 - (void)startTImer {
+
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
     NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
     NSInteger newGender = [currentSettings integerForKey:@"CurrentGender"];
@@ -83,7 +87,6 @@
     NSLog(@"1 Current ADHD %ld", (long)self.ADHD);
     NSLog(@"1 Current Study %ld", (long)self.studySliderInt);
     NSLog(@"1 Current Break %ld", (long)self.breakSliderInt);
-
 
     if (self.studySliderInt == 0 && self.breakSliderInt == 0) {
         self.studyTime = 20;
@@ -105,7 +108,7 @@
             self.breakTime = self.breakTime + 10;
             NSLog(@"25 - 30 Productivity TIme %.2f minutes", self.studyTime);
             NSLog(@"Break TIme %.2f minutes", self.breakTime);
-        } else if (self.age >= 31 && self.age <= 35) {
+        } else if (self.age >= 31 && self.age <= 100) {
             self.studyTime = self.studyTime + 70;
             self.breakTime = self.breakTime + 20;
             NSLog(@"31 - 35 Productivity TIme %.2f minutes", self.studyTime);
@@ -136,28 +139,28 @@
     NSLog(@"Current Study Time %.0f \n", self.studyTime);
 
     if (self.isRestarting == false) {
-        self.studyTime = self.studyTime * 60;
+        self.studyTime = self.studyTime * 1;
         self.initialDate = [[NSDate alloc] initWithTimeIntervalSinceNow:self.studyTime];
         [self.lblTimer setDate:self.initialDate];
         [self.btnStartStop setColor:[UIColor colorWithRed:0.29 green:0.4 blue:0.62 alpha:1]];
         [self.btnStartStop setTitle:@"Study Time!"];
     } else if (self.isRestarting == true) {
-        self.breakTime = self.breakTime * 60;
+        self.breakTime = self.breakTime * 1;
         self.initialDate = [[NSDate alloc] initWithTimeIntervalSinceNow:self.breakTime];
         [self.lblTimer setDate:self.initialDate];
         [self.btnStartStop setColor:[UIColor colorWithRed:0.29 green:0.4 blue:0.62 alpha:1]];
         [self.btnStartStop setTitle:@"Break time!!"];
     }
 
-//    self.hideStartTime = 3;
-//    self.hideDate = [[NSDate alloc] initWithTimeIntervalSinceNow:self.hideStartTime];
-//    [self.lblTimer setDate:self.hideDate];
-//
-//    NSLog(@"%@", self.hideDate);
-//
-//    if (self.hideDate == 0) {
-//        self.lblTest.accessibilityElementsHidden = NO;
-//    }
+    //    self.hideStartTime = 3;
+    //    self.hideDate = [[NSDate alloc] initWithTimeIntervalSinceNow:self.hideStartTime];
+    //    [self.lblTimer setDate:self.hideDate];
+    //
+    //    NSLog(@"%@", self.hideDate);
+    //
+    //    if (self.hideDate == 0) {
+    //        self.lblTest.accessibilityElementsHidden = NO;
+    //    }
 
     [self.lblTimer start];
     [self.lblTimer setDate:self.initialDate];
@@ -185,6 +188,8 @@
 - (IBAction)onPause{
     if (self.isPaused == false) {
         [self.lblTimer stop];
+        [self.timerHasFinished invalidate];
+        NSLog(@"NSTImer Stopped at %.2f", self.studyTime);
         [self.btnPause setTitle:@"Resume"];
         self.isPaused = true;
     } else if (self.isPaused == true){

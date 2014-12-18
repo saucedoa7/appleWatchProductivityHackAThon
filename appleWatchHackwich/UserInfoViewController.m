@@ -38,8 +38,8 @@
 
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
 
-    self.studySliderInt = 60;
-    self.breakSliderInt = 15;
+    self.studySliderInt = 0;
+    self.breakSliderInt = 0;
 
     NSLog(@"1st %ld", (long)self.studySliderInt);
     NSLog(@"1st %ld", (long)self.breakSliderInt);
@@ -84,10 +84,13 @@
 
     if (row == 1) {
         NSLog(@"Picker row is Male");
-        self.gender = 0;
+        self.gender = 1;
     } else if (row == 2) {
         NSLog(@"Picker row is Female");
-        self.gender = 1;
+        self.gender = 2;
+    } else if (row == 0){
+        NSLog(@"Picker row is - ");
+        self.gender = 0;
     }
 }
 
@@ -119,6 +122,19 @@
 }
 
 - (IBAction)onDoneButtonPressed:(UIButton *)sender {
+    if (self.age != 0 || self.gender != 0) {
+        self.studySliderInt = 0;
+        self.breakSliderInt = 0;
+    }
+
+    if (self.age == 0 || self.gender == 0){
+        self.age = 0;
+        self.gender = 0;
+        self.ADHD = 0;
+        self.studySliderInt = 60;
+        self.breakSliderInt = 15;
+    }
+
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
     [currentSettings setInteger:self.age forKey:@"CurrentAge"];
     [currentSettings setInteger:self.gender forKey:@"CurrentGender"];
@@ -133,7 +149,4 @@
     NSLog(@"0 Current Study %ld", (long)self.studySliderInt);
     NSLog(@"0 Current Break %ld", (long)self.breakSliderInt);
 }
-
-
-
 @end
