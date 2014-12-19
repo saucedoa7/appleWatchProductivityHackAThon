@@ -24,6 +24,7 @@
                                 <button width="0.50000000000000011" alignment="left" verticalAlignment="bottom" title="Pause" id="x8Z-4X-hbH">
                                     <color key="titleColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                     <connections>
                                         <action selector="onPause" destination="AgC-eL-Hgc" id="UVI-s6-Ibo"/>
                                     </connections>

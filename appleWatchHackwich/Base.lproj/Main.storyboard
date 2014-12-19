@@ -30,16 +30,32 @@
                                     <segue destination="PM3-wD-5Ov" kind="presentation" identifier="segueToUserInfo" modalTransitionStyle="flipHorizontal" id="DJq-QH-gmt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFN-Fm-Vuh">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="24"/>
+                                <state key="normal" title="Start Again.">
+                                    <color key="titleColor" red="0.81568627449999997" green="0.89411764709999997" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="121" y="605" width="132" height="40"/>
+                                </variation>
+                                <connections>
+                                    <action selector="btnStartWalkThrough:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Dbq-7W-oNE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.52156862745098043" green="0.6470588235294118" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="xhq-wE-jBS"/>
+                                <exclude reference="HFN-Fm-Vuh"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="xhq-wE-jBS"/>
+                                <include reference="HFN-Fm-Vuh"/>
                             </mask>
                         </variation>
                     </view>
@@ -49,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1110.75" y="352.5"/>
+            <point key="canvasLocation" x="1143.75" y="352.5"/>
         </scene>
         <!--User Info View Controller-->
         <scene sceneID="2zZ-Vi-WqD">
@@ -279,6 +295,67 @@
                 <tapGestureRecognizer id="zzE-2D-85r"/>
             </objects>
             <point key="canvasLocation" x="1871.25" y="352.5"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="qFT-Rp-iFp">
+            <objects>
+                <pageViewController storyboardIdentifier="pageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="wfK-Ub-WcL" sceneMemberID="viewController">
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TNQ-bJ-vIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2742.75" y="-33.5"/>
+        </scene>
+        <!--Page Content View Controller-->
+        <scene sceneID="UCb-sE-Nfp">
+            <objects>
+                <viewController id="hwJ-g9-h4y" customClass="PageContentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lj4-vr-W9Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="HNx-9u-VI9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="07p-tR-kH3">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZYP-Aw-K2f">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TC0-nk-IMj">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="179" y="112" width="42" height="21"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="ZYP-Aw-K2f"/>
+                                <exclude reference="TC0-nk-IMj"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="ZYP-Aw-K2f"/>
+                                <include reference="TC0-nk-IMj"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="imgMainImage" destination="ZYP-Aw-K2f" id="4hS-fq-PDH"/>
+                        <outlet property="lblTestLAbel" destination="TC0-nk-IMj" id="bwz-aL-HjE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M6e-EV-rXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2742" y="689"/>
         </scene>
     </scenes>
 </document>

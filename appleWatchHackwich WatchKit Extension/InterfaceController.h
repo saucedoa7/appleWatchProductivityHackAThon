@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 
 @interface InterfaceController : WKInterfaceController
--(void)doneWorking:(NSTimer *)timer;
+//-(void)doneWorking:(NSTimer *)timer;
 
 
 @end

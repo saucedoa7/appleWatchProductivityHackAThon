@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "PageContentViewController.h"
 
 @interface ViewController ()
 
@@ -17,7 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
-
+    self.pageTitles = @[@"Over 200 Tips", @"Discover Hidden Features", @"Bookmark favorite tip", @"Free Regualr update"];
+    self.pageImages = @[@"page1.png", @"page2.png", @"page3.png", @"page4.png"];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -27,7 +29,12 @@
 }
 
 
+
 -(IBAction)unWindToMainVC:(UIStoryboardSegue *)sender{
 
+}
+- (IBAction)btnStartAgain:(UIButton *)sender {
+}
+- (IBAction)btnStartWalkThrough:(UIButton *)sender {
 }
 @end
