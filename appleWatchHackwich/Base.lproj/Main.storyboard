@@ -326,5 +326,16 @@
             </objects>
             <point key="canvasLocation" x="1871.25" y="352.5"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="hcS-Iw-drf">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="MiF-8h-srD" sceneMemberID="viewController">
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S2E-b2-VjN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2591.25" y="352.5"/>
+        </scene>
     </scenes>
 </document>
