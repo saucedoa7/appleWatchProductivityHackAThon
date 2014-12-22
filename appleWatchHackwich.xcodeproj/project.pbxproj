@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		503212091A43C785001E2945 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 503212081A43C785001E2945 /* PageContentViewController.m */; };
 		509E20CD1A33A8CF005F335B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 509E20CC1A33A8CF005F335B /* main.m */; };
 		509E20D01A33A8CF005F335B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 509E20CF1A33A8CF005F335B /* AppDelegate.m */; };
 		509E20D31A33A8CF005F335B /* appleWatchHackwich.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 509E20D11A33A8CF005F335B /* appleWatchHackwich.xcdatamodeld */; };
@@ -68,8 +67,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		503212071A43C785001E2945 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
-		503212081A43C785001E2945 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		50830D691A342C1700A3587C /* appleWatchHackwich.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = appleWatchHackwich.entitlements; sourceTree = "<group>"; };
 		50830D6A1A3433DD00A3587C /* appleWatchHackwich WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "appleWatchHackwich WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		509E20C71A33A8CF005F335B /* appleWatchHackwich.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appleWatchHackwich.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,8 +162,6 @@
 				509E20D41A33A8CF005F335B /* ViewController.h */,
 				509E20D51A33A8CF005F335B /* ViewController.m */,
 				509E20D71A33A8CF005F335B /* Main.storyboard */,
-				503212071A43C785001E2945 /* PageContentViewController.h */,
-				503212081A43C785001E2945 /* PageContentViewController.m */,
 				509E20F31A33A9EB005F335B /* UserInfoViewController.h */,
 				509E20F41A33A9EB005F335B /* UserInfoViewController.m */,
 				509E20DA1A33A8CF005F335B /* Images.xcassets */,
@@ -434,7 +429,6 @@
 				509E20D31A33A8CF005F335B /* appleWatchHackwich.xcdatamodeld in Sources */,
 				509E20D61A33A8CF005F335B /* ViewController.m in Sources */,
 				509E20CD1A33A8CF005F335B /* main.m in Sources */,
-				503212091A43C785001E2945 /* PageContentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +574,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = appleWatchHackwich/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -594,6 +589,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = appleWatchHackwich/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

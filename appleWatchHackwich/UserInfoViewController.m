@@ -18,16 +18,23 @@
 @property (strong, nonatomic) IBOutlet UISlider *sldBreakSlider;
 @property (strong, nonatomic) IBOutlet UILabel *lblStudyTime;
 @property (strong, nonatomic) IBOutlet UILabel *lblBreakTime;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UILabel *lblAge;
+@property (weak, nonatomic) IBOutlet UILabel *lblGender;
+@property (weak, nonatomic) IBOutlet UILabel *lblADHD;
+@property (weak, nonatomic) IBOutlet UIView *currentView;
+@property (weak, nonatomic) IBOutlet UILabel *lblTest2;
 
-@property NSArray *genders;
+@property (strong, nonatomic) NSArray *genders;
+@property (strong, nonatomic) NSArray *pageOneLabels;
+@property (strong, nonatomic) NSArray *pageTwoLabels;
+@property (strong, nonatomic) NSArray *pages;
 
 @property NSInteger age;
 @property NSInteger gender;
 @property NSInteger ADHD;
 @property NSInteger studySliderInt;
 @property NSInteger breakSliderInt;
-
-
 @end
 
 @implementation UserInfoViewController
@@ -35,6 +42,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // This is not how i implemented my pager xD
+
+    //is that good or bad?
+    // so you check the page number, and then you create 2 arrays with all the gui elements inside
+    // every view, and you hidde those elements depending on what page you are? yup
+    //this is very or super tricky... did you think that byyourself? yea
+    // its nice cause you learned stuff like awesome but its not the way you are supposed to do this
+    //you have to add a PageViewController, see
+    // and with this if you want to add inside this VC you neeed a Container, and the container will point to
+    // the pageviewer, and the pagevieweer creates a VC for every view, this is how i did it, one sec.
+    // fuck the scrolling doesnt work, anyway if you want swipe you cant do like this sorry
+
+    // I figured, SO i would have to us that paveViewController instead.. to get an animation
+    // im searching on my laptop if you can do with this way. 1 moment. ok
+    //I have to use the Bathroom, brb.
+    //To accomplish with this way you have to create your own views and transition between themm,
+    //plus you dont have swipe to transition bwteen pages, forget this way cause AutoLayout will get you stuck.
+    //enter my laptop and see how i did it, i close i give you id and pw in fb
 
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
 
@@ -44,6 +69,11 @@
     NSLog(@"1st %ld", (long)self.studySliderInt);
     NSLog(@"1st %ld", (long)self.breakSliderInt);
 
+    self.pageOneLabels = @[self.lblAge, self.lblGender, self.lblADHD, self.txtAge, self.pickGenderPicker, self.SwtchADHDSwitch];
+    self.pageTwoLabels = @[self.lblTest2];
+    self.pages = @[self.pageOneLabels, self.pageTwoLabels];
+
+    [self.pageTwoLabels setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"]; //this is awesome
 
     self.genders = @[@"-",@"Male", @"Female"];
     self.ADHD = 0;
@@ -56,15 +86,26 @@
     NSLog(@"%ld", (long)self.age);
 }
 
+- (IBAction)pageControllerChanged:(id)sender {
+
+    NSInteger selectPage = [self.pageControl currentPage];
+    NSLog(@"NSINT %ld", (long)selectPage);
+    self.currentView = self.pages [selectPage];
+
+    if (selectPage == 0) {
+        [self.pageOneLabels setValue:[NSNumber numberWithBool:NO] forKey:@"hidden"];
+        [self.pageTwoLabels setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
+    } else if (selectPage == 1) {
+        [self.pageTwoLabels setValue:[NSNumber numberWithBool:NO] forKey:@"hidden"];
+        [self.pageOneLabels setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
+    }
+}
+
 -(void)hideKeyboard{
     self.age = [self.txtAge.text intValue];
     NSLog(@"%ld", (long)self.age);
     [self.txtAge resignFirstResponder];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // Use this when swiping thru pages and hiding previous labels
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{

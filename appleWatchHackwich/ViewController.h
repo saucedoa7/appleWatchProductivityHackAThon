@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController<UIPageViewControllerDataSource>
-- (IBAction)btnStartWalkThrough:(UIButton *)sender;
-@property (strong, nonatomic) UIPageViewController *pageViewController;
-@property (strong, nonatomic) NSArray *pageTitles;
-@property (strong, nonatomic) NSArray *pageImages;
-
+@interface ViewController : UIViewController
 @end
 
