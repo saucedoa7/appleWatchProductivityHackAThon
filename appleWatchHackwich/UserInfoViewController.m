@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblADHD;
 @property (weak, nonatomic) IBOutlet UIView *currentView;
 @property (weak, nonatomic) IBOutlet UILabel *lblTest2;
+@property (strong, nonatomic) IBOutlet UIButton *startWalkThrough;
 
 @property (strong, nonatomic) NSArray *genders;
 @property (strong, nonatomic) NSArray *pageOneLabels;
@@ -42,24 +43,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    // This is not how i implemented my pager xD
 
-    //is that good or bad?
-    // so you check the page number, and then you create 2 arrays with all the gui elements inside
-    // every view, and you hidde those elements depending on what page you are? yup
-    //this is very or super tricky... did you think that byyourself? yea
-    // its nice cause you learned stuff like awesome but its not the way you are supposed to do this
-    //you have to add a PageViewController, see
-    // and with this if you want to add inside this VC you neeed a Container, and the container will point to
-    // the pageviewer, and the pagevieweer creates a VC for every view, this is how i did it, one sec.
-    // fuck the scrolling doesnt work, anyway if you want swipe you cant do like this sorry
+    /*  This is not how i implemented my pager xD
 
-    // I figured, SO i would have to us that paveViewController instead.. to get an animation
-    // im searching on my laptop if you can do with this way. 1 moment. ok
-    //I have to use the Bathroom, brb.
-    //To accomplish with this way you have to create your own views and transition between themm,
-    //plus you dont have swipe to transition bwteen pages, forget this way cause AutoLayout will get you stuck.
-    //enter my laptop and see how i did it, i close i give you id and pw in fb
+     is that good or bad?
+     so you check the page number, and then you create 2 arrays with all the gui elements inside
+     every view, and you hidde those elements depending on what page you are? yup
+     this is very or super tricky... did you think that byyourself? yea
+     its nice cause you learned stuff like awesome but its not the way you are supposed to do this
+     you have to add a PageViewController, see
+     and with this if you want to add inside this VC you neeed a Container, and the container will point to
+     the pageviewer, and the pagevieweer creates a VC for every view, this is how i did it, one sec.
+     fuck the scrolling doesnt work, anyway if you want swipe you cant do like this sorry
+
+     I figured, SO i would have to us that paveViewController instead.. to get an animation
+     im searching on my laptop if you can do with this way. 1 moment. ok
+     I have to use the Bathroom, brb.
+     To accomplish with this way you have to create your own views and transition between themm,
+     plus you dont have swipe to transition bwteen pages, forget this way cause AutoLayout will get you stuck.
+     enter my laptop and see how i did it, i close i give you id and pw in fb
+     */
 
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
 
@@ -73,7 +76,7 @@
     self.pageTwoLabels = @[self.lblTest2];
     self.pages = @[self.pageOneLabels, self.pageTwoLabels];
 
-    [self.pageTwoLabels setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"]; //this is awesome
+    [self.pageTwoLabels setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
 
     self.genders = @[@"-",@"Male", @"Female"];
     self.ADHD = 0;

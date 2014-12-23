@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UserInfoViewController : UIViewController
+//           AKA PageContentVC
 
 @end
