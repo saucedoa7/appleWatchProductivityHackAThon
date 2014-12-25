@@ -10,7 +10,7 @@
 
 
 #import "InterfaceController.h"
-#import "UserInfoViewController.h"
+#import "UserInfoOneViewController.h"
 
 @interface InterfaceController()
 @property (strong, nonatomic) IBOutlet WKInterfaceButton *btnStartStop;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		505918131A4BB29E004C4503 /* AddInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505918121A4BB29E004C4503 /* AddInfoViewController.m */; };
+		505918161A4BB4CD004C4503 /* UserInfoTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505918151A4BB4CD004C4503 /* UserInfoTwoViewController.m */; };
 		509E20CD1A33A8CF005F335B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 509E20CC1A33A8CF005F335B /* main.m */; };
 		509E20D01A33A8CF005F335B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 509E20CF1A33A8CF005F335B /* AppDelegate.m */; };
 		509E20D31A33A8CF005F335B /* appleWatchHackwich.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 509E20D11A33A8CF005F335B /* appleWatchHackwich.xcdatamodeld */; };
@@ -15,7 +17,7 @@
 		509E20DB1A33A8CF005F335B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509E20DA1A33A8CF005F335B /* Images.xcassets */; };
 		509E20DE1A33A8CF005F335B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509E20DC1A33A8CF005F335B /* LaunchScreen.xib */; };
 		509E20EA1A33A8CF005F335B /* appleWatchHackwichTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 509E20E91A33A8CF005F335B /* appleWatchHackwichTests.m */; };
-		509E20F51A33A9EB005F335B /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509E20F41A33A9EB005F335B /* UserInfoViewController.m */; };
+		509E20F51A33A9EB005F335B /* UserInfoOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509E20F41A33A9EB005F335B /* UserInfoOneViewController.m */; };
 		50A04B3E1A33B91C0001C392 /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A04B3D1A33B91C0001C392 /* WatchKit.framework */; };
 		50A04B451A33B91C0001C392 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A04B441A33B91C0001C392 /* InterfaceController.m */; };
 		50A04B481A33B91C0001C392 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A04B471A33B91C0001C392 /* NotificationController.m */; };
@@ -67,6 +69,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		505918111A4BB29E004C4503 /* AddInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddInfoViewController.h; sourceTree = "<group>"; };
+		505918121A4BB29E004C4503 /* AddInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddInfoViewController.m; sourceTree = "<group>"; };
+		505918141A4BB4CD004C4503 /* UserInfoTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoTwoViewController.h; sourceTree = "<group>"; };
+		505918151A4BB4CD004C4503 /* UserInfoTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoTwoViewController.m; sourceTree = "<group>"; };
 		50830D691A342C1700A3587C /* appleWatchHackwich.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = appleWatchHackwich.entitlements; sourceTree = "<group>"; };
 		50830D6A1A3433DD00A3587C /* appleWatchHackwich WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "appleWatchHackwich WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		509E20C71A33A8CF005F335B /* appleWatchHackwich.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appleWatchHackwich.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,8 +89,8 @@
 		509E20E31A33A8CF005F335B /* appleWatchHackwichTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appleWatchHackwichTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		509E20E81A33A8CF005F335B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		509E20E91A33A8CF005F335B /* appleWatchHackwichTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = appleWatchHackwichTests.m; sourceTree = "<group>"; };
-		509E20F31A33A9EB005F335B /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
-		509E20F41A33A9EB005F335B /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		509E20F31A33A9EB005F335B /* UserInfoOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoOneViewController.h; sourceTree = "<group>"; };
+		509E20F41A33A9EB005F335B /* UserInfoOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoOneViewController.m; sourceTree = "<group>"; };
 		50A04B3B1A33B91C0001C392 /* appleWatchHackwich WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "appleWatchHackwich WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A04B3D1A33B91C0001C392 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		50A04B411A33B91C0001C392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -159,11 +165,15 @@
 				50830D691A342C1700A3587C /* appleWatchHackwich.entitlements */,
 				509E20CE1A33A8CF005F335B /* AppDelegate.h */,
 				509E20CF1A33A8CF005F335B /* AppDelegate.m */,
+				509E20D71A33A8CF005F335B /* Main.storyboard */,
 				509E20D41A33A8CF005F335B /* ViewController.h */,
 				509E20D51A33A8CF005F335B /* ViewController.m */,
-				509E20D71A33A8CF005F335B /* Main.storyboard */,
-				509E20F31A33A9EB005F335B /* UserInfoViewController.h */,
-				509E20F41A33A9EB005F335B /* UserInfoViewController.m */,
+				505918111A4BB29E004C4503 /* AddInfoViewController.h */,
+				505918121A4BB29E004C4503 /* AddInfoViewController.m */,
+				509E20F31A33A9EB005F335B /* UserInfoOneViewController.h */,
+				509E20F41A33A9EB005F335B /* UserInfoOneViewController.m */,
+				505918141A4BB4CD004C4503 /* UserInfoTwoViewController.h */,
+				505918151A4BB4CD004C4503 /* UserInfoTwoViewController.m */,
 				509E20DA1A33A8CF005F335B /* Images.xcassets */,
 				509E20DC1A33A8CF005F335B /* LaunchScreen.xib */,
 				509E20D11A33A8CF005F335B /* appleWatchHackwich.xcdatamodeld */,
@@ -424,10 +434,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				509E20F51A33A9EB005F335B /* UserInfoViewController.m in Sources */,
+				509E20F51A33A9EB005F335B /* UserInfoOneViewController.m in Sources */,
+				505918161A4BB4CD004C4503 /* UserInfoTwoViewController.m in Sources */,
 				509E20D01A33A8CF005F335B /* AppDelegate.m in Sources */,
 				509E20D31A33A8CF005F335B /* appleWatchHackwich.xcdatamodeld in Sources */,
 				509E20D61A33A8CF005F335B /* ViewController.m in Sources */,
+				505918131A4BB29E004C4503 /* AddInfoViewController.m in Sources */,
 				509E20CD1A33A8CF005F335B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

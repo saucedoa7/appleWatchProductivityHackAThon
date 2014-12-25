@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Albert Saucedo. All rights reserved.
 //
 
-#import "UserInfoViewController.h"
+#import "UserInfoOneViewController.h"
 #import "InterfaceController.h"
 
-@interface UserInfoViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>
+@interface UserInfoOneViewController ()<UIPickerViewDelegate, UIPickerViewDataSource, UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIPickerView *pickGenderPicker;
 @property (strong, nonatomic) IBOutlet UITextField *txtAge;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapTohideKB;
@@ -24,27 +24,32 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblADHD;
 @property (weak, nonatomic) IBOutlet UIView *currentView;
 @property (weak, nonatomic) IBOutlet UILabel *lblTest2;
-@property (strong, nonatomic) IBOutlet UIButton *startWalkThrough;
+@property (strong, nonatomic) UIPageViewController *pageViewController;
+
 
 @property (strong, nonatomic) NSArray *genders;
 @property (strong, nonatomic) NSArray *pageOneLabels;
 @property (strong, nonatomic) NSArray *pageTwoLabels;
 @property (strong, nonatomic) NSArray *pages;
+@property (strong, nonatomic) NSArray *pageTitles;
 
 @property NSInteger age;
 @property NSInteger gender;
 @property NSInteger ADHD;
 @property NSInteger studySliderInt;
 @property NSInteger breakSliderInt;
+@property NSUInteger pageIndex;
+
 @end
 
-@implementation UserInfoViewController
+@implementation UserInfoOneViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    /*  This is not how i implemented my pager xD
+    /*  
+     This is not how i implemented my pager xD
 
      is that good or bad?
      so you check the page number, and then you create 2 arrays with all the gui elements inside
@@ -87,6 +92,27 @@
                                                                action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:self.tapTohideKB];
     NSLog(@"%ld", (long)self.age);
+
+    // Create page view controller
+    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UserInfoOneViewController"];
+
+    //[self.pageViewController setDelegate:self];
+    [self.pageViewController setDataSource:self];
+
+    UserInfoOneViewController *startingViewController = [self viewControllerAtIndex:0];
+    NSArray *viewControllers = @[startingViewController];
+
+    [self.pageViewController setViewControllers:viewControllers
+                                      direction:UIPageViewControllerNavigationDirectionForward
+                                       animated:NO
+                                     completion:nil];
+
+    // Change the size of page view controller
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 30);
+
+    [self addChildViewController:self.pageViewController];
+    [self.view addSubview:self.pageViewController.view];
+    [self.pageViewController didMoveToParentViewController:self];
 }
 
 - (IBAction)pageControllerChanged:(id)sender {
@@ -109,6 +135,55 @@
     NSLog(@"%ld", (long)self.age);
     [self.txtAge resignFirstResponder];
     // Use this when swiping thru pages and hiding previous labels
+}
+
+-(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController{
+    NSUInteger index = ((UserInfoOneViewController *) viewController).pageIndex;
+
+    if (index == NSNotFound) {
+        return nil;
+    }
+
+    index++;
+    if (index == [self.pageTitles count]) {
+        return nil;
+    }
+    return [self viewControllerAtIndex:index];
+}
+
+-(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController{
+    NSUInteger index = ((UserInfoOneViewController *) viewController).pageIndex;
+
+    if ((index == 0) || (index == NSNotFound)) {
+        return nil;
+    }
+
+    index--;
+    return [self viewControllerAtIndex:index];
+}
+
+- (UserInfoOneViewController *)viewControllerAtIndex:(NSInteger)index{
+    if ([self.pageTitles count] == 0 || index >= [self.pageTitles count]) {
+        return nil;
+    }
+
+    // Create a new view controller and pass suitable data.
+    UserInfoOneViewController *userInfoVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UserInfoOneViewController"];
+    userInfoVC.pageOneLabels = self.pageOneLabels[index];
+    //userInfoVC.pageTwoLabels = self.pageTwoLabels[index];
+    userInfoVC.pageIndex = index;
+
+    return userInfoVC;
+}
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
+{
+    return [self.pageTitles count];
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
+{
+    return 0;
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
