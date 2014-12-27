@@ -8,14 +8,17 @@
 
 #import "AddInfoViewController.h"
 #import "UserInfoOneViewController.h"
+#import "UserInfoTwoViewController.h"
 
-@interface AddInfoViewController ()
+@interface AddInfoViewController ()<UIPageViewControllerDataSource>
 
 @property NSInteger studySliderInt;
 @property NSInteger breakSliderInt;
 @property NSInteger age;
 @property NSInteger gender;
 @property NSInteger ADHD;
+
+@property NSArray *alberts;
 
 @end
 
@@ -25,6 +28,34 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+//    UserInfoOneViewController *pageOne = [UserInfoOneViewController new];
+//    UserInfoTwoViewController *pageTwo = [UserInfoTwoViewController new];
+
+    //self.pageViews =@[pageOne.userInfoOneView, pageTwo.userInfoTwoView];
+    self.alberts = @[@"albert1", @"albert2"];
+
+    NSLog(@"Arrayssss %@", self.alberts);
+
+    // Create page view controller
+    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
+
+    //[self.pageViewController setDelegate:self];
+    [self.pageViewController setDataSource:self];
+
+    UserInfoOneViewController *startingViewController = [self viewControllerAtIndex:0];
+    NSArray *viewControllers = @[startingViewController];
+
+    [self.pageViewController setViewControllers:viewControllers
+                                      direction:UIPageViewControllerNavigationDirectionForward
+                                       animated:NO
+                                     completion:nil];
+
+    // Change the size of page view controller
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 260);
+
+    [self addChildViewController:self.pageViewController];
+    [self.view addSubview:self.pageViewController.view];
+    [self.pageViewController didMoveToParentViewController:self];
 
     self.studySliderInt = 0;
     self.breakSliderInt = 0;
@@ -32,6 +63,58 @@
     NSLog(@"1st %ld", (long)self.studySliderInt);
     NSLog(@"1st %ld", (long)self.breakSliderInt);
 }
+
+#pragma mark UIPageController
+
+- (UserInfoOneViewController *)viewControllerAtIndex:(NSInteger)index{
+
+//    if ([self.pageTitles count] == 0 || index >= [self.pageTitles count]) {
+//        return nil;
+//    }
+
+    // Create a new view controller and pass suitable data.
+    UserInfoOneViewController *userInfoVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+    userInfoVC.pageOneLabels = self.pageOneLabels[index];
+    //userInfoVC.pageTwoLabels = self.pageTwoLabels[index];
+    userInfoVC.pageIndex = index;
+
+    return userInfoVC;
+}
+
+#pragma mark - Page View Controller Data Source
+
+-(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController{
+    NSUInteger index = ((UserInfoOneViewController *) viewController).pageIndex;
+
+    if ((index == 0) || (index == NSNotFound)) {
+        return nil;
+    }
+
+    index--;
+    return [self viewControllerAtIndex:index];
+}
+-(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController{
+
+    NSUInteger index = ((UserInfoOneViewController *) viewController).pageIndex;
+
+    if (index == NSNotFound) {
+        return nil;
+    }
+
+    index++;
+    if (index == [self.pageTitles count]) {
+        return nil;
+    }
+    return [self viewControllerAtIndex:index];
+}
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController{
+    return [self.pageTitles count];
+}
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController{
+    return 0;
+}
+
+#pragma mark Sliders 
 
 - (IBAction)onStudySlide:(UISlider *)sender {
 
@@ -54,7 +137,6 @@
     [ADHDSwitch.SwtchADHDSwitch setOn:NO animated:YES];
     [pickGender.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
 }
-
 
 - (IBAction)onDoneButtonPressed:(UIButton *)sender {
 
@@ -84,10 +166,9 @@
     NSLog(@"0 Current ADHD %ld", (long)self.ADHD);
     NSLog(@"0 Current Study %ld", (long)self.studySliderInt);
     NSLog(@"0 Current Break %ld", (long)self.breakSliderInt);
-
-
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
 
-
+}
 @end

@@ -39,11 +39,9 @@
 @property NSInteger studySliderInt;
 @property NSInteger breakSliderInt;
 
-
 @end
 
 @implementation InterfaceController
-
 
 - (instancetype)initWithContext:(id)context {
     self = [super initWithContext:context];
@@ -146,7 +144,7 @@
     NSLog(@"Current Study Time %.0f \n", self.studyTime);
 
     if (self.isRestarting == false) {
-        self.studyTime = self.studyTime * .25;
+        self.studyTime = self.studyTime * 60; //.25;
         self.initialDate = [[NSDate alloc] initWithTimeIntervalSinceNow:self.studyTime];
         [self.lblTimer setDate:self.initialDate];
         [self.btnStartStop setColor:[UIColor colorWithHue:0.98 saturation:1 brightness:0.89 alpha:0]];
@@ -154,7 +152,7 @@
     }
 
     else if (self.isRestarting == true) {
-        self.breakTime = self.breakTime * 1;
+        self.breakTime = self.breakTime * 60;
         self.initialDate = [[NSDate alloc] initWithTimeIntervalSinceNow:self.breakTime];
         [self.lblTimer setDate:self.initialDate];
         [self.btnStartStop setColor:[UIColor colorWithHue:0.98 saturation:1 brightness:0.89 alpha:0]];
@@ -169,7 +167,8 @@
     
         if (self.hideDate == 0) {
             self.lblTest.accessibilityElementsHidden = NO;
-        }*/
+        }
+   */
 
     [self.lblTimer start];
     [self.lblTimer setDate:self.initialDate];

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UserInfoTwoViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIView *userInfoTwoView;
 
 @end

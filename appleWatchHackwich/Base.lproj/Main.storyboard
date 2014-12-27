@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
     </dependencies>
     <scenes>
-        <!--Add Info View Controller-->
+        <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="AddInfoViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -221,7 +221,7 @@
                                 </variation>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.52156862745098043" green="0.6470588235294118" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.52156862745098043" green="0.6470588235294118" blue="0.80000000000000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <variation key="default">
                             <mask key="subviews">
@@ -250,6 +250,7 @@
                         <outlet property="pickGenderPicker" destination="2B9-Pm-hrH" id="bKD-Kj-fs7"/>
                         <outlet property="tapTohideKB" destination="zzE-2D-85r" id="1ic-B0-GIj"/>
                         <outlet property="txtAge" destination="dky-gK-ahr" id="noJ-M6-pVz"/>
+                        <outlet property="userInfoOneView" destination="UTz-vZ-vgh" id="vbJ-hx-2SV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u45-Zg-oM1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -339,6 +340,9 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="userInfoTwoView" destination="38s-WW-iWx" id="uMQ-gQ-c9q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaQ-Sr-azj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
