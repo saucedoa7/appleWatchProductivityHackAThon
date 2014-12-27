@@ -6,45 +6,21 @@
 //  Copyright (c) 2014 Albert Saucedo. All rights reserved.
 //
 
-#import "UserInfoViewController.h"
+#import "UserInfoOneViewController.h"
 #import "InterfaceController.h"
+#import "AddInfoViewController.h"
 
-@interface UserInfoViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>
-@property (strong, nonatomic) IBOutlet UIPickerView *pickGenderPicker;
-@property (strong, nonatomic) IBOutlet UITextField *txtAge;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapTohideKB;
-@property (strong, nonatomic) IBOutlet UISwitch *SwtchADHDSwitch;
-@property (strong, nonatomic) IBOutlet UISlider *sldStudySlider;
-@property (strong, nonatomic) IBOutlet UISlider *sldBreakSlider;
-@property (strong, nonatomic) IBOutlet UILabel *lblStudyTime;
-@property (strong, nonatomic) IBOutlet UILabel *lblBreakTime;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-@property (weak, nonatomic) IBOutlet UILabel *lblAge;
-@property (weak, nonatomic) IBOutlet UILabel *lblGender;
-@property (weak, nonatomic) IBOutlet UILabel *lblADHD;
-@property (weak, nonatomic) IBOutlet UIView *currentView;
-@property (weak, nonatomic) IBOutlet UILabel *lblTest2;
-@property (strong, nonatomic) IBOutlet UIButton *startWalkThrough;
+@interface UserInfoOneViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property (strong, nonatomic) NSArray *genders;
-@property (strong, nonatomic) NSArray *pageOneLabels;
-@property (strong, nonatomic) NSArray *pageTwoLabels;
-@property (strong, nonatomic) NSArray *pages;
-
-@property NSInteger age;
-@property NSInteger gender;
-@property NSInteger ADHD;
-@property NSInteger studySliderInt;
-@property NSInteger breakSliderInt;
 @end
 
-@implementation UserInfoViewController
+@implementation UserInfoOneViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
-    /*  This is not how i implemented my pager xD
+    /*  
+     This is not how i implemented my pager xD
 
      is that good or bad?
      so you check the page number, and then you create 2 arrays with all the gui elements inside
@@ -64,20 +40,6 @@
      enter my laptop and see how i did it, i close i give you id and pw in fb
      */
 
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
-
-    self.studySliderInt = 0;
-    self.breakSliderInt = 0;
-
-    NSLog(@"1st %ld", (long)self.studySliderInt);
-    NSLog(@"1st %ld", (long)self.breakSliderInt);
-
-    self.pageOneLabels = @[self.lblAge, self.lblGender, self.lblADHD, self.txtAge, self.pickGenderPicker, self.SwtchADHDSwitch];
-    self.pageTwoLabels = @[self.lblTest2];
-    self.pages = @[self.pageOneLabels, self.pageTwoLabels];
-
-    [self.pageTwoLabels setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
-
     self.genders = @[@"-",@"Male", @"Female"];
     self.ADHD = 0;
     self.pickGenderPicker.dataSource = self;
@@ -87,8 +49,10 @@
                                                                action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:self.tapTohideKB];
     NSLog(@"%ld", (long)self.age);
+
 }
 
+/*
 - (IBAction)pageControllerChanged:(id)sender {
 
     NSInteger selectPage = [self.pageControl currentPage];
@@ -103,6 +67,7 @@
         [self.pageOneLabels setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
     }
 }
+*/
 
 -(void)hideKeyboard{
     self.age = [self.txtAge.text intValue];
@@ -149,48 +114,5 @@
         NSLog(@"Switch is off %ld", (long)self.ADHD);
     }
 
-}
-
-- (IBAction)onStudySlide:(UISlider *)sender {
-    self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", self.sldStudySlider.value];
-    self.studySliderInt = self.sldStudySlider.value;
-    self.txtAge.text = @"0";
-    [self.SwtchADHDSwitch setOn:NO animated:YES];
-    [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
-}
-- (IBAction)onBreakTime:(UISlider *)sender {
-    self.lblBreakTime.text = [[NSString alloc] initWithFormat:@"%.0fm", self.sldBreakSlider.value];
-    self.breakSliderInt = self.sldBreakSlider.value;
-    [self.SwtchADHDSwitch setOn:NO animated:YES];
-    [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
-}
-
-- (IBAction)onDoneButtonPressed:(UIButton *)sender {
-    if (self.age != 0 || self.gender != 0) {
-        self.studySliderInt = 0;
-        self.breakSliderInt = 0;
-    }
-
-    if (self.age == 0 || self.gender == 0){
-        self.age = 0;
-        self.gender = 0;
-        self.ADHD = 0;
-        self.studySliderInt = 60;
-        self.breakSliderInt = 15;
-    }
-
-    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
-    [currentSettings setInteger:self.age forKey:@"CurrentAge"];
-    [currentSettings setInteger:self.gender forKey:@"CurrentGender"];
-    [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
-    [currentSettings setInteger:self.studySliderInt forKey:@"CurrentStudyInt"];
-    [currentSettings setInteger:self.breakSliderInt forKey:@"CurrentBreakInt"];
-    [currentSettings synchronize];
-
-    NSLog(@"0 Current Age %ld", (long)self.age);
-    NSLog(@"0 Current Gender %ld", (long)self.gender);
-    NSLog(@"0 Current ADHD %ld", (long)self.ADHD);
-    NSLog(@"0 Current Study %ld", (long)self.studySliderInt);
-    NSLog(@"0 Current Break %ld", (long)self.breakSliderInt);
 }
 @end
