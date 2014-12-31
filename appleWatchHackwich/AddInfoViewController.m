@@ -28,22 +28,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
-//    UserInfoOneViewController *pageOne = [UserInfoOneViewController new];
-//    UserInfoTwoViewController *pageTwo = [UserInfoTwoViewController new];
-
-    //self.pageViews =@[pageOne.userInfoOneView, pageTwo.userInfoTwoView];
-    self.alberts = @[@"albert1", @"albert2"];
-
-    NSLog(@"Arrayssss %@", self.alberts);
 
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
 
-    //[self.pageViewController setDelegate:self];
     [self.pageViewController setDataSource:self];
 
     UserInfoOneViewController *startingViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = @[startingViewController];
+
+    NSLog(@"Arrrraaayyy %@", viewControllers);
 
     [self.pageViewController setViewControllers:viewControllers
                                       direction:UIPageViewControllerNavigationDirectionForward
@@ -73,12 +67,20 @@
 //    }
 
     // Create a new view controller and pass suitable data.
-    UserInfoOneViewController *userInfoVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-    userInfoVC.pageOneLabels = self.pageOneLabels[index];
-    //userInfoVC.pageTwoLabels = self.pageTwoLabels[index];
-    userInfoVC.pageIndex = index;
 
-    return userInfoVC;
+    UserInfoOneViewController *pageOne = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+    [pageOne view];
+    UserInfoTwoViewController *pageTwo = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentTwoViewController"];
+    [pageTwo view];
+    
+    self.pageViews =@[pageOne.userInfoOneView, pageTwo.userInfoTwoView];
+
+    pageOne.pageOneLabels = pageOne.pageOneLabels[index];
+    pageTwo.pageTwoLabels = pageTwo.pageTwoLabels[index];
+    pageOne.pageIndex = index;
+    pageTwo.pageIndex = index;
+
+    return pageTwo;
 }
 
 #pragma mark - Page View Controller Data Source

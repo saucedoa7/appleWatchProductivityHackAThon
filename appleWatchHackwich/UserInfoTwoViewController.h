@@ -10,5 +10,7 @@
 
 @interface UserInfoTwoViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *userInfoTwoView;
+@property (strong, nonatomic) NSArray *pageTwoLabels;
+@property NSUInteger pageIndex;
 
 @end

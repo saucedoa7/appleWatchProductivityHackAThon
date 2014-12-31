@@ -113,6 +113,5 @@
         self.ADHD = 0;
         NSLog(@"Switch is off %ld", (long)self.ADHD);
     }
-
 }
 @end
