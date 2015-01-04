@@ -36,6 +36,8 @@
 @property NSInteger age;
 @property NSInteger gender;
 @property NSInteger ADHD;
+@property NSInteger ADD;
+@property NSInteger Dys;
 @property NSInteger studySliderInt;
 @property NSInteger breakSliderInt;
 
@@ -75,15 +77,22 @@
     [self.btnStartStop setEnabled:NO];
 
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
+    NSInteger newStudyTime = [currentSettings integerForKey:@"CurrentStudyTime"];
+    self.studyTime = newStudyTime;
+/*
     NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
     NSInteger newGender = [currentSettings integerForKey:@"CurrentGender"];
     NSInteger newADHD = [currentSettings integerForKey:@"CurrentADHD"];
     NSInteger newStudy = [currentSettings integerForKey:@"CurrentStudyInt"];
     NSInteger newBreak = [currentSettings integerForKey:@"CurrentBreakInt"];
+    NSInteger newADD = [currentSettings integerForKey:@"CurrentFromUserInfoOneVCADD"];
+    NSInteger newDyslexia = [currentSettings integerForKey:@"CurrentFromUserInfoOneDys"];
 
     self.age = newAge;
     self.gender = newGender;
     self.ADHD = newADHD;
+    self.ADD = newADD;
+    self.Dys = newDyslexia;
     self.studySliderInt = newStudy;
     self.breakSliderInt = newBreak;
 
@@ -92,6 +101,8 @@
     NSLog(@"1 Current ADHD %ld", (long)self.ADHD);
     NSLog(@"1 Current Study %ld", (long)self.studySliderInt);
     NSLog(@"1 Current Break %ld", (long)self.breakSliderInt);
+    NSLog(@"1 Current ADD %ld", (long)self.ADD);
+    NSLog(@"1 Current Dys %ld", (long)self.Dys);
 
     if (self.studySliderInt == 0 && self.breakSliderInt == 0) {
         self.studyTime = 20;
@@ -99,23 +110,23 @@
         NSLog(@"Current Age %ld", (long)self.age);
 
         if (self.age < 12) {
-            self.studyTime = self.studyTime + 100;
-            self.breakTime = self.breakTime + 0;
+            self.studyTime = self.studyTime + 15;
+            self.breakTime = self.breakTime + 5;
             NSLog(@"12 Productivity TIme %.2f minutes", self.studyTime);
             NSLog(@"Break TIme %.2f minutes", self.breakTime);
         } else if (self.age >= 13 && self.age <= 24) {
             self.studyTime = self.studyTime + 90;
-            self.breakTime = self.breakTime + 5;
+            self.breakTime = self.breakTime + 15;
             NSLog(@"13 - 24 Productivity TIme %.2f minutes", self.studyTime);
             NSLog(@"Break TIme %.2f minutes", self.breakTime);
         } else if (self.age >= 25 && self.age <= 30) {
-            self.studyTime = self.studyTime + 80;
+            self.studyTime = self.studyTime + 50;
             self.breakTime = self.breakTime + 10;
             NSLog(@"25 - 30 Productivity TIme %.2f minutes", self.studyTime);
             NSLog(@"Break TIme %.2f minutes", self.breakTime);
         } else if (self.age >= 31 && self.age <= 100) {
-            self.studyTime = self.studyTime + 70;
-            self.breakTime = self.breakTime + 20;
+            self.studyTime = self.studyTime + 30;
+            self.breakTime = self.breakTime + 10;
             NSLog(@"31 - 35 Productivity TIme %.2f minutes", self.studyTime);
             NSLog(@"Break TIme %.2f minutes", self.breakTime);
         }
@@ -135,12 +146,30 @@
             self.studyTime = self.studyTime + 15;
             NSLog(@"W/ ADHD Productivity TIme %.2f minutes", self.studyTime);
         }
+
+        if (self.ADD == 0) {
+            self.studyTime = self.studyTime + 0;
+            NSLog(@"w/o ADD Productivity TIme %.2f minutes", self.studyTime);
+        } else {
+            self.studyTime = self.studyTime + 20;
+            NSLog(@"w/ AdDD Productivity TIme %.2f minutes", self.studyTime);
+
+        }
+
+        if (self.Dys == 0) {
+            self.studyTime = self.studyTime + 0;
+            NSLog(@"w/o DYS Productivity TIme %.2f minutes", self.studyTime);
+        } else {
+            self.studyTime = self.studyTime + 10;
+            NSLog(@"w/ DYS Productivity TIme %.2f minutes", self.studyTime);
+        }
+
     } else {
 
         self.studyTime = self.studySliderInt;
         self.breakTime = self.breakSliderInt;
     }
-
+*/
     NSLog(@"Current Study Time %.0f \n", self.studyTime);
 
     if (self.isRestarting == false) {

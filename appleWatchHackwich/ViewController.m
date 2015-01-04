@@ -24,18 +24,21 @@
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
     NSInteger newStudy = [currentSettings integerForKey:@"CurrentStudyInt"];
     NSInteger newBreak = [currentSettings integerForKey:@"CurrentBreakInt"];
+    NSInteger newStudyTime = [currentSettings integerForKey:@"CurrentStudyTIme"];
 
     self.studySliderInt = newStudy;
     self.breakSliderInt = newBreak;
+    self.studyTime = newStudyTime;
 
     NSLog(@"2 Current Study %ld", (long)self.studySliderInt);
     NSLog(@"2 Current Break %ld", (long)self.breakSliderInt);
-
+    NSLog(@"2 Current Study Time %ld", (long)self.studyTime);
+    
     self.detailsView.hidden = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    self.lblStudy.text = [NSString stringWithFormat:@"%ld", (long)self.studySliderInt];
+    self.lblStudy.text = [NSString stringWithFormat:@"%ld", (long)self.studyTime];
     self.lblBreak.text = [NSString stringWithFormat:@"%ld", (long)self.breakSliderInt];
 }
 @end

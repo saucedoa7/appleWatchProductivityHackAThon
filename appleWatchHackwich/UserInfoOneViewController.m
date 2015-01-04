@@ -19,27 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    /*  
-     This is not how i implemented my pager xD
-
-     is that good or bad?
-     so you check the page number, and then you create 2 arrays with all the gui elements inside
-     every view, and you hidde those elements depending on what page you are? yup
-     this is very or super tricky... did you think that byyourself? yea
-     its nice cause you learned stuff like awesome but its not the way you are supposed to do this
-     you have to add a PageViewController, see
-     and with this if you want to add inside this VC you neeed a Container, and the container will point to
-     the pageviewer, and the pagevieweer creates a VC for every view, this is how i did it, one sec.
-     fuck the scrolling doesnt work, anyway if you want swipe you cant do like this sorry
-
-     I figured, SO i would have to us that paveViewController instead.. to get an animation
-     im searching on my laptop if you can do with this way. 1 moment. ok
-     I have to use the Bathroom, brb.
-     To accomplish with this way you have to create your own views and transition between themm,
-     plus you dont have swipe to transition bwteen pages, forget this way cause AutoLayout will get you stuck.
-     enter my laptop and see how i did it, i close i give you id and pw in fb
-     */
-
     self.genders = @[@"-",@"Male", @"Female"];
     self.ADHD = 0;
     self.pickGenderPicker.dataSource = self;
@@ -52,22 +31,14 @@
 
 }
 
-/*
-- (IBAction)pageControllerChanged:(id)sender {
+-(void)viewWillDisappear:(BOOL)animated{
+    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
+    [currentSettings setInteger:self.ADD forKey:@"CurrentFromUserInfoOneVCADD"];
+    NSLog(@"UI1VC Current ADD %ld", (long)self.ADD);
 
-    NSInteger selectPage = [self.pageControl currentPage];
-    NSLog(@"NSINT %ld", (long)selectPage);
-    self.currentView = self.pages [selectPage];
-
-    if (selectPage == 0) {
-        [self.pageOneLabels setValue:[NSNumber numberWithBool:NO] forKey:@"hidden"];
-        [self.pageTwoLabels setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
-    } else if (selectPage == 1) {
-        [self.pageTwoLabels setValue:[NSNumber numberWithBool:NO] forKey:@"hidden"];
-        [self.pageOneLabels setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
-    }
+    [currentSettings setInteger:self.dyslexia forKey:@"CurrentFromUserInfoOneDys"];
+    NSLog(@"UI1VC Current Dys %ld", (long)self.dyslexia);
 }
-*/
 
 -(void)hideKeyboard{
     self.age = [self.txtAge.text intValue];
@@ -103,15 +74,42 @@
     }
 }
 
-- (IBAction)onSwitch:(UISwitch *)sender {
+- (IBAction)onADHDSwitch:(UISwitch *)sender {
     if ([self.SwtchADHDSwitch isOn]) {
         [self.SwtchADHDSwitch setOn:YES animated:YES];
         self.ADHD = 1;
-        NSLog(@"Switch is on %ld", (long)self.ADHD);
+        NSLog(@"ADHD Switch is on %ld", (long)self.ADHD);
     } else {
         [self.SwtchADHDSwitch setOn:NO animated:YES];
         self.ADHD = 0;
-        NSLog(@"Switch is off %ld", (long)self.ADHD);
+        NSLog(@"ADHD Switch is off %ld", (long)self.ADHD);
     }
 }
+
+- (IBAction)onADDSwitch:(UISwitch *)sender {
+    if ([self.switchADDSwitch isOn]) {
+        [self.switchADDSwitch setOn:YES animated:YES];
+        self.ADD = 1;
+        NSLog(@"ADD Switch is on %ld", (long)self.ADD);
+    } else {
+        [self.switchADDSwitch setOn:NO animated:YES];
+        self.ADD = 0;
+        NSLog(@"ADD Switch is off %ld", (long)self.ADD);
+    }
+
+
+}
+
+- (IBAction)onDyslexiaSwitch:(UISwitch *)sender {
+    if ([self.switchDyslexiaSwitch isOn]) {
+        [self.switchDyslexiaSwitch setOn:YES animated:YES];
+        self.dyslexia = 1;
+        NSLog(@"dyslexia Switch is on %ld", (long)self.dyslexia);
+    } else {
+        [self.switchDyslexiaSwitch setOn:NO animated:YES];
+        self.dyslexia = 0;
+        NSLog(@"dyslexia Switch is off %ld", (long)self.dyslexia);
+    }
+}
+
 @end

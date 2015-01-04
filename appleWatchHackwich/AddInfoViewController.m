@@ -12,11 +12,7 @@
 
 @interface AddInfoViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
-@property NSInteger studySliderInt;
-@property NSInteger breakSliderInt;
-@property NSInteger age;
-@property NSInteger gender;
-@property NSInteger ADHD;
+
 
 @end
 
@@ -149,6 +145,114 @@
 
 - (IBAction)onDoneButtonPressed:(UIButton *)sender {
 
+    //Get Data from UI1VC
+    NSUserDefaults *settingFromUserInfoOneVC = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
+    NSInteger newADD = [settingFromUserInfoOneVC integerForKey:@"CurrentFromUserInfoOneVCADD"];
+    NSInteger newDyslexia = [settingFromUserInfoOneVC integerForKey:@"CurrentFromUserInfoOneDys"];
+
+    //Pass Data to IntVC & VC
+    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
+    [currentSettings setInteger:self.age forKey:@"CurrentAge"];
+    [currentSettings setInteger:self.gender forKey:@"CurrentGender"];
+    [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
+    [currentSettings setInteger:self.studySliderInt forKey:@"CurrentStudyInt"];
+    [currentSettings setInteger:self.breakSliderInt forKey:@"CurrentBreakInt"];
+    [currentSettings setInteger:self.ADD forKey:@"CurrentADD"];
+    [currentSettings setInteger:self.dyslexia forKey:@"CurrentDyslexia"];
+    [currentSettings setInteger:self.studyTime forKey:@"CurrentStudyTIme"];
+    [currentSettings synchronize];
+
+    NSLog(@"0 Current Age %ld", (long)self.age);
+    NSLog(@"0 Current Gender %ld", (long)self.gender);
+    NSLog(@"0 Current ADHD %ld", (long)self.ADHD);
+    NSLog(@"0 Current Study %ld", (long)self.studySliderInt);
+    NSLog(@"0 Current Break %ld", (long)self.breakSliderInt);
+    NSLog(@"0 Current ADD %ld", (long)self.ADD);
+    NSLog(@"0 Current Dys %ld", (long)self.dyslexia);
+
+    NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
+    NSInteger newGender = [currentSettings integerForKey:@"CurrentGender"];
+    NSInteger newADHD = [currentSettings integerForKey:@"CurrentADHD"];
+    NSInteger newStudy = [currentSettings integerForKey:@"CurrentStudyInt"];
+    NSInteger newBreak = [currentSettings integerForKey:@"CurrentBreakInt"];
+
+    self.age = newAge;
+    self.gender = newGender;
+    self.ADHD = newADHD;
+    self.ADD = newADD;
+    self.dyslexia = newDyslexia;
+    self.studySliderInt = newStudy;
+    self.breakSliderInt = newBreak;
+
+    if (self.studySliderInt == 0 && self.breakSliderInt == 0) {
+        self.studyTime = 20;
+        self.breakTime = 5;
+        NSLog(@"Current Age %ld", (long)self.age);
+
+        if (self.age < 12) {
+            self.studyTime = self.studyTime + 15;
+            self.breakTime = self.breakTime + 5;
+            NSLog(@"12 Productivity TIme %.2f minutes", self.studyTime);
+            NSLog(@"Break TIme %.2f minutes", self.breakTime);
+        } else if (self.age >= 13 && self.age <= 24) {
+            self.studyTime = self.studyTime + 90;
+            self.breakTime = self.breakTime + 15;
+            NSLog(@"13 - 24 Productivity TIme %.2f minutes", self.studyTime);
+            NSLog(@"Break TIme %.2f minutes", self.breakTime);
+        } else if (self.age >= 25 && self.age <= 30) {
+            self.studyTime = self.studyTime + 50;
+            self.breakTime = self.breakTime + 10;
+            NSLog(@"25 - 30 Productivity TIme %.2f minutes", self.studyTime);
+            NSLog(@"Break TIme %.2f minutes", self.breakTime);
+        } else if (self.age >= 31 && self.age <= 100) {
+            self.studyTime = self.studyTime + 30;
+            self.breakTime = self.breakTime + 10;
+            NSLog(@"31 - 35 Productivity TIme %.2f minutes", self.studyTime);
+            NSLog(@"Break TIme %.2f minutes", self.breakTime);
+        }
+
+        if (self.gender == 0) {
+            self.studyTime = self.studyTime + 6;
+            NSLog(@"Male Productivity TIme %.2f minutes", self.studyTime);
+        } else {
+            self.studyTime = self.studyTime + 9;
+            NSLog(@"Female Productivity TIme %.2f minutes", self.studyTime);
+        }
+
+        if (self.ADHD == 0) {
+            self.studyTime = self.studyTime + 0;
+            NSLog(@"w/o ADHD Productivity TIme %.2f minutes", self.studyTime);
+        } else {
+            self.studyTime = self.studyTime + 15;
+            NSLog(@"W/ ADHD Productivity TIme %.2f minutes", self.studyTime);
+        }
+
+        if (self.ADD == 0) {
+            self.studyTime = self.studyTime + 0;
+            NSLog(@"w/o ADD Productivity TIme %.2f minutes", self.studyTime);
+        } else {
+            self.studyTime = self.studyTime + 20;
+            NSLog(@"w/ AdDD Productivity TIme %.2f minutes", self.studyTime);
+        }
+
+        if (self.dyslexia == 0) {
+            self.studyTime = self.studyTime + 0;
+            NSLog(@"w/o DYS Productivity TIme %.2f minutes", self.studyTime);
+        } else {
+            self.studyTime = self.studyTime + 10;
+            NSLog(@"w/ DYS Productivity TIme %.2f minutes", self.studyTime);
+        }
+
+    } else {
+
+        self.studyTime = self.studySliderInt;
+        self.breakTime = self.breakSliderInt;
+    }
+
+    self.lblStudyTime.text = [NSString stringWithFormat:@"%.0f", self.studyTime];
+    NSLog(@"Current Study Time %.0f \n", self.studyTime);
+
+
     if (self.age != 0 || self.gender != 0) {
         self.studySliderInt = 0;
         self.breakSliderInt = 0;
@@ -158,23 +262,11 @@
         self.age = 0;
         self.gender = 0;
         self.ADHD = 0;
+        self.ADD = 0;
+        self.dyslexia = 0;
         self.studySliderInt = self.sldStudySlider.value;
         self.breakSliderInt = self.sldBreakSlider.value;
     }
-
-    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
-    [currentSettings setInteger:self.age forKey:@"CurrentAge"];
-    [currentSettings setInteger:self.gender forKey:@"CurrentGender"];
-    [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
-    [currentSettings setInteger:self.studySliderInt forKey:@"CurrentStudyInt"];
-    [currentSettings setInteger:self.breakSliderInt forKey:@"CurrentBreakInt"];
-    [currentSettings synchronize];
-
-    NSLog(@"0 Current Age %ld", (long)self.age);
-    NSLog(@"0 Current Gender %ld", (long)self.gender);
-    NSLog(@"0 Current ADHD %ld", (long)self.ADHD);
-    NSLog(@"0 Current Study %ld", (long)self.studySliderInt);
-    NSLog(@"0 Current Break %ld", (long)self.breakSliderInt);
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

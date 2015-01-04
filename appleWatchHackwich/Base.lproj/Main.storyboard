@@ -215,7 +215,7 @@
                                             <rect key="frame" x="242" y="256" width="51" height="31"/>
                                         </variation>
                                         <connections>
-                                            <action selector="onSwitch:" destination="PM3-wD-5Ov" eventType="valueChanged" id="0SK-k7-c68"/>
+                                            <action selector="onADHDSwitch:" destination="PM3-wD-5Ov" eventType="valueChanged" id="m2c-TG-1PA"/>
                                         </connections>
                                     </switch>
                                 </subviews>
@@ -266,14 +266,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="SwtchADHDSwitch" destination="zXw-ks-68U" id="Qxr-GA-Efp"/>
-                        <outlet property="currentView" destination="UTz-vZ-vgh" id="D3t-nH-o3V"/>
                         <outlet property="lblADHD" destination="6vH-XO-UTa" id="5Rs-1G-M0T"/>
                         <outlet property="lblAge" destination="FlM-Np-NJt" id="kid-5U-lhV"/>
                         <outlet property="lblGender" destination="soC-aM-D1K" id="erC-zH-SEs"/>
                         <outlet property="pickGenderPicker" destination="2B9-Pm-hrH" id="bKD-Kj-fs7"/>
                         <outlet property="tapTohideKB" destination="zzE-2D-85r" id="1ic-B0-GIj"/>
                         <outlet property="txtAge" destination="dky-gK-ahr" id="noJ-M6-pVz"/>
-                        <outlet property="userInfoOneView" destination="UTz-vZ-vgh" id="vbJ-hx-2SV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u45-Zg-oM1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -302,15 +300,18 @@
                                         <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="15" y="37" width="107" height="36"/>
+                                            <rect key="frame" x="38" y="37" width="107" height="36"/>
                                         </variation>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ukm-w1-Spw">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                         <color key="onTintColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="242" y="37" width="51" height="31"/>
+                                            <rect key="frame" x="265" y="37" width="51" height="31"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="onADDSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="nj3-34-62H"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dyslexia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0s-zK-Hh7">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -318,15 +319,18 @@
                                         <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="15" y="95" width="114" height="36"/>
+                                            <rect key="frame" x="38" y="95" width="114" height="36"/>
                                         </variation>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="19t-rl-Pic">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                         <color key="onTintColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="242" y="97" width="51" height="31"/>
+                                            <rect key="frame" x="265" y="97" width="51" height="31"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="onDyslexiaSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="kah-SU-ugM"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -365,7 +369,8 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="userInfoTwoView" destination="38s-WW-iWx" id="uMQ-gQ-c9q"/>
+                        <outlet property="switchADDSwitch" destination="ukm-w1-Spw" id="imT-eS-wLo"/>
+                        <outlet property="switchDyslexiaSwitch" destination="19t-rl-Pic" id="IIx-09-dgg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaQ-Sr-azj" userLabel="First Responder" sceneMemberID="firstResponder"/>

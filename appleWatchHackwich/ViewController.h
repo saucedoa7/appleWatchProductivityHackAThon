@@ -16,5 +16,11 @@
 
 @property NSInteger studySliderInt;
 @property NSInteger breakSliderInt;
+@property NSInteger age;
+@property NSInteger gender;
+@property NSInteger ADHD;
+@property NSInteger ADD;
+@property NSInteger dyslexia;
+@property NSTimeInterval studyTime;
 @end
 
