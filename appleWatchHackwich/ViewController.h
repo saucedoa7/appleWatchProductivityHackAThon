@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UILabel *lblStudy;
+@property (strong, nonatomic) IBOutlet UILabel *lblBreak;
+@property (strong, nonatomic) IBOutlet UIView *detailsView;
+
+
+@property NSInteger studySliderInt;
+@property NSInteger breakSliderInt;
 @end
 

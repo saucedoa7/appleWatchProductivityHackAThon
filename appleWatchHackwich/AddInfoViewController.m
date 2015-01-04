@@ -10,15 +10,13 @@
 #import "UserInfoOneViewController.h"
 #import "UserInfoTwoViewController.h"
 
-@interface AddInfoViewController ()<UIPageViewControllerDataSource>
+@interface AddInfoViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property NSInteger studySliderInt;
 @property NSInteger breakSliderInt;
 @property NSInteger age;
 @property NSInteger gender;
 @property NSInteger ADHD;
-
-@property NSArray *alberts;
 
 @end
 
@@ -28,116 +26,125 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    self.pageControl.hidden = YES;
+
+    UserInfoOneViewController *pageOne = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+    UserInfoTwoViewController *pageTwo = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentTwoViewController"];
+
+    self.pageViews = [[NSArray alloc] initWithObjects:pageOne,pageTwo, nil];
 
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
-
+    [self.pageViewController setDelegate:self];
     [self.pageViewController setDataSource:self];
 
-    UserInfoOneViewController *startingViewController = [self viewControllerAtIndex:0];
-    NSArray *viewControllers = @[startingViewController];
+    NSArray *viewControllers = [NSArray arrayWithObject:[self.pageViews objectAtIndex:0]];
+    [self.pageControl setCurrentPage:0];
+    [self.pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
 
-    NSLog(@"Arrrraaayyy %@", viewControllers);
+    NSLog(@"new arrayyyyy %@", viewControllers);
 
     [self.pageViewController setViewControllers:viewControllers
                                       direction:UIPageViewControllerNavigationDirectionForward
-                                       animated:NO
+                                       animated:YES
                                      completion:nil];
 
     // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 260);
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 230);
 
     [self addChildViewController:self.pageViewController];
-    [self.view addSubview:self.pageViewController.view];
+
+    [self.view addSubview:self.pageControl];
+    [[self view] addSubview:[self.pageViewController view]];
     [self.pageViewController didMoveToParentViewController:self];
+
+    [self.view sendSubviewToBack:[self.pageViewController view]];
 
     self.studySliderInt = 0;
     self.breakSliderInt = 0;
-
-    NSLog(@"1st %ld", (long)self.studySliderInt);
-    NSLog(@"1st %ld", (long)self.breakSliderInt);
 }
 
 #pragma mark UIPageController
 
-- (UserInfoOneViewController *)viewControllerAtIndex:(NSInteger)index{
+- (void)changePage:(id)sender {
 
-//    if ([self.pageTitles count] == 0 || index >= [self.pageTitles count]) {
-//        return nil;
-//    }
+    UIViewController *visibleViewController = self.pageViewController.viewControllers[0];
+    NSUInteger currentIndex = [self.pageViews indexOfObject:visibleViewController];
 
-    // Create a new view controller and pass suitable data.
+    NSArray *viewControllers = [NSArray arrayWithObject:[self.pageViews objectAtIndex:self.pageControl.currentPage]];
 
-    UserInfoOneViewController *pageOne = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-    [pageOne view];
-    UserInfoTwoViewController *pageTwo = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentTwoViewController"];
-    [pageTwo view];
-    
-    self.pageViews =@[pageOne.userInfoOneView, pageTwo.userInfoTwoView];
+    if (self.pageControl.currentPage > currentIndex) {
+        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    } else {
+        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
 
-    pageOne.pageOneLabels = pageOne.pageOneLabels[index];
-    pageTwo.pageTwoLabels = pageTwo.pageTwoLabels[index];
-    pageOne.pageIndex = index;
-    pageTwo.pageIndex = index;
-
-    return pageTwo;
+    }
 }
 
 #pragma mark - Page View Controller Data Source
 
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController{
-    NSUInteger index = ((UserInfoOneViewController *) viewController).pageIndex;
 
-    if ((index == 0) || (index == NSNotFound)) {
+    // get the index of the current view controller on display
+    NSUInteger currentIndex = [self.pageViews indexOfObject:viewController];
+    // move the pageControl indicator to the next page
+    [self.pageControl setCurrentPage:self.pageControl.currentPage-1];
+
+    // check if we are at the beginning and decide if we need to present the previous viewcontroller
+    if ( currentIndex > 0) {
+        // return the previous viewcontroller
+        return [self.pageViews objectAtIndex:currentIndex-1];
+    } else {
+        // do nothing
         return nil;
     }
-
-    index--;
-    return [self viewControllerAtIndex:index];
 }
+
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController{
 
-    NSUInteger index = ((UserInfoOneViewController *) viewController).pageIndex;
+    // get the index of the current view controller on display
+    NSUInteger currentIndex = [self.pageViews indexOfObject:viewController];
 
-    if (index == NSNotFound) {
+    // move the pageControl indicator to the next page
+    [self.pageControl setCurrentPage:self.pageControl.currentPage+1];
+
+    // check if we are at the end and decide if we need to present the next viewcontroller
+    if ( currentIndex < [self.pageViews count]-1) {
+        // return the next view controller
+        return [self.pageViews objectAtIndex:currentIndex+1];
+    } else {
+        // do nothing
         return nil;
     }
-
-    index++;
-    if (index == [self.pageTitles count]) {
-        return nil;
-    }
-    return [self viewControllerAtIndex:index];
 }
+
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController{
-    return [self.pageTitles count];
+    return [self.pageViews count];
 }
+
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController{
     return 0;
 }
 
-#pragma mark Sliders 
+#pragma mark Sliders
 
 - (IBAction)onStudySlide:(UISlider *)sender {
+    UserInfoOneViewController *pageOne = [UserInfoOneViewController new];
 
-    UserInfoOneViewController *age = [UserInfoOneViewController new];
-    UserInfoOneViewController *ADHDSwitch =[UserInfoOneViewController new];
-    UserInfoOneViewController *pickGender = [UserInfoOneViewController new];
-
-    self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", self.sldStudySlider.value];
-    self.studySliderInt = self.sldStudySlider.value;
-    age.txtAge.text = @"0";
-    [ADHDSwitch.SwtchADHDSwitch setOn:NO animated:YES];
-    [pickGender.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+    self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldStudySlider.value)];
+    self.studySliderInt = round(self.sldStudySlider.value);
+    pageOne.txtAge.text = @"0";
+    [pageOne.SwtchADHDSwitch setOn:NO animated:YES];
+    [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
 }
-- (IBAction)onBreakTime:(UISlider *)sender {
-    UserInfoOneViewController *ADHDSwitch =[UserInfoOneViewController new];
-    UserInfoOneViewController *pickGender = [UserInfoOneViewController new];
 
-    self.lblBreakTime.text = [[NSString alloc] initWithFormat:@"%.0fm", self.sldBreakSlider.value];
-    self.breakSliderInt = self.sldBreakSlider.value;
-    [ADHDSwitch.SwtchADHDSwitch setOn:NO animated:YES];
-    [pickGender.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+- (IBAction)onBreakTime:(UISlider *)sender {
+    UserInfoOneViewController *pageOne =[UserInfoOneViewController new];
+
+    self.lblBreakTime.text = [[NSString alloc] initWithFormat:@"%.0fm", round(self.sldBreakSlider.value)];
+    self.breakSliderInt = round(self.sldBreakSlider.value) ;
+    [pageOne.SwtchADHDSwitch setOn:NO animated:YES];
+    [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
 }
 
 - (IBAction)onDoneButtonPressed:(UIButton *)sender {
@@ -171,6 +178,6 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-
+    
 }
 @end

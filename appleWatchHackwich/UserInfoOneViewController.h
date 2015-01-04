@@ -16,7 +16,7 @@
 @property (strong, nonatomic) IBOutlet UISwitch *SwtchADHDSwitch;
 @property (weak, nonatomic) IBOutlet UIView *userInfoOneView;
 
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UILabel *lblAge;
 @property (weak, nonatomic) IBOutlet UILabel *lblGender;
 @property (weak, nonatomic) IBOutlet UILabel *lblADHD;
@@ -24,6 +24,9 @@
 
 @property (strong, nonatomic) NSArray *pageOneLabels;
 @property (strong, nonatomic) NSArray *genders;
+
+@property (weak, nonatomic) IBOutlet UIView *userInfoTwoView;
+@property (strong, nonatomic) NSArray *pageTwoLabels;
 
 @property NSInteger age;
 @property NSInteger gender;
