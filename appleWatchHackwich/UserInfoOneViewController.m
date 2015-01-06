@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
     self.genders = @[@"-",@"Male", @"Female"];
     self.ADHD = 0;
     self.pickGenderPicker.dataSource = self;
@@ -30,24 +30,7 @@
     NSLog(@"%ld", (long)self.age);
 
 }
-
--(void)viewDidDisappear:(BOOL)animated{
-    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
-
-    [currentSettings setInteger:self.age forKey:@"CurrentAge"];
-    [currentSettings setInteger:self.gender forKey:@"CurrentGender"];
-    [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
-
-    [currentSettings synchronize];
-
-    NSLog(@"Passing UI1VC Current Age %ld /n", (long)self.age);
-    NSLog(@"Passing UI1VC Current Gender %ld", (long)self.gender);
-    NSLog(@"Passing UI1VC Current ADHD %ld", (long)self.ADHD);
-}
-
 -(void)hideKeyboard{
-    self.age = [self.txtAge.text intValue];
-    NSLog(@"%ld", (long)self.age);
     [self.txtAge resignFirstResponder];
     // Use this when swiping thru pages and hiding previous labels
 }
@@ -89,4 +72,24 @@
     }
 }
 
+-(void)viewDidDisappear:(BOOL)animated{
+[self passData];
+}
+
+-(void)passData{
+    self.age = [self.txtAge.text intValue];
+    NSLog(@"%ld", (long)self.age);
+
+    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
+
+    [currentSettings setInteger:self.age forKey:@"CurrentAge"];
+    [currentSettings setInteger:self.gender forKey:@"CurrentGender"];
+    [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
+
+    [currentSettings synchronize];
+
+    NSLog(@"Passing UI1VC Current Age %ld /n", (long)self.age);
+    NSLog(@"Passing UI1VC Current Gender %ld", (long)self.gender);
+    NSLog(@"Passing UI1VC Current ADHD %ld", (long)self.ADHD);
+}
 @end

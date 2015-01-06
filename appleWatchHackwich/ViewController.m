@@ -21,20 +21,20 @@
 }
 
 -(IBAction)unWindToMainVC:(UIStoryboardSegue *)sender{
+    NSLog(@"BEfore Data");
+    //[self GetData];
+    NSLog(@"After Data");
+
     self.detailsView.hidden = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
 
-    NSLog(@"BEfore Data");
-
     [self GetData];
 
-    NSLog(@"After Data");
-
     if (self.age != 0 || self.gender != 0) {
-        self.studySliderInt = 0;
-        self.breakSliderInt = 0;
+        self.studyTime = 0;
+        self.breakTime = 0;
     } else {
         self.age = 0;
         self.gender = 0;
@@ -69,14 +69,14 @@
     } else if (self.age >= 31 && self.age <= 100) {
         self.studyTime = self.studyTime + 4;
         self.breakTime = self.breakTime + 10;
-        NSLog(@"31 - 35 Productivity TIme %.2f minutes", self.studyTime);
+        NSLog(@"31 - 100 Productivity TIme %.2f minutes", self.studyTime);
         NSLog(@"Break TIme %.2f minutes", self.breakTime);
     }
 
     if (self.gender == 1) {
         self.studyTime = self.studyTime + 0;
         NSLog(@"Male Productivity TIme %.2f minutes", self.studyTime);
-    } else {
+    } else if (self.gender == 2){
         self.studyTime = self.studyTime + 5;
         NSLog(@"Female Productivity TIme %.2f minutes", self.studyTime);
     }
@@ -113,14 +113,14 @@
 
 -(void)GetData{
 
-    #pragma mark Get Data from other VC's
+#pragma mark Get Data from other VC's
 
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
     NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
     NSInteger newGender = [currentSettings integerForKey:@"CurrentGender"];
     NSInteger newADHD = [currentSettings integerForKey:@"CurrentADHD"];
-    NSInteger newADD = [currentSettings integerForKey:@"CurrentFromUserInfoTwoVCADD"];
-    NSInteger newDys = [currentSettings integerForKey:@"CurrentFromUserInfoTwoDys"];
+    NSInteger newADD = [currentSettings integerForKey:@"CurrentADD"];
+    NSInteger newDys = [currentSettings integerForKey:@"CurrentDys"];
 
     NSInteger newStudy = [currentSettings integerForKey:@"CurrentStudyTime"];
     NSInteger newBreak = [currentSettings integerForKey:@"CurrentBreakTime"];
@@ -147,6 +147,4 @@
     NSLog(@"Getting data to VC Current Break Time %ld", (long)self.breakTime);
     
 }
-
-
 @end

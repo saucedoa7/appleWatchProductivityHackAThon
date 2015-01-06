@@ -19,15 +19,6 @@
     [self.switchADDSwitch setOn:NO animated:YES];
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
-    [currentSettings setInteger:self.ADD forKey:@"CurrentFromUserInfoTwoVCADD"];
-    NSLog(@"Passing UI2VC Current ADD %ld /n", (long)self.ADD);
-    [currentSettings setInteger:self.Dys forKey:@"CurrentFromUserInfoTwoDys"];
-    NSLog(@"Passing UI2VC Current Dys %ld", (long)self.Dys);
-    [currentSettings synchronize];
-}
-
 - (IBAction)onADDSwitch:(UISwitch *)sender {
     if ([self.switchADDSwitch isOn]) {
         [self.switchADDSwitch setOn:YES animated:YES];
@@ -40,6 +31,10 @@
     }
 }
 
+-(void)viewDidDisappear:(BOOL)animated{
+[self passData];
+}
+
 - (IBAction)onDyslexiaSwitch:(UISwitch *)sender {
     if ([self.switchDyslexiaSwitch isOn]) {
         [self.switchDyslexiaSwitch setOn:YES animated:YES];
@@ -50,6 +45,17 @@
         self.Dys = 0;
         NSLog(@"dyslexia Switch is off %ld", (long)self.Dys);
     }
+}
+
+-(void)passData{
+    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
+    [currentSettings setInteger:self.ADD forKey:@"CurrentADD"];
+    [currentSettings setInteger:self.Dys forKey:@"CurrentDys"];
+    [currentSettings synchronize];
+    
+    NSLog(@"Passing UI2VC Current ADD %ld /n", (long)self.ADD);
+    NSLog(@"Passing UI2VC Current Dys %ld", (long)self.Dys);
+
 }
 
 @end

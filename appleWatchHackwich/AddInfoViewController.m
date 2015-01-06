@@ -18,7 +18,6 @@
 
 - (void)viewDidLoad {
 
-    [self passData];
 
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -147,22 +146,29 @@
 - (IBAction)onDoneButtonPressed:(UIButton *)sender {
 
     [self viewDidDisappear:YES];
+    [self passData];
+
 }
 
--(void)viewDidDisappear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated{
+    NSLog(@"Passing AddInfoVC Current Age %ld /n", (long)self.age);
+    NSLog(@"Passing AddInfoVC Current Gender %ld", (long)self.gender);
+    NSLog(@"Passing AddInfoVC Current ADHD %ld", (long)self.ADHD);
 
+    NSLog(@"Passing AddInfoVC Current Study %ld", (long)self.studyTime);
+    NSLog(@"Passing AddInfoVC Current Break %ld", (long)self.breakTime);
 
 }
 
 -(void)passData{
-#pragma mark  Store & Pass Data to IntVC & VC
+    #pragma mark  Store data for VC
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
 
     NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
     NSInteger newGender = [currentSettings integerForKey:@"CurrentGender"];
     NSInteger newADHD = [currentSettings integerForKey:@"CurrentADHD"];
-    NSInteger newADD = [currentSettings integerForKey:@"CurrentFromUserInfoTwoVCADD"];
-    NSInteger newDys = [currentSettings integerForKey:@"CurrentFromUserInfoTwoDys"];
+    NSInteger newADD = [currentSettings integerForKey:@"CurrentADD"];
+    NSInteger newDys = [currentSettings integerForKey:@"CurrentDys"];
 
     self.age = newAge;
     self.gender = newGender;
@@ -173,9 +179,13 @@
     self.studyTime = self.sldStudySlider.value;
     self.breakTime = self.sldBreakSlider.value;
 
+#pragma mark Pass Data To VC
+
     [currentSettings setInteger:self.age forKey:@"CurrentAge"];
     [currentSettings setInteger:self.gender forKey:@"CurrentGender"];
     [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
+    [currentSettings setInteger:self.ADD forKey:@"CurrentADD"];
+    [currentSettings setInteger:self.Dys forKey:@"CurrentDys"];
 
     [currentSettings setInteger:self.studyTime forKey:@"CurrentStudyTime"];
     [currentSettings setInteger:self.breakTime forKey:@"CurrentBreakTime"];
