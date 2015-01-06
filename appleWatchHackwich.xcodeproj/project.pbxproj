@@ -166,14 +166,10 @@
 				509E20CE1A33A8CF005F335B /* AppDelegate.h */,
 				509E20CF1A33A8CF005F335B /* AppDelegate.m */,
 				509E20D71A33A8CF005F335B /* Main.storyboard */,
-				509E20D41A33A8CF005F335B /* ViewController.h */,
-				509E20D51A33A8CF005F335B /* ViewController.m */,
-				505918111A4BB29E004C4503 /* AddInfoViewController.h */,
-				505918121A4BB29E004C4503 /* AddInfoViewController.m */,
-				509E20F31A33A9EB005F335B /* UserInfoOneViewController.h */,
-				509E20F41A33A9EB005F335B /* UserInfoOneViewController.m */,
-				505918141A4BB4CD004C4503 /* UserInfoTwoViewController.h */,
-				505918151A4BB4CD004C4503 /* UserInfoTwoViewController.m */,
+				509EA49B1A59FFF50051E385 /* VC */,
+				509EA49C1A59FFFC0051E385 /* AddInfoVC */,
+				509EA49D1A5A00080051E385 /* UI1VC */,
+				509EA49E1A5A00110051E385 /* UI2VC */,
 				509E20DA1A33A8CF005F335B /* Images.xcassets */,
 				509E20DC1A33A8CF005F335B /* LaunchScreen.xib */,
 				509E20D11A33A8CF005F335B /* appleWatchHackwich.xcdatamodeld */,
@@ -206,6 +202,42 @@
 				509E20E81A33A8CF005F335B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		509EA49B1A59FFF50051E385 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				509E20D41A33A8CF005F335B /* ViewController.h */,
+				509E20D51A33A8CF005F335B /* ViewController.m */,
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
+		509EA49C1A59FFFC0051E385 /* AddInfoVC */ = {
+			isa = PBXGroup;
+			children = (
+				505918111A4BB29E004C4503 /* AddInfoViewController.h */,
+				505918121A4BB29E004C4503 /* AddInfoViewController.m */,
+			);
+			name = AddInfoVC;
+			sourceTree = "<group>";
+		};
+		509EA49D1A5A00080051E385 /* UI1VC */ = {
+			isa = PBXGroup;
+			children = (
+				509E20F31A33A9EB005F335B /* UserInfoOneViewController.h */,
+				509E20F41A33A9EB005F335B /* UserInfoOneViewController.m */,
+			);
+			name = UI1VC;
+			sourceTree = "<group>";
+		};
+		509EA49E1A5A00110051E385 /* UI2VC */ = {
+			isa = PBXGroup;
+			children = (
+				505918141A4BB4CD004C4503 /* UserInfoTwoViewController.h */,
+				505918151A4BB4CD004C4503 /* UserInfoTwoViewController.m */,
+			);
+			name = UI2VC;
 			sourceTree = "<group>";
 		};
 		50A04B3C1A33B91C0001C392 /* Frameworks */ = {

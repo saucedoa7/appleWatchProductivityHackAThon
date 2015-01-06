@@ -29,5 +29,6 @@
 @property NSInteger gender;
 @property NSInteger ADHD;
 @property NSInteger ADD;
-@property NSInteger dyslexia;
+@property NSInteger Dys;
+
 @end

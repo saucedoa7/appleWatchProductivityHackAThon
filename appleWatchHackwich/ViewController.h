@@ -13,14 +13,15 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblBreak;
 @property (strong, nonatomic) IBOutlet UIView *detailsView;
 
-
 @property NSInteger studySliderInt;
 @property NSInteger breakSliderInt;
 @property NSInteger age;
 @property NSInteger gender;
 @property NSInteger ADHD;
 @property NSInteger ADD;
-@property NSInteger dyslexia;
+@property NSInteger Dys;
+
 @property NSTimeInterval studyTime;
+@property NSTimeInterval breakTime;
 @end
 

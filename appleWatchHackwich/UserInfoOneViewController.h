@@ -14,8 +14,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *txtAge;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapTohideKB;
 @property (strong, nonatomic) IBOutlet UISwitch *SwtchADHDSwitch;
-@property (strong, nonatomic) IBOutlet UISwitch *switchADDSwitch;
-@property (strong, nonatomic) IBOutlet UISwitch *switchDyslexiaSwitch;
 
 @property (weak, nonatomic) UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UILabel *lblAge;
@@ -29,7 +27,6 @@
 @property NSInteger age;
 @property NSInteger gender;
 @property NSInteger ADHD;
-@property NSInteger ADD;
-@property NSInteger dyslexia;
+
 @property NSUInteger pageIndex;
 @end

@@ -31,13 +31,18 @@
 
 }
 
--(void)viewWillDisappear:(BOOL)animated{
+-(void)viewDidDisappear:(BOOL)animated{
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
-    [currentSettings setInteger:self.ADD forKey:@"CurrentFromUserInfoOneVCADD"];
-    NSLog(@"UI1VC Current ADD %ld", (long)self.ADD);
 
-    [currentSettings setInteger:self.dyslexia forKey:@"CurrentFromUserInfoOneDys"];
-    NSLog(@"UI1VC Current Dys %ld", (long)self.dyslexia);
+    [currentSettings setInteger:self.age forKey:@"CurrentAge"];
+    [currentSettings setInteger:self.gender forKey:@"CurrentGender"];
+    [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
+
+    [currentSettings synchronize];
+
+    NSLog(@"Passing UI1VC Current Age %ld /n", (long)self.age);
+    NSLog(@"Passing UI1VC Current Gender %ld", (long)self.gender);
+    NSLog(@"Passing UI1VC Current ADHD %ld", (long)self.ADHD);
 }
 
 -(void)hideKeyboard{
@@ -60,8 +65,6 @@
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    NSLog(@"Picker row %ld", (long)row);
-
     if (row == 1) {
         NSLog(@"Picker row is Male");
         self.gender = 1;
@@ -83,32 +86,6 @@
         [self.SwtchADHDSwitch setOn:NO animated:YES];
         self.ADHD = 0;
         NSLog(@"ADHD Switch is off %ld", (long)self.ADHD);
-    }
-}
-
-- (IBAction)onADDSwitch:(UISwitch *)sender {
-    if ([self.switchADDSwitch isOn]) {
-        [self.switchADDSwitch setOn:YES animated:YES];
-        self.ADD = 1;
-        NSLog(@"ADD Switch is on %ld", (long)self.ADD);
-    } else {
-        [self.switchADDSwitch setOn:NO animated:YES];
-        self.ADD = 0;
-        NSLog(@"ADD Switch is off %ld", (long)self.ADD);
-    }
-
-
-}
-
-- (IBAction)onDyslexiaSwitch:(UISwitch *)sender {
-    if ([self.switchDyslexiaSwitch isOn]) {
-        [self.switchDyslexiaSwitch setOn:YES animated:YES];
-        self.dyslexia = 1;
-        NSLog(@"dyslexia Switch is on %ld", (long)self.dyslexia);
-    } else {
-        [self.switchDyslexiaSwitch setOn:NO animated:YES];
-        self.dyslexia = 0;
-        NSLog(@"dyslexia Switch is off %ld", (long)self.dyslexia);
     }
 }
 

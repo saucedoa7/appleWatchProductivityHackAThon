@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14C81h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
     </dependencies>
@@ -279,10 +279,10 @@
             </objects>
             <point key="canvasLocation" x="2796.5" y="716.5"/>
         </scene>
-        <!--User Info One View Controller-->
+        <!--User Info Two View Controller-->
         <scene sceneID="2H8-7B-tcM">
             <objects>
-                <viewController storyboardIdentifier="PageContentTwoViewController" id="VEK-GN-ndY" customClass="UserInfoOneViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageContentTwoViewController" id="VEK-GN-ndY" customClass="UserInfoTwoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MWv-DN-wfb"/>
                         <viewControllerLayoutGuide type="bottom" id="DgO-4y-J55"/>
@@ -310,7 +310,7 @@
                                             <rect key="frame" x="265" y="37" width="51" height="31"/>
                                         </variation>
                                         <connections>
-                                            <action selector="onADDSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="nj3-34-62H"/>
+                                            <action selector="onADDSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="Gpj-2I-usn"/>
                                         </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dyslexia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0s-zK-Hh7">
@@ -329,7 +329,7 @@
                                             <rect key="frame" x="265" y="97" width="51" height="31"/>
                                         </variation>
                                         <connections>
-                                            <action selector="onDyslexiaSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="kah-SU-ugM"/>
+                                            <action selector="onDyslexiaSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="hjF-Ct-MKN"/>
                                         </connections>
                                     </switch>
                                 </subviews>
@@ -369,8 +369,8 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="switchADDSwitch" destination="ukm-w1-Spw" id="imT-eS-wLo"/>
-                        <outlet property="switchDyslexiaSwitch" destination="19t-rl-Pic" id="IIx-09-dgg"/>
+                        <outlet property="switchADDSwitch" destination="ukm-w1-Spw" id="uJH-uv-FMu"/>
+                        <outlet property="switchDyslexiaSwitch" destination="19t-rl-Pic" id="O4O-Qy-GbP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaQ-Sr-azj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -393,10 +393,9 @@
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
                                 <color key="tintColor" red="0.2901960784" green="0.3921568627" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="14" y="533" width="347" height="31"/>
+                                    <rect key="frame" x="14" y="517" width="347" height="31"/>
                                 </variation>
                                 <connections>
-                                    <action selector="onStudySlide:" destination="PM3-wD-5Ov" eventType="valueChanged" id="1lP-D1-B8q"/>
                                     <action selector="onStudySlide:" destination="fDz-GZ-6Fq" eventType="valueChanged" id="eO6-iF-Pe7"/>
                                 </connections>
                             </slider>
@@ -407,7 +406,6 @@
                                     <rect key="frame" x="14" y="571" width="347" height="31"/>
                                 </variation>
                                 <connections>
-                                    <action selector="onBreakTime:" destination="PM3-wD-5Ov" eventType="valueChanged" id="gmI-fc-0rH"/>
                                     <action selector="onBreakTime:" destination="fDz-GZ-6Fq" eventType="valueChanged" id="vb7-Gh-ace"/>
                                 </connections>
                             </slider>
@@ -417,7 +415,7 @@
                                 <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="-4" y="495" width="159" height="39"/>
+                                    <rect key="frame" x="-4" y="479" width="159" height="39"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeS-jq-f3R">
@@ -426,7 +424,7 @@
                                 <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="243" y="495" width="75" height="40"/>
+                                    <rect key="frame" x="243" y="479" width="75" height="40"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q64-Kz-tmb">
@@ -444,7 +442,7 @@
                                 <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="74" y="451" width="226" height="36"/>
+                                    <rect key="frame" x="74" y="435" width="226" height="36"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Break Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6L-ER-zG5">
