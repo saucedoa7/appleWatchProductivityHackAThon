@@ -16,7 +16,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"VIEW DID LOAD US2VC");
     [self.switchADDSwitch setOn:NO animated:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [self passData];
 }
 
 - (IBAction)onADDSwitch:(UISwitch *)sender {
@@ -29,10 +34,6 @@
         self.ADD = 0;
         NSLog(@"ADD Switch is off %ld", (long)self.ADD);
     }
-}
-
--(void)viewDidDisappear:(BOOL)animated{
-[self passData];
 }
 
 - (IBAction)onDyslexiaSwitch:(UISwitch *)sender {
@@ -52,10 +53,8 @@
     [currentSettings setInteger:self.ADD forKey:@"CurrentADD"];
     [currentSettings setInteger:self.Dys forKey:@"CurrentDys"];
     [currentSettings synchronize];
-    
+
     NSLog(@"Passing UI2VC Current ADD %ld /n", (long)self.ADD);
     NSLog(@"Passing UI2VC Current Dys %ld", (long)self.Dys);
-
 }
-
 @end

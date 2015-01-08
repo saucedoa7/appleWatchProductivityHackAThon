@@ -78,7 +78,9 @@
 
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
     NSInteger newStudyTime = [currentSettings integerForKey:@"CurrentStudyTime"];
+    NSInteger newBreakTime = [currentSettings integerForKey:@"CurrentBreakTime"];
     self.studyTime = newStudyTime;
+    self.breakTime = newBreakTime;
 /*
     NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
     NSInteger newGender = [currentSettings integerForKey:@"CurrentGender"];

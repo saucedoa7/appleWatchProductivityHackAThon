@@ -18,24 +18,24 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.detailsView.hidden = YES;
+
+    NSLog(@"VIEW DID LOAD!!!!!");
 }
 
 -(IBAction)unWindToMainVC:(UIStoryboardSegue *)sender{
-    NSLog(@"BEfore Data");
-    //[self GetData];
-    NSLog(@"After Data");
 
     self.detailsView.hidden = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-
     [self GetData];
 
     if (self.age != 0 || self.gender != 0) {
+
         self.studyTime = 0;
         self.breakTime = 0;
     } else {
+
         self.age = 0;
         self.gender = 0;
         self.ADHD = 0;
@@ -89,6 +89,7 @@
         NSLog(@"W/ ADHD Productivity TIme %.2f minutes", self.studyTime);
     }
 
+    NSLog(@"ADD before IF STATEMENT %ld", (long)self.ADD);
     if (self.ADD == 0) {
         self.studyTime = self.studyTime + 0;
         NSLog(@"w/o ADD Productivity TIme %.2f minutes", self.studyTime);
@@ -96,6 +97,8 @@
         self.studyTime = self.studyTime + 7;
         NSLog(@"w/ AdDD Productivity TIme %.2f minutes", self.studyTime);
     }
+
+    NSLog(@"DYS before IF STATEMENT %ld", (long)self.Dys);
 
     if (self.Dys == 0) {
         self.studyTime = self.studyTime + 0;
@@ -108,12 +111,14 @@
     self.lblStudy.text = [NSString stringWithFormat:@"%ld", (long)self.studyTime];
     self.lblBreak.text = [NSString stringWithFormat:@"%ld", (long)self.breakTime];
 
-    NSLog(@"Current Study Time %.0f \n", self.studyTime);
+    NSLog(@"lblStudy Time %@", self.lblStudy.text);
+    NSLog(@"lblBreak Time %@", self.lblBreak.text);
 }
 
 -(void)GetData{
 
 #pragma mark Get Data from other VC's
+    // NSUserDefaults *testSettings = [NSUserDefaults standardUserDefaults];
 
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
     NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
@@ -145,6 +150,5 @@
 
     NSLog(@"Getting data to VC Current Study Time %ld", (long)self.studyTime);
     NSLog(@"Getting data to VC Current Break Time %ld", (long)self.breakTime);
-    
 }
 @end

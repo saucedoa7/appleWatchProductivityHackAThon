@@ -10,17 +10,14 @@
 #import "UserInfoOneViewController.h"
 #import "UserInfoTwoViewController.h"
 
-@interface AddInfoViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface AddInfoViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIAlertViewDelegate>
 
 @end
 
 @implementation AddInfoViewController
 
 - (void)viewDidLoad {
-
-
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.pageControl.hidden = YES;
 
@@ -56,9 +53,32 @@
 
     [self.view sendSubviewToBack:[self.pageViewController view]];
 
-    self.studySliderInt = 60;
-    self.breakSliderInt = 15;
+    self.studyTime = self.sldStudySlider.value;
+    self.breakTime = self.sldBreakSlider.value;
+
+    NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
 }
+-(void)viewWillAppear:(BOOL)animated{
+
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+
+    [self passData];
+
+    self.ADD = 0;
+    self.Dys = 0;
+
+    NSLog(@"Passing AddInfoVC ViewDidApp Current Age %ld /n", (long)self.age);
+    NSLog(@"Passing AddInfoVC ViewDidApp Current Gender %ld", (long)self.gender);
+    NSLog(@"Passing AddInfoVC ViewDidApp Current ADHD %ld", (long)self.ADHD);
+    NSLog(@"Passing AddInfoVC ViewDidApp Current ADD %ld", (long)self.ADD);
+    NSLog(@"Passing AddInfoVC ViewDidApp Current DYS %ld", (long)self.Dys);
+
+    NSLog(@"Passing AddInfoVC ViewDidApp Current Study %ld", (long)self.studyTime);
+    NSLog(@"Passing AddInfoVC ViewDidApp Current Break %ld", (long)self.breakTime);
+}
+
 
 #pragma mark UIPageController
 
@@ -75,6 +95,11 @@
         [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
 
     }
+}
+
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+
 }
 
 #pragma mark - Page View Controller Data Source
@@ -126,12 +151,16 @@
 
 - (IBAction)onStudySlide:(UISlider *)sender {
     UserInfoOneViewController *pageOne = [UserInfoOneViewController new];
+    UserInfoTwoViewController *pageTwo = [UserInfoTwoViewController new];
 
     self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldStudySlider.value)];
     self.studySliderInt = round(self.sldStudySlider.value);
+
     pageOne.txtAge.text = @"0";
-    [pageOne.SwtchADHDSwitch setOn:NO animated:YES];
+    [pageOne.SwtchADHDSwitch setOn:NO animated:NO];
     [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+    [pageTwo.switchADDSwitch setOn:NO];
+    [pageTwo.switchDyslexiaSwitch setOn:NO];
 }
 
 - (IBAction)onBreakTime:(UISlider *)sender {
@@ -141,45 +170,36 @@
     self.breakSliderInt = round(self.sldBreakSlider.value) ;
     [pageOne.SwtchADHDSwitch setOn:NO animated:YES];
     [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+
+    //[self onDoneButtonPressed:self.btnDone];
 }
 
 - (IBAction)onDoneButtonPressed:(UIButton *)sender {
 
-    [self viewDidDisappear:YES];
-    [self passData];
+    [self viewDidDisappear:NO];
 
-}
+    [self GetData];
 
--(void)viewDidAppear:(BOOL)animated{
-    NSLog(@"Passing AddInfoVC Current Age %ld /n", (long)self.age);
-    NSLog(@"Passing AddInfoVC Current Gender %ld", (long)self.gender);
-    NSLog(@"Passing AddInfoVC Current ADHD %ld", (long)self.ADHD);
+    NSLog(@"DONE BUTTON WAS PRESSED!!!!!");
 
-    NSLog(@"Passing AddInfoVC Current Study %ld", (long)self.studyTime);
-    NSLog(@"Passing AddInfoVC Current Break %ld", (long)self.breakTime);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Missing Age/Gender"
+                                                    message:@"Please make sure you have and and age and gender set"
+                                                   delegate:self
+                                          cancelButtonTitle:@"cancel"
+                                          otherButtonTitles:@"Ok", nil ];
 
+
+    if ((self.age == 0 || self.gender == 0) && (self.ADHD == 1 || self.ADD == 1 || self.Dys == 1) && (self.studySliderInt == !0 || self.breakSliderInt == !0)) {
+        [alert show];
+    } else {
+        [self passData];
+    }
 }
 
 -(void)passData{
-    #pragma mark  Store data for VC
-    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
-
-    NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
-    NSInteger newGender = [currentSettings integerForKey:@"CurrentGender"];
-    NSInteger newADHD = [currentSettings integerForKey:@"CurrentADHD"];
-    NSInteger newADD = [currentSettings integerForKey:@"CurrentADD"];
-    NSInteger newDys = [currentSettings integerForKey:@"CurrentDys"];
-
-    self.age = newAge;
-    self.gender = newGender;
-    self.ADHD = newADHD;
-    self.ADD = newADD;
-    self.Dys = newDys;
-
-    self.studyTime = self.sldStudySlider.value;
-    self.breakTime = self.sldBreakSlider.value;
 
 #pragma mark Pass Data To VC
+    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
 
     [currentSettings setInteger:self.age forKey:@"CurrentAge"];
     [currentSettings setInteger:self.gender forKey:@"CurrentGender"];
@@ -195,9 +215,48 @@
     NSLog(@"Passing AddInfoVC Current Age %ld /n", (long)self.age);
     NSLog(@"Passing AddInfoVC Current Gender %ld", (long)self.gender);
     NSLog(@"Passing AddInfoVC Current ADHD %ld", (long)self.ADHD);
+    NSLog(@"Passing AddInfoVC Current ADD %ld", (long)self.ADD);
+    NSLog(@"Passing AddInfoVC Current Dys %ld", (long)self.Dys);
 
     NSLog(@"Passing AddInfoVC Current Study %ld", (long)self.studyTime);
     NSLog(@"Passing AddInfoVC Current Break %ld", (long)self.breakTime);
+}
+
+-(void)GetData{
+
+#pragma mark Get Data from other VC's
+
+    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
+    NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
+    NSInteger newGender = [currentSettings integerForKey:@"CurrentGender"];
+    NSInteger newADHD = [currentSettings integerForKey:@"CurrentADHD"];
+    NSInteger newADD = [currentSettings integerForKey:@"CurrentADD"];
+    NSInteger newDys = [currentSettings integerForKey:@"CurrentDys"];
+
+    NSInteger newStudy = [currentSettings integerForKey:@"CurrentStudyTime"];
+    NSInteger newBreak = [currentSettings integerForKey:@"CurrentBreakTime"];
+
+    self.age = newAge;
+    self.gender = newGender;
+    self.ADHD = newADHD;
+    self.ADD = newADD;
+    self.Dys = newDys;
+
+    self.studySliderInt = newStudy;
+    self.breakSliderInt = newBreak;
+
+    self.studyTime = self.studySliderInt;
+    self.breakTime = self.breakSliderInt;
+
+    NSLog(@"Getting data to VC Current age %ld /n", (long)self.age);
+    NSLog(@"Getting data to VC Current gender %ld", (long)self.gender);
+    NSLog(@"Getting data to VC Current ADHD %ld", (long)self.ADHD);
+    NSLog(@"Getting data to VC Current ADD %ld", (long)self.ADD);
+    NSLog(@"Getting data to VC Current Dys %ld", (long)self.Dys);
+
+    NSLog(@"Getting data to VC Current Study Time %ld", (long)self.studyTime);
+    NSLog(@"Getting data to VC Current Break Time %ld", (long)self.breakTime);
+    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

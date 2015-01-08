@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSArray *pageOneLabels;
 @property (strong, nonatomic) NSArray *pageTwoLabels;
 @property (strong, nonatomic) NSArray *pageViews;
+@property (strong, nonatomic) IBOutlet UIButton *btnDone;
 
 @property NSTimeInterval studyTime;
 @property NSTimeInterval breakTime;

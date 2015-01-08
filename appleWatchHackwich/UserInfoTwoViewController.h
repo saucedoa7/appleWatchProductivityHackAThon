@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UserInfoTwoViewController : UIViewController
-
 @property (strong, nonatomic) IBOutlet UISwitch *switchADDSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *switchDyslexiaSwitch;
     

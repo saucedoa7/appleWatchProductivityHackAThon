@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14C81h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
     </dependencies>
@@ -103,21 +103,21 @@
                                 <color key="textColor" red="0.2901960784" green="0.3921568627" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="54" y="28" width="267" height="193"/>
+                                    <rect key="frame" x="54" y="72" width="267" height="193"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhq-wE-jBS">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="40"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="56"/>
                                 <state key="normal" title="Add Info">
                                     <color key="titleColor" red="0.81568627450980391" green="0.89411764705882357" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="94" y="259" width="187" height="58"/>
+                                    <rect key="frame" x="67" y="283" width="240" height="101"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="fDz-GZ-6Fq" kind="presentation" identifier="segueToUserInfo" modalTransitionStyle="flipHorizontal" id="WSJ-Cy-NkE"/>
+                                    <segue destination="fDz-GZ-6Fq" kind="presentation" identifier="segueToUserInfo" id="WSJ-Cy-NkE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -523,6 +523,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="btnDone" destination="VSn-Vs-X50" id="MSI-t4-RMm"/>
                         <outlet property="lblBreakTime" destination="q64-Kz-tmb" id="aoW-uj-pcd"/>
                         <outlet property="lblStudyTime" destination="eeS-jq-f3R" id="0Uv-WO-nZ9"/>
                         <outlet property="pageControl" destination="6aD-8T-k1P" id="icG-Vk-K7r"/>

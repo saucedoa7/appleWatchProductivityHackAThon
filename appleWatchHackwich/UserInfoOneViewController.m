@@ -9,6 +9,7 @@
 #import "UserInfoOneViewController.h"
 #import "InterfaceController.h"
 #import "AddInfoViewController.h"
+#import "UserInfoTwoViewController.h"
 
 @interface UserInfoOneViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -18,18 +19,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UserInfoTwoViewController *pageTwo = [UserInfoTwoViewController new];
 
     self.genders = @[@"-",@"Male", @"Female"];
     self.ADHD = 0;
     self.pickGenderPicker.dataSource = self;
     self.pickGenderPicker.delegate = self;
+    pageTwo.ADD = 0;
+    pageTwo.Dys = 0;
 
     self.tapTohideKB = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:self.tapTohideKB];
-    NSLog(@"%ld", (long)self.age);
+    NSLog(@"The age %ld", (long)self.age);
 
 }
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [self passData];
+}
+
 -(void)hideKeyboard{
     [self.txtAge resignFirstResponder];
     // Use this when swiping thru pages and hiding previous labels
@@ -72,9 +81,6 @@
     }
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-[self passData];
-}
 
 -(void)passData{
     self.age = [self.txtAge.text intValue];
@@ -92,4 +98,5 @@
     NSLog(@"Passing UI1VC Current Gender %ld", (long)self.gender);
     NSLog(@"Passing UI1VC Current ADHD %ld", (long)self.ADHD);
 }
+
 @end
