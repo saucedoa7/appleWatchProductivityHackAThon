@@ -7,6 +7,7 @@
 //
 
 #import "UserInfoTwoViewController.h"
+#import "UserInfoOneViewController.h"
 
 @interface UserInfoTwoViewController ()
 
@@ -26,9 +27,27 @@
 
 - (IBAction)onADDSwitch:(UISwitch *)sender {
     if ([self.switchADDSwitch isOn]) {
-        [self.switchADDSwitch setOn:YES animated:YES];
-        self.ADD = 1;
-        NSLog(@"ADD Switch is on %ld", (long)self.ADD);
+        [self getData];
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
+                                                        message:@"Make sure you set the age AND gender first"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Got it"
+                                              otherButtonTitles:nil, nil ];
+
+        NSLog(@"Page one AGE %ld", self.age);
+        NSLog(@"Page one Gen %ld", self.gender);
+
+        if (self.age == 0 || self.gender == 0) {
+            [alert show];
+            [self.switchADDSwitch setOn:NO animated:YES];
+            self.ADD = 0;
+        } else {
+            [self.switchADDSwitch setOn:YES animated:YES];
+            self.ADD = 1;
+            NSLog(@"ADD Switch is on %ld", (long)self.ADD);
+        }
+
     } else {
         [self.switchADDSwitch setOn:NO animated:YES];
         self.ADD = 0;
@@ -36,15 +55,43 @@
     }
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self getData];
+
+    NSLog(@"US2VC view will appear");
+
+    NSLog(@"Age %ld Gender %ld", self.age, self.gender);
+    if (self.age == 0 || self.gender == 0) {
+        [self.switchADDSwitch setOn:NO animated:NO];
+        [self.switchDyslexiaSwitch setOn:NO animated:NO];
+        self.ADD = 0;
+        self.Dys = 0;
+    }
+}
+
 - (IBAction)onDyslexiaSwitch:(UISwitch *)sender {
     if ([self.switchDyslexiaSwitch isOn]) {
-        [self.switchDyslexiaSwitch setOn:YES animated:YES];
-        self.Dys = 1;
-        NSLog(@"dyslexia Switch is on %ld", (long)self.Dys);
-    } else {
-        [self.switchDyslexiaSwitch setOn:NO animated:YES];
-        self.Dys = 0;
-        NSLog(@"dyslexia Switch is off %ld", (long)self.Dys);
+
+        [self getData];
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
+                                                        message:@"Make sure you set the age AND gender first"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Got it"
+                                              otherButtonTitles:nil, nil ];
+
+        NSLog(@"Page one AGE %ld", self.age);
+        NSLog(@"Page one Gen %ld", self.gender);
+
+        if (self.age == 0 || self.gender == 0) {
+            [alert show];
+            [self.switchDyslexiaSwitch setOn:NO animated:YES];
+            self.Dys = 0;
+        } else {
+            [self.switchDyslexiaSwitch setOn:YES animated:YES];
+            self.Dys = 1;
+            NSLog(@"Dys Switch is on %ld", (long)self.Dys);
+        }
     }
 }
 
@@ -57,4 +104,16 @@
     NSLog(@"Passing UI2VC Current ADD %ld /n", (long)self.ADD);
     NSLog(@"Passing UI2VC Current Dys %ld", (long)self.Dys);
 }
+
+-(void)getData{
+    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
+
+    NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
+    NSInteger newGender = [currentSettings integerForKey:@"CurrentGender"];
+    
+    self.age = newAge;
+    self.gender = newGender;
+}
+
+
 @end

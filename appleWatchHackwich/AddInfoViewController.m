@@ -58,9 +58,6 @@
 
     NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
 }
--(void)viewWillAppear:(BOOL)animated{
-
-}
 
 -(void)viewDidAppear:(BOOL)animated{
 
@@ -95,11 +92,6 @@
         [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
 
     }
-}
-
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-
 }
 
 #pragma mark - Page View Controller Data Source
@@ -182,18 +174,19 @@
 
     NSLog(@"DONE BUTTON WAS PRESSED!!!!!");
 
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Missing Age/Gender"
-                                                    message:@"Please make sure you have and and age and gender set"
-                                                   delegate:self
-                                          cancelButtonTitle:@"cancel"
-                                          otherButtonTitles:@"Ok", nil ];
-
-
     if ((self.age == 0 || self.gender == 0) && (self.ADHD == 1 || self.ADD == 1 || self.Dys == 1) && (self.studySliderInt == !0 || self.breakSliderInt == !0)) {
-        [alert show];
     } else {
         [self passData];
     }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == [alertView cancelButtonIndex]){
+        //cancel clicked ...do your action
+    }else{
+        //reset clicked
+    }
+
 }
 
 -(void)passData{

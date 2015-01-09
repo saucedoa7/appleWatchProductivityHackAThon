@@ -41,6 +41,7 @@
 
 -(void)hideKeyboard{
     [self.txtAge resignFirstResponder];
+
     // Use this when swiping thru pages and hiding previous labels
 }
 
