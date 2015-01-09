@@ -11,9 +11,11 @@
 @interface UserInfoTwoViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UISwitch *switchADDSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *switchDyslexiaSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *SwtchADHDSwitch;
 
 @property NSInteger age;
 @property NSInteger gender;
 @property NSInteger ADD;
 @property NSInteger Dys;
+@property NSInteger ADHD;
 @end

@@ -19,14 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UserInfoTwoViewController *pageTwo = [UserInfoTwoViewController new];
-
     self.genders = @[@"-",@"Male", @"Female"];
-    self.ADHD = 0;
     self.pickGenderPicker.dataSource = self;
     self.pickGenderPicker.delegate = self;
-    pageTwo.ADD = 0;
-    pageTwo.Dys = 0;
 
     self.tapTohideKB = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                action:@selector(hideKeyboard)];
@@ -41,7 +36,6 @@
 
 -(void)hideKeyboard{
     [self.txtAge resignFirstResponder];
-
     // Use this when swiping thru pages and hiding previous labels
 }
 
@@ -70,19 +64,6 @@
     }
 }
 
-- (IBAction)onADHDSwitch:(UISwitch *)sender {
-    if ([self.SwtchADHDSwitch isOn]) {
-        [self.SwtchADHDSwitch setOn:YES animated:YES];
-        self.ADHD = 1;
-        NSLog(@"ADHD Switch is on %ld", (long)self.ADHD);
-    } else {
-        [self.SwtchADHDSwitch setOn:NO animated:YES];
-        self.ADHD = 0;
-        NSLog(@"ADHD Switch is off %ld", (long)self.ADHD);
-    }
-}
-
-
 -(void)passData{
     self.age = [self.txtAge.text intValue];
     NSLog(@"%ld", (long)self.age);
@@ -91,13 +72,11 @@
 
     [currentSettings setInteger:self.age forKey:@"CurrentAge"];
     [currentSettings setInteger:self.gender forKey:@"CurrentGender"];
-    [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
 
     [currentSettings synchronize];
 
     NSLog(@"Passing UI1VC Current Age %ld /n", (long)self.age);
     NSLog(@"Passing UI1VC Current Gender %ld", (long)self.gender);
-    NSLog(@"Passing UI1VC Current ADHD %ld", (long)self.ADHD);
 }
 
 @end

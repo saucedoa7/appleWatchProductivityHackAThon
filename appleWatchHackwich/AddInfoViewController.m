@@ -90,7 +90,6 @@
         [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     } else {
         [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
-
     }
 }
 
@@ -142,28 +141,15 @@
 #pragma mark Sliders
 
 - (IBAction)onStudySlide:(UISlider *)sender {
-    UserInfoOneViewController *pageOne = [UserInfoOneViewController new];
-    UserInfoTwoViewController *pageTwo = [UserInfoTwoViewController new];
 
     self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldStudySlider.value)];
     self.studySliderInt = round(self.sldStudySlider.value);
-
-    pageOne.txtAge.text = @"0";
-    [pageOne.SwtchADHDSwitch setOn:NO animated:NO];
-    [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
-    [pageTwo.switchADDSwitch setOn:NO];
-    [pageTwo.switchDyslexiaSwitch setOn:NO];
 }
 
 - (IBAction)onBreakTime:(UISlider *)sender {
-    UserInfoOneViewController *pageOne =[UserInfoOneViewController new];
 
     self.lblBreakTime.text = [[NSString alloc] initWithFormat:@"%.0fm", round(self.sldBreakSlider.value)];
     self.breakSliderInt = round(self.sldBreakSlider.value) ;
-    [pageOne.SwtchADHDSwitch setOn:NO animated:YES];
-    [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
-
-    //[self onDoneButtonPressed:self.btnDone];
 }
 
 - (IBAction)onDoneButtonPressed:(UIButton *)sender {
@@ -178,15 +164,6 @@
     } else {
         [self passData];
     }
-}
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == [alertView cancelButtonIndex]){
-        //cancel clicked ...do your action
-    }else{
-        //reset clicked
-    }
-
 }
 
 -(void)passData{
@@ -249,7 +226,6 @@
 
     NSLog(@"Getting data to VC Current Study Time %ld", (long)self.studyTime);
     NSLog(@"Getting data to VC Current Break Time %ld", (long)self.breakTime);
-    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

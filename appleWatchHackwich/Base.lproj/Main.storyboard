@@ -199,25 +199,6 @@
                                             <rect key="frame" x="183" y="86" width="161" height="162"/>
                                         </variation>
                                     </pickerView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADHD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vH-XO-UTa">
-                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
-                                        <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="15" y="254" width="107" height="36"/>
-                                        </variation>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zXw-ks-68U">
-                                        <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <color key="onTintColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="242" y="256" width="51" height="31"/>
-                                        </variation>
-                                        <connections>
-                                            <action selector="onADHDSwitch:" destination="PM3-wD-5Ov" eventType="valueChanged" id="m2c-TG-1PA"/>
-                                        </connections>
-                                    </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <variation key="default">
@@ -226,8 +207,6 @@
                                         <exclude reference="dky-gK-ahr"/>
                                         <exclude reference="soC-aM-D1K"/>
                                         <exclude reference="2B9-Pm-hrH"/>
-                                        <exclude reference="6vH-XO-UTa"/>
-                                        <exclude reference="zXw-ks-68U"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
@@ -237,8 +216,6 @@
                                         <include reference="dky-gK-ahr"/>
                                         <include reference="soC-aM-D1K"/>
                                         <include reference="2B9-Pm-hrH"/>
-                                        <include reference="6vH-XO-UTa"/>
-                                        <include reference="zXw-ks-68U"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -265,7 +242,6 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="SwtchADHDSwitch" destination="zXw-ks-68U" id="Qxr-GA-Efp"/>
                         <outlet property="lblADHD" destination="6vH-XO-UTa" id="5Rs-1G-M0T"/>
                         <outlet property="lblAge" destination="FlM-Np-NJt" id="kid-5U-lhV"/>
                         <outlet property="lblGender" destination="soC-aM-D1K" id="erC-zH-SEs"/>
@@ -313,20 +289,39 @@
                                             <action selector="onADDSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="Gpj-2I-usn"/>
                                         </connections>
                                     </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADHD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vH-XO-UTa">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
+                                        <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="38" y="208" width="107" height="36"/>
+                                        </variation>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zXw-ks-68U">
+                                        <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="265" y="210" width="51" height="31"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onADHDSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="Hdd-aH-Tfv"/>
+                                        </connections>
+                                    </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dyslexia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0s-zK-Hh7">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
                                         <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="38" y="95" width="114" height="36"/>
+                                            <rect key="frame" x="38" y="118" width="114" height="36"/>
                                         </variation>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="19t-rl-Pic">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                         <color key="onTintColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="265" y="97" width="51" height="31"/>
+                                            <rect key="frame" x="265" y="120" width="51" height="31"/>
                                         </variation>
                                         <connections>
                                             <action selector="onDyslexiaSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="hjF-Ct-MKN"/>
@@ -338,6 +333,8 @@
                                     <mask key="subviews">
                                         <exclude reference="9H4-Gk-4hp"/>
                                         <exclude reference="ukm-w1-Spw"/>
+                                        <exclude reference="6vH-XO-UTa"/>
+                                        <exclude reference="zXw-ks-68U"/>
                                         <exclude reference="t0s-zK-Hh7"/>
                                         <exclude reference="19t-rl-Pic"/>
                                     </mask>
@@ -347,6 +344,8 @@
                                     <mask key="subviews">
                                         <include reference="9H4-Gk-4hp"/>
                                         <include reference="ukm-w1-Spw"/>
+                                        <include reference="6vH-XO-UTa"/>
+                                        <include reference="zXw-ks-68U"/>
                                         <include reference="t0s-zK-Hh7"/>
                                         <include reference="19t-rl-Pic"/>
                                     </mask>
@@ -369,6 +368,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="SwtchADHDSwitch" destination="zXw-ks-68U" id="9ZX-Ki-FRX"/>
                         <outlet property="switchADDSwitch" destination="ukm-w1-Spw" id="uJH-uv-FMu"/>
                         <outlet property="switchDyslexiaSwitch" destination="19t-rl-Pic" id="O4O-Qy-GbP"/>
                     </connections>
