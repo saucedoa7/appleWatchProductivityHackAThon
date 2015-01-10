@@ -53,15 +53,14 @@
 
     [self.view sendSubviewToBack:[self.pageViewController view]];
 
-    self.studyTime = self.sldStudySlider.value;
-    self.breakTime = self.sldBreakSlider.value;
+    self.studySliderInt = self.sldStudySlider.value;
+    self.breakSliderInt = self.sldBreakSlider.value;
 
-    NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
 }
 
 -(void)viewDidAppear:(BOOL)animated{
 
-    [self passData];
+    [self storeData];
 
     self.ADD = 0;
     self.Dys = 0;
@@ -144,29 +143,48 @@
 
     self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldStudySlider.value)];
     self.studySliderInt = round(self.sldStudySlider.value);
+    NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
+
 }
 
 - (IBAction)onBreakTime:(UISlider *)sender {
 
     self.lblBreakTime.text = [[NSString alloc] initWithFormat:@"%.0fm", round(self.sldBreakSlider.value)];
     self.breakSliderInt = round(self.sldBreakSlider.value) ;
+    NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
+
 }
 
 - (IBAction)onDoneButtonPressed:(UIButton *)sender {
 
     [self viewDidDisappear:NO];
 
-    [self GetData];
-
     NSLog(@"DONE BUTTON WAS PRESSED!!!!!");
 
-    if ((self.age == 0 || self.gender == 0) && (self.ADHD == 1 || self.ADD == 1 || self.Dys == 1) && (self.studySliderInt == !0 || self.breakSliderInt == !0)) {
-    } else {
-        [self passData];
+    if (self.age == 0 || self.gender == 0) {
+        [self GetData];
+        [self storeData];
     }
 }
 
--(void)passData{
+-(void)overRide{
+    UserInfoOneViewController *pageOne = [UserInfoOneViewController new];
+    UserInfoTwoViewController *pageTwo = [UserInfoTwoViewController new];
+
+    self.age = 0;
+    pageOne.txtAge.text = @"0";
+    self.gender = 0;
+    pageOne.pickGenderPicker = 0;
+
+    self.ADD = 0;
+    pageTwo.switchADDSwitch = 0;
+    self.ADHD = 0;
+    pageTwo.SwtchADHDSwitch = 0;
+    self.Dys = 0;
+    pageTwo.switchDyslexiaSwitch = 0;
+}
+
+-(void)storeData{
 
 #pragma mark Pass Data To VC
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
@@ -203,8 +221,8 @@
     NSInteger newADD = [currentSettings integerForKey:@"CurrentADD"];
     NSInteger newDys = [currentSettings integerForKey:@"CurrentDys"];
 
-    NSInteger newStudy = [currentSettings integerForKey:@"CurrentStudyTime"];
-    NSInteger newBreak = [currentSettings integerForKey:@"CurrentBreakTime"];
+    //NSInteger newStudy = [currentSettings integerForKey:@"CurrentStudyTime"];
+    //NSInteger newBreak = [currentSettings integerForKey:@"CurrentBreakTime"];
 
     self.age = newAge;
     self.gender = newGender;
@@ -212,8 +230,8 @@
     self.ADD = newADD;
     self.Dys = newDys;
 
-    self.studySliderInt = newStudy;
-    self.breakSliderInt = newBreak;
+    //self.studySliderInt = newStudy;
+    //self.breakSliderInt = newBreak;
 
     self.studyTime = self.studySliderInt;
     self.breakTime = self.breakSliderInt;

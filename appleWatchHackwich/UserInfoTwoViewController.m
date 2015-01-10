@@ -52,7 +52,7 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-    [self passData];
+    [self storeData];
 }
 
 - (IBAction)onADDSwitch:(UISwitch *)sender {
@@ -124,7 +124,7 @@
     }
 }
 
--(void)passData{
+-(void)storeData{
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
     [currentSettings setInteger:self.ADD forKey:@"CurrentADD"];
     [currentSettings setInteger:self.Dys forKey:@"CurrentDys"];

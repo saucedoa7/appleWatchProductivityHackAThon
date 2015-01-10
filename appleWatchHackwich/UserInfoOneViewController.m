@@ -31,7 +31,7 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-    [self passData];
+    [self storeData];
 }
 
 -(void)hideKeyboard{
@@ -64,7 +64,7 @@
     }
 }
 
--(void)passData{
+-(void)storeData{
     self.age = [self.txtAge.text intValue];
     NSLog(@"%ld", (long)self.age);
 
