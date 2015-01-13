@@ -27,15 +27,30 @@
                                                                action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:self.tapTohideKB];
     NSLog(@"The age %ld", (long)self.age);
-
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-    [self storeData];
+    [self GetData];
+
+    if (self.studyTime == !0 || self.breakTime == !0) {
+        self.txtAge.text = @"0";
+        self.age = 0;
+    }
 }
 
 -(void)hideKeyboard{
+
+    self.age = [self.txtAge.text intValue];
+    NSLog(@"Age %ld", (long)self.age);
+
+    if (self.studySliderInt == !0 && self.age == 0) {
+        self.studySliderInt = 0;
+    }
+
     [self.txtAge resignFirstResponder];
+    [self.txtSleep resignFirstResponder];
+
+    [self storeData];
     // Use this when swiping thru pages and hiding previous labels
 }
 
@@ -64,9 +79,36 @@
     }
 }
 
+-(void)GetData{
+
+#pragma mark Get Data from other VC's
+
+    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
+    NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
+    NSInteger newGender = [currentSettings integerForKey:@"CurrentGender"];
+    NSInteger newADHD = [currentSettings integerForKey:@"CurrentADHD"];
+    NSInteger newADD = [currentSettings integerForKey:@"CurrentADD"];
+    NSInteger newDys = [currentSettings integerForKey:@"CurrentDys"];
+    NSInteger newStudyInt = [currentSettings integerForKey:@"CurrentStudyInt"];
+    NSInteger newBreakInt = [currentSettings integerForKey:@"CurrentBreakInt"];
+
+    self.age = newAge;
+    self.gender = newGender;
+    self.ADHD = newADHD;
+
+    self.studyTime = newStudyInt;
+    self.breakTime = newBreakInt;
+
+    NSLog(@"Getting data for UI1VC Current age %ld /n", (long)self.age);
+    NSLog(@"Getting data for UI1VC Current gender %ld", (long)self.gender);
+    NSLog(@"Getting data for UI1VC Current ADHD %ld", (long)self.ADHD);
+
+    NSLog(@"Getting data for UI1VC Current Study Time %ld", (long)self.studyTime);
+    NSLog(@"Getting data for UI1VC Current Break Time %ld", (long)self.breakTime);
+}
+
 -(void)storeData{
-    self.age = [self.txtAge.text intValue];
-    NSLog(@"%ld", (long)self.age);
+
 
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
 
@@ -77,6 +119,10 @@
 
     NSLog(@"Passing UI1VC Current Age %ld /n", (long)self.age);
     NSLog(@"Passing UI1VC Current Gender %ld", (long)self.gender);
+}
+- (IBAction)onClear:(UIButton *)sender {
+    self.txtAge.text = @"0";
+    NSLog(@"Clear button");
 }
 
 @end

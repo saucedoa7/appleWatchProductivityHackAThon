@@ -113,6 +113,8 @@
 
     NSLog(@"lblStudy Time %@", self.lblStudy.text);
     NSLog(@"lblBreak Time %@", self.lblBreak.text);
+
+    [self storeData];
 }
 
 -(void)GetData{
@@ -150,5 +152,19 @@
 
     NSLog(@"Getting data to VC Current Study Time %ld", (long)self.studyTime);
     NSLog(@"Getting data to VC Current Break Time %ld", (long)self.breakTime);
+}
+
+-(void)storeData{
+
+#pragma mark Pass Data To VC
+    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
+
+    [currentSettings setInteger:self.studyTime forKey:@"CurrentStudyTime"];
+    [currentSettings setInteger:self.breakTime forKey:@"CurrentBreakTime"];
+
+    [currentSettings synchronize];
+
+    NSLog(@"Store Data For Interface Current Study %ld", (long)self.studyTime);
+    NSLog(@"Store Data For Interface Current Break %ld", (long)self.breakTime);
 }
 @end

@@ -43,7 +43,7 @@
                                      completion:nil];
 
     // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 230);
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 260);
 
     [self addChildViewController:self.pageViewController];
 
@@ -55,11 +55,10 @@
 
     self.studySliderInt = self.sldStudySlider.value;
     self.breakSliderInt = self.sldBreakSlider.value;
-
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-
+    [self GetData];
     [self storeData];
 
     self.ADD = 0;
@@ -141,18 +140,53 @@
 
 - (IBAction)onStudySlide:(UISlider *)sender {
 
+    UserInfoOneViewController *pageOne = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+    UserInfoTwoViewController *pageTwo = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentTwoViewController"];
+    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
+
+    [self GetData];
+
     self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldStudySlider.value)];
     self.studySliderInt = round(self.sldStudySlider.value);
     NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
+
+    if (![pageOne.txtAge.text  isEqual: @"0"]) {
+        pageOne.txtAge.text = @"0";
+        self.age = 0;
+       // [pageOne.txtSleep.text isEqualToString:@"0"];
+    }
+
+    if (pageOne.pickGenderPicker ) {
+        [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+    }
+
+    if ([pageTwo.SwtchADHDSwitch isOn] || [pageTwo.switchADDSwitch isOn] || [pageTwo.switchDyslexiaSwitch isOn]) {
+
+        [pageTwo.SwtchADHDSwitch setOn:NO animated:YES];
+        [currentSettings setBool:NO forKey:@"CurrentADHDState"];
+
+        [pageTwo.switchADDSwitch setOn:NO animated:YES];
+        [currentSettings setBool:NO forKey:@"CurrentADDState"];
+
+        [pageTwo.switchDyslexiaSwitch setOn:NO animated:YES];
+        [currentSettings setBool:NO forKey:@"CurrentDysState"];
+        [currentSettings synchronize];
+    }
+
+    [self storeData];
 
 }
 
 - (IBAction)onBreakTime:(UISlider *)sender {
 
+    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
+
+
     self.lblBreakTime.text = [[NSString alloc] initWithFormat:@"%.0fm", round(self.sldBreakSlider.value)];
     self.breakSliderInt = round(self.sldBreakSlider.value) ;
     NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
 
+    [self storeData];
 }
 
 - (IBAction)onDoneButtonPressed:(UIButton *)sender {
@@ -168,13 +202,16 @@
 }
 
 -(void)overRide{
+
     UserInfoOneViewController *pageOne = [UserInfoOneViewController new];
     UserInfoTwoViewController *pageTwo = [UserInfoTwoViewController new];
 
     self.age = 0;
     pageOne.txtAge.text = @"0";
     self.gender = 0;
-    pageOne.pickGenderPicker = 0;
+    [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+
+    //http://stackoverflow.com/questions/14148037/access-switch-value-from-different-view-controller
 
     self.ADD = 0;
     pageTwo.switchADDSwitch = 0;
@@ -198,6 +235,9 @@
     [currentSettings setInteger:self.studyTime forKey:@"CurrentStudyTime"];
     [currentSettings setInteger:self.breakTime forKey:@"CurrentBreakTime"];
 
+    [currentSettings setInteger:self.studySliderInt forKey:@"CurrentStudyInt"];
+    [currentSettings setInteger:self.breakSliderInt forKey:@"CurrentBreakInt"];
+
     [currentSettings synchronize];
 
     NSLog(@"Passing AddInfoVC Current Age %ld /n", (long)self.age);
@@ -205,6 +245,9 @@
     NSLog(@"Passing AddInfoVC Current ADHD %ld", (long)self.ADHD);
     NSLog(@"Passing AddInfoVC Current ADD %ld", (long)self.ADD);
     NSLog(@"Passing AddInfoVC Current Dys %ld", (long)self.Dys);
+
+    NSLog(@"Passing AddInfoVC Current StudyInt %ld", (long)self.studySliderInt);
+    NSLog(@"Passing AddInfoVC Current BreakInt %ld", (long)self.studySliderInt);
 
     NSLog(@"Passing AddInfoVC Current Study %ld", (long)self.studyTime);
     NSLog(@"Passing AddInfoVC Current Break %ld", (long)self.breakTime);
@@ -221,17 +264,11 @@
     NSInteger newADD = [currentSettings integerForKey:@"CurrentADD"];
     NSInteger newDys = [currentSettings integerForKey:@"CurrentDys"];
 
-    //NSInteger newStudy = [currentSettings integerForKey:@"CurrentStudyTime"];
-    //NSInteger newBreak = [currentSettings integerForKey:@"CurrentBreakTime"];
-
     self.age = newAge;
     self.gender = newGender;
     self.ADHD = newADHD;
     self.ADD = newADD;
     self.Dys = newDys;
-
-    //self.studySliderInt = newStudy;
-    //self.breakSliderInt = newBreak;
 
     self.studyTime = self.studySliderInt;
     self.breakTime = self.breakSliderInt;

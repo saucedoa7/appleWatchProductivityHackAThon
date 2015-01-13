@@ -18,4 +18,7 @@
 @property NSInteger ADD;
 @property NSInteger Dys;
 @property NSInteger ADHD;
+@property NSInteger studyInt;
+@property NSInteger breakInt;
+
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14C94b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
     </dependencies>
@@ -117,7 +117,7 @@
                                     <rect key="frame" x="67" y="283" width="240" height="101"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="fDz-GZ-6Fq" kind="presentation" identifier="segueToUserInfo" id="WSJ-Cy-NkE"/>
+                                    <segue destination="fDz-GZ-6Fq" kind="presentation" identifier="segueToUserInfo" modalTransitionStyle="flipHorizontal" id="WSJ-Cy-NkE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -165,40 +165,79 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTz-vZ-vgh">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlM-Np-NJt">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlM-Np-NJt">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
                                         <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="15" y="37" width="107" height="36"/>
+                                            <rect key="frame" x="15" y="8" width="107" height="36"/>
                                         </variation>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" placeholder="0" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dky-gK-ahr">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dky-gK-ahr">
                                         <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                         <color key="textColor" red="0.10196078431372549" green="0.12156862745098039" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="227" y="40" width="78" height="30"/>
+                                            <rect key="frame" x="227" y="11" width="78" height="30"/>
                                         </variation>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soC-aM-D1K">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soC-aM-D1K">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
                                         <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="15" y="149" width="107" height="36"/>
+                                            <rect key="frame" x="15" y="112" width="107" height="36"/>
                                         </variation>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2B9-Pm-hrH">
                                         <rect key="frame" x="0.0" y="-162" width="320" height="162"/>
                                         <color key="backgroundColor" red="0.83806818181818177" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="183" y="86" width="161" height="162"/>
+                                            <rect key="frame" x="183" y="49" width="161" height="162"/>
                                         </variation>
                                     </pickerView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F8s-1h-BlT">
+                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <color key="textColor" red="0.1019607843" green="0.1215686275" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="227" y="227" width="78" height="30"/>
+                                        </variation>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*With in the last 7 days" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHG-9R-UEc">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
+                                        <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="0.0" y="283" width="352" height="23"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hrs of Sleep per Day*" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7s-2c-vw8">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="26"/>
+                                        <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="15" y="205" width="152" height="73"/>
+                                        </variation>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aek-iJ-SoE">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="_clear">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="156" y="43" width="41" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onClear:" destination="PM3-wD-5Ov" eventType="touchUpInside" id="Bad-BS-QV1"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <variation key="default">
@@ -207,6 +246,10 @@
                                         <exclude reference="dky-gK-ahr"/>
                                         <exclude reference="soC-aM-D1K"/>
                                         <exclude reference="2B9-Pm-hrH"/>
+                                        <exclude reference="F8s-1h-BlT"/>
+                                        <exclude reference="kHG-9R-UEc"/>
+                                        <exclude reference="p7s-2c-vw8"/>
+                                        <exclude reference="aek-iJ-SoE"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
@@ -216,6 +259,10 @@
                                         <include reference="dky-gK-ahr"/>
                                         <include reference="soC-aM-D1K"/>
                                         <include reference="2B9-Pm-hrH"/>
+                                        <include reference="F8s-1h-BlT"/>
+                                        <include reference="kHG-9R-UEc"/>
+                                        <include reference="p7s-2c-vw8"/>
+                                        <include reference="aek-iJ-SoE"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -242,18 +289,20 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="btnClear" destination="aek-iJ-SoE" id="s3p-J0-2ul"/>
                         <outlet property="lblADHD" destination="6vH-XO-UTa" id="5Rs-1G-M0T"/>
                         <outlet property="lblAge" destination="FlM-Np-NJt" id="kid-5U-lhV"/>
                         <outlet property="lblGender" destination="soC-aM-D1K" id="erC-zH-SEs"/>
                         <outlet property="pickGenderPicker" destination="2B9-Pm-hrH" id="bKD-Kj-fs7"/>
                         <outlet property="tapTohideKB" destination="zzE-2D-85r" id="1ic-B0-GIj"/>
                         <outlet property="txtAge" destination="dky-gK-ahr" id="noJ-M6-pVz"/>
+                        <outlet property="txtSleep" destination="F8s-1h-BlT" id="J3C-io-6ne"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u45-Zg-oM1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="zzE-2D-85r"/>
             </objects>
-            <point key="canvasLocation" x="2796.5" y="716.5"/>
+            <point key="canvasLocation" x="2795.25" y="716.5"/>
         </scene>
         <!--User Info Two View Controller-->
         <scene sceneID="2H8-7B-tcM">
@@ -276,14 +325,14 @@
                                         <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="38" y="37" width="107" height="36"/>
+                                            <rect key="frame" x="38" y="8" width="107" height="36"/>
                                         </variation>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ukm-w1-Spw">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                         <color key="onTintColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="265" y="37" width="51" height="31"/>
+                                            <rect key="frame" x="265" y="8" width="51" height="31"/>
                                         </variation>
                                         <connections>
                                             <action selector="onADDSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="Gpj-2I-usn"/>
@@ -295,14 +344,14 @@
                                         <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="38" y="208" width="107" height="36"/>
+                                            <rect key="frame" x="38" y="216" width="107" height="36"/>
                                         </variation>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zXw-ks-68U">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                         <color key="onTintColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="265" y="210" width="51" height="31"/>
+                                            <rect key="frame" x="265" y="218" width="51" height="31"/>
                                         </variation>
                                         <connections>
                                             <action selector="onADHDSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="Hdd-aH-Tfv"/>
@@ -314,14 +363,14 @@
                                         <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="38" y="118" width="114" height="36"/>
+                                            <rect key="frame" x="38" y="112" width="114" height="36"/>
                                         </variation>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="19t-rl-Pic">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                         <color key="onTintColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="265" y="120" width="51" height="31"/>
+                                            <rect key="frame" x="265" y="114" width="51" height="31"/>
                                         </variation>
                                         <connections>
                                             <action selector="onDyslexiaSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="hjF-Ct-MKN"/>
@@ -389,17 +438,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="0.0" maxValue="120" translatesAutoresizingMaskIntoConstraints="NO" id="myB-hF-0G3">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="isi-m4-Lim">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.92941491767967088" green="0.96033504624128541" blue="1" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="405" width="375" height="262"/>
+                                </variation>
+                            </view>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="120" translatesAutoresizingMaskIntoConstraints="NO" id="myB-hF-0G3">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
                                 <color key="tintColor" red="0.2901960784" green="0.3921568627" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="14" y="517" width="347" height="31"/>
+                                    <rect key="frame" x="14" y="500" width="347" height="31"/>
                                 </variation>
                                 <connections>
                                     <action selector="onStudySlide:" destination="fDz-GZ-6Fq" eventType="valueChanged" id="eO6-iF-Pe7"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="0.0" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="GLe-s8-eCS">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="GLe-s8-eCS">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
                                 <color key="tintColor" red="0.2901960784" green="0.3921568627" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
@@ -411,25 +467,25 @@
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Study Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyy-Ja-VCr">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="25"/>
                                 <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="-4" y="479" width="159" height="39"/>
+                                    <rect key="frame" x="16" y="462" width="159" height="39"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeS-jq-f3R">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeS-jq-f3R">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="25"/>
                                 <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="243" y="479" width="75" height="40"/>
+                                    <rect key="frame" x="243" y="462" width="75" height="40"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q64-Kz-tmb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q64-Kz-tmb">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="25"/>
                                 <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
@@ -438,20 +494,20 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manual Adjustments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHg-N0-FSJ">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="25"/>
                                 <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="74" y="435" width="226" height="36"/>
+                                    <rect key="frame" x="65" y="405" width="244" height="36"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Break Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6L-ER-zG5">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="25"/>
                                 <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="22" y="611" width="107" height="36"/>
+                                    <rect key="frame" x="16" y="611" width="159" height="36"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cl-Ul-vnd">
@@ -493,6 +549,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="isi-m4-Lim"/>
                                 <exclude reference="myB-hF-0G3"/>
                                 <exclude reference="GLe-s8-eCS"/>
                                 <exclude reference="Cyy-Ja-VCr"/>
@@ -507,6 +564,7 @@
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
+                                <include reference="isi-m4-Lim"/>
                                 <include reference="myB-hF-0G3"/>
                                 <include reference="GLe-s8-eCS"/>
                                 <include reference="Cyy-Ja-VCr"/>
