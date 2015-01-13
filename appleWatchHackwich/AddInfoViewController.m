@@ -152,13 +152,15 @@
 
     if (![pageOne.txtAge.text  isEqual: @"0"]) {
         pageOne.txtAge.text = @"0";
-        self.age = 0;
        // [pageOne.txtSleep.text isEqualToString:@"0"];
     }
 
     if (pageOne.pickGenderPicker ) {
         [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
     }
+
+    self.age = 0;
+    self.gender = 0;
 
     if ([pageTwo.SwtchADHDSwitch isOn] || [pageTwo.switchADDSwitch isOn] || [pageTwo.switchDyslexiaSwitch isOn]) {
 
@@ -179,12 +181,38 @@
 
 - (IBAction)onBreakTime:(UISlider *)sender {
 
+    UserInfoOneViewController *pageOne = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+    UserInfoTwoViewController *pageTwo = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentTwoViewController"];
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
 
+    [self GetData];
 
     self.lblBreakTime.text = [[NSString alloc] initWithFormat:@"%.0fm", round(self.sldBreakSlider.value)];
     self.breakSliderInt = round(self.sldBreakSlider.value) ;
     NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
+
+    if (![pageOne.txtAge.text  isEqual: @"0"]) {
+        pageOne.txtAge.text = @"0";
+        self.age = 0;
+        // [pageOne.txtSleep.text isEqualToString:@"0"];
+    }
+
+    if (pageOne.pickGenderPicker ) {
+        [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+    }
+
+    if ([pageTwo.SwtchADHDSwitch isOn] || [pageTwo.switchADDSwitch isOn] || [pageTwo.switchDyslexiaSwitch isOn]) {
+
+        [pageTwo.SwtchADHDSwitch setOn:NO animated:YES];
+        [currentSettings setBool:NO forKey:@"CurrentADHDState"];
+
+        [pageTwo.switchADDSwitch setOn:NO animated:YES];
+        [currentSettings setBool:NO forKey:@"CurrentADDState"];
+
+        [pageTwo.switchDyslexiaSwitch setOn:NO animated:YES];
+        [currentSettings setBool:NO forKey:@"CurrentDysState"];
+        [currentSettings synchronize];
+    }
 
     [self storeData];
 }

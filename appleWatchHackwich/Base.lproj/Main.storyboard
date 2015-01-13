@@ -521,7 +521,7 @@
                                     <rect key="frame" x="16" y="20" width="78" height="40"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="JZT-Ei-ZWe" kind="unwind" unwindAction="unWindToMainVC:" id="Z1o-Pn-gOY"/>
+                                    <segue destination="JZT-Ei-ZWe" kind="unwind" unwindAction="unWindToMainVCDone:" id="hgv-wH-t5a"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSn-Vs-X50">
@@ -536,7 +536,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="onDoneButtonPressed:" destination="fDz-GZ-6Fq" eventType="touchUpInside" id="dKP-i0-nCF"/>
-                                    <segue destination="JZT-Ei-ZWe" kind="unwind" unwindAction="unWindToMainVC:" id="6wa-vV-d88"/>
+                                    <segue destination="JZT-Ei-ZWe" kind="unwind" unwindAction="unWindToMainVCDone:" id="vrX-WD-Pxt"/>
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6aD-8T-k1P">

@@ -22,20 +22,25 @@
     NSLog(@"VIEW DID LOAD!!!!!");
 }
 
--(IBAction)unWindToMainVC:(UIStoryboardSegue *)sender{
+-(IBAction)unWindToMainVCDone:(UIStoryboardSegue *)sender{
 
     self.detailsView.hidden = NO;
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [self GetData];
+-(IBAction)unWindToMainVCCancel:(UIStoryboardSegue *)sender{
+    self.detailsView.hidden = NO;
+
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    NSLog(@"VC View will appear");
+
+    [self storeData];
 
     if (self.age != 0 || self.gender != 0) {
-
         self.studyTime = 0;
         self.breakTime = 0;
     } else {
-
         self.age = 0;
         self.gender = 0;
         self.ADHD = 0;
@@ -46,29 +51,29 @@
     }
 
     if (self.studySliderInt == 0 && self.breakSliderInt == 0) {
-        self.studyTime = 20;
-        self.breakTime = 5;
+        self.studyTime = 0;
+        self.breakTime = 0;
         NSLog(@"Current Age %ld", (long)self.age);
     }
 
     if (self.age >= 1 && self.age <= 12) {
         self.studyTime = self.studyTime + 1;
-        self.breakTime = self.breakTime + 10;
+        self.breakTime = self.breakTime + 1;
         NSLog(@"12 Productivity TIme %.2f minutes", self.studyTime);
         NSLog(@"Break TIme %.2f minutes", self.breakTime);
     } else if (self.age >= 13 && self.age <= 24) {
         self.studyTime = self.studyTime + 2;
-        self.breakTime = self.breakTime + 10;
+        self.breakTime = self.breakTime + 2;
         NSLog(@"13 - 24 Productivity TIme %.2f minutes", self.studyTime);
         NSLog(@"Break TIme %.2f minutes", self.breakTime);
     } else if (self.age >= 25 && self.age <= 30) {
         self.studyTime = self.studyTime + 3;
-        self.breakTime = self.breakTime + 10;
+        self.breakTime = self.breakTime + 3;
         NSLog(@"25 - 30 Productivity TIme %.2f minutes", self.studyTime);
         NSLog(@"Break TIme %.2f minutes", self.breakTime);
     } else if (self.age >= 31 && self.age <= 100) {
         self.studyTime = self.studyTime + 4;
-        self.breakTime = self.breakTime + 10;
+        self.breakTime = self.breakTime + 4;
         NSLog(@"31 - 100 Productivity TIme %.2f minutes", self.studyTime);
         NSLog(@"Break TIme %.2f minutes", self.breakTime);
     }

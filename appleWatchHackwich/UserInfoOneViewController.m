@@ -29,7 +29,36 @@
     NSLog(@"The age %ld", (long)self.age);
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"US1VC view will appear");
+
+    [self GetData];
+
+    if (self.age == 0 && self.gender == 0) {
+        [self resetSwitches];
+    } else if (self.studySliderInt == !0 || self.breakSliderInt == !0 ) {
+        [self resetSwitches];
+    }
+}
+
+-(void)resetSwitches{
+    self.txtAge.text = @"0";
+    [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+    self.txtSleep.text = @"0";
+}
+
 -(void)viewWillDisappear:(BOOL)animated{
+    //to Override
+
+    self.age = [self.txtAge.text intValue];
+
+    NSLog(@"Age %ld", (long)self.age);
+
+    if (self.studySliderInt == !0 && self.age == 0) {
+        self.studySliderInt = 0;
+    }
+
+    [self storeData];
     [self GetData];
 
     if (self.studyTime == !0 || self.breakTime == !0) {
@@ -39,13 +68,6 @@
 }
 
 -(void)hideKeyboard{
-
-    self.age = [self.txtAge.text intValue];
-    NSLog(@"Age %ld", (long)self.age);
-
-    if (self.studySliderInt == !0 && self.age == 0) {
-        self.studySliderInt = 0;
-    }
 
     [self.txtAge resignFirstResponder];
     [self.txtSleep resignFirstResponder];
@@ -87,8 +109,7 @@
     NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
     NSInteger newGender = [currentSettings integerForKey:@"CurrentGender"];
     NSInteger newADHD = [currentSettings integerForKey:@"CurrentADHD"];
-    NSInteger newADD = [currentSettings integerForKey:@"CurrentADD"];
-    NSInteger newDys = [currentSettings integerForKey:@"CurrentDys"];
+
     NSInteger newStudyInt = [currentSettings integerForKey:@"CurrentStudyInt"];
     NSInteger newBreakInt = [currentSettings integerForKey:@"CurrentBreakInt"];
 

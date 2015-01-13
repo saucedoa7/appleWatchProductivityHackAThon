@@ -97,7 +97,6 @@
     } else if (self.studyInt == !0 || self.breakInt == !0 ) {
         [self resetSwitches];
     }
-
 }
 
 -(void)resetSwitches{
