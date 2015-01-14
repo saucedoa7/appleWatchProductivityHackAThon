@@ -13,12 +13,16 @@
 @property (strong, nonatomic) IBOutlet UISwitch *switchDyslexiaSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *SwtchADHDSwitch;
 
+@property NSTimeInterval studyTime;
+@property NSTimeInterval breakTime;
+
+@property NSInteger studySliderInt;
+@property NSInteger breakSliderInt;
 @property NSInteger age;
 @property NSInteger gender;
+@property NSInteger ADHD;
 @property NSInteger ADD;
 @property NSInteger Dys;
-@property NSInteger ADHD;
-@property NSInteger studyInt;
-@property NSInteger breakInt;
+@property NSInteger sleep;
 
 @end

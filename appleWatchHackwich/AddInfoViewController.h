@@ -32,5 +32,6 @@
 @property NSInteger ADHD;
 @property NSInteger ADD;
 @property NSInteger Dys;
+@property NSInteger sleep;
 
 @end

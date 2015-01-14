@@ -20,6 +20,9 @@
     self.detailsView.hidden = YES;
 
     NSLog(@"VIEW DID LOAD!!!!!");
+    [self GetData];
+    [self storeData];
+
 }
 
 -(IBAction)unWindToMainVCDone:(UIStoryboardSegue *)sender{
@@ -32,10 +35,13 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     NSLog(@"VC View will appear");
-
-    [self storeData];
+    [self GetData];
 
     if (self.age != 0 || self.gender != 0) {
         self.studyTime = 0;
@@ -59,58 +65,58 @@
     if (self.age >= 1 && self.age <= 12) {
         self.studyTime = self.studyTime + 1;
         self.breakTime = self.breakTime + 1;
-        NSLog(@"12 Productivity TIme %.2f minutes", self.studyTime);
+        NSLog(@"12 Productivity TIme %.2f minutes +1", self.studyTime);
         NSLog(@"Break TIme %.2f minutes", self.breakTime);
     } else if (self.age >= 13 && self.age <= 24) {
         self.studyTime = self.studyTime + 2;
         self.breakTime = self.breakTime + 2;
-        NSLog(@"13 - 24 Productivity TIme %.2f minutes", self.studyTime);
+        NSLog(@"13 - 24 Productivity TIme %.2f minutes +2", self.studyTime);
         NSLog(@"Break TIme %.2f minutes", self.breakTime);
     } else if (self.age >= 25 && self.age <= 30) {
         self.studyTime = self.studyTime + 3;
         self.breakTime = self.breakTime + 3;
-        NSLog(@"25 - 30 Productivity TIme %.2f minutes", self.studyTime);
+        NSLog(@"25 - 30 Productivity TIme %.2f minutes +3", self.studyTime);
         NSLog(@"Break TIme %.2f minutes", self.breakTime);
     } else if (self.age >= 31 && self.age <= 100) {
         self.studyTime = self.studyTime + 4;
         self.breakTime = self.breakTime + 4;
-        NSLog(@"31 - 100 Productivity TIme %.2f minutes", self.studyTime);
+        NSLog(@"31 - 100 Productivity TIme %.2f minutes +4", self.studyTime);
         NSLog(@"Break TIme %.2f minutes", self.breakTime);
     }
 
     if (self.gender == 1) {
         self.studyTime = self.studyTime + 0;
-        NSLog(@"Male Productivity TIme %.2f minutes", self.studyTime);
+        NSLog(@"Male Productivity TIme %.2f minutes +0", self.studyTime);
     } else if (self.gender == 2){
         self.studyTime = self.studyTime + 5;
-        NSLog(@"Female Productivity TIme %.2f minutes", self.studyTime);
+        NSLog(@"Female Productivity TIme %.2f minutes +5", self.studyTime);
     }
 
     if (self.ADHD == 0) {
         self.studyTime = self.studyTime + 0;
-        NSLog(@"w/o ADHD Productivity TIme %.2f minutes", self.studyTime);
+        NSLog(@"w/o ADHD Productivity TIme %.2f minutes +0", self.studyTime);
     } else {
         self.studyTime = self.studyTime + 6;
-        NSLog(@"W/ ADHD Productivity TIme %.2f minutes", self.studyTime);
+        NSLog(@"W/ ADHD Productivity TIme %.2f minutes +6", self.studyTime);
     }
 
     NSLog(@"ADD before IF STATEMENT %ld", (long)self.ADD);
     if (self.ADD == 0) {
         self.studyTime = self.studyTime + 0;
-        NSLog(@"w/o ADD Productivity TIme %.2f minutes", self.studyTime);
+        NSLog(@"w/o ADD Productivity TIme %.2f minutes +0", self.studyTime);
     } else {
         self.studyTime = self.studyTime + 7;
-        NSLog(@"w/ AdDD Productivity TIme %.2f minutes", self.studyTime);
+        NSLog(@"w/ AdDD Productivity TIme %.2f minutes +7", self.studyTime);
     }
 
     NSLog(@"DYS before IF STATEMENT %ld", (long)self.Dys);
 
     if (self.Dys == 0) {
         self.studyTime = self.studyTime + 0;
-        NSLog(@"w/o DYS Productivity TIme %.2f minutes", self.studyTime);
+        NSLog(@"w/o DYS Productivity TIme %.2f minutes +0", self.studyTime);
     } else {
         self.studyTime = self.studyTime + 8;
-        NSLog(@"w/ DYS Productivity TIme %.2f minutes", self.studyTime);
+        NSLog(@"w/ DYS Productivity TIme %.2f minutes +8", self.studyTime);
     }
 
     self.lblStudy.text = [NSString stringWithFormat:@"%ld", (long)self.studyTime];
@@ -119,7 +125,7 @@
     NSLog(@"lblStudy Time %@", self.lblStudy.text);
     NSLog(@"lblBreak Time %@", self.lblBreak.text);
 
-    [self storeData];
+    //[self storeData];
 }
 
 -(void)GetData{
@@ -149,14 +155,7 @@
     self.studyTime = self.studySliderInt;
     self.breakTime = self.breakSliderInt;
 
-    NSLog(@"Getting data to VC Current age %ld /n", (long)self.age);
-    NSLog(@"Getting data to VC Current gender %ld", (long)self.gender);
-    NSLog(@"Getting data to VC Current ADHD %ld", (long)self.ADHD);
-    NSLog(@"Getting data to VC Current ADD %ld", (long)self.ADD);
-    NSLog(@"Getting data to VC Current Dys %ld", (long)self.Dys);
-
-    NSLog(@"Getting data to VC Current Study Time %ld", (long)self.studyTime);
-    NSLog(@"Getting data to VC Current Break Time %ld", (long)self.breakTime);
+    NSLog(@"Getting data to VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 }
 
 -(void)storeData{
@@ -169,7 +168,6 @@
 
     [currentSettings synchronize];
 
-    NSLog(@"Store Data For Interface Current Study %ld", (long)self.studyTime);
-    NSLog(@"Store Data For Interface Current Break %ld", (long)self.breakTime);
+    NSLog(@"Store Data For Interface Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 }
 @end

@@ -24,7 +24,7 @@
 
 - (IBAction)onADHDSwitch:(UISwitch *)sender {
     if ([self.SwtchADHDSwitch isOn]) {
-        [self getData];
+        //[self getData];
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
                                                         message:@"Make sure you set the age AND gender first"
@@ -35,7 +35,7 @@
         NSLog(@"Page one AGE %ld", self.age);
         NSLog(@"Page one Gen %ld", self.gender);
 
-        if (self.age == 0 || self.gender == 0) {
+        if (self.age == 0 || self.gender == 0 /*self.sleep == 0*/) {
             [alert show];
             [self.SwtchADHDSwitch setOn:NO animated:YES];
             self.ADHD = 0;
@@ -51,8 +51,31 @@
     }
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    [self storeData];
+
+- (IBAction)onDyslexiaSwitch:(UISwitch *)sender {
+    if ([self.switchDyslexiaSwitch isOn]) {
+
+        //[self getData];
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
+                                                        message:@"Make sure you set the age AND gender first"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Got it"
+                                              otherButtonTitles:nil, nil ];
+
+        NSLog(@"Page one AGE %ld", self.age);
+        NSLog(@"Page one Gen %ld", self.gender);
+
+        if (self.age == 0 || self.gender == 0) {
+            [alert show];
+            [self.switchDyslexiaSwitch setOn:NO animated:YES];
+            self.Dys = 0;
+        } else {
+            [self.switchDyslexiaSwitch setOn:YES animated:YES];
+            self.Dys = 1;
+            NSLog(@"Dys Switch is on %ld", (long)self.Dys);
+        }
+    }
 }
 
 - (IBAction)onADDSwitch:(UISwitch *)sender {
@@ -90,11 +113,11 @@
     [self getData];
 
     NSLog(@"Age %ld Gender %ld", self.age, self.gender);
-    NSLog(@"Study %ld Break %ld", self.studyInt, self.breakInt);
+    NSLog(@"Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
 
-    if (self.age == 0 || self.gender == 0) {
+    if (self.age == 0 || self.gender == 0 /*|| self.slepp == 0*/) {
         [self resetSwitches];
-    } else if (self.studyInt == !0 || self.breakInt == !0 ) {
+    } else if (self.studySliderInt == !0 || self.breakSliderInt == !0 ) {
         [self resetSwitches];
     }
 }
@@ -108,31 +131,10 @@
     self.ADHD = 0;
 }
 
-- (IBAction)onDyslexiaSwitch:(UISwitch *)sender {
-    if ([self.switchDyslexiaSwitch isOn]) {
-
-        [self getData];
-
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
-                                                        message:@"Make sure you set the age AND gender first"
-                                                       delegate:self
-                                              cancelButtonTitle:@"Got it"
-                                              otherButtonTitles:nil, nil ];
-
-        NSLog(@"Page one AGE %ld", self.age);
-        NSLog(@"Page one Gen %ld", self.gender);
-
-        if (self.age == 0 || self.gender == 0) {
-            [alert show];
-            [self.switchDyslexiaSwitch setOn:NO animated:YES];
-            self.Dys = 0;
-        } else {
-            [self.switchDyslexiaSwitch setOn:YES animated:YES];
-            self.Dys = 1;
-            NSLog(@"Dys Switch is on %ld", (long)self.Dys);
-        }
-    }
+-(void)viewWillDisappear:(BOOL)animated{
+    [self storeData];
 }
+
 
 -(void)storeData{
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
@@ -166,9 +168,7 @@
 
     [currentSettings synchronize];
 
-    NSLog(@"Passing UI2VC Current ADD %ld /n", (long)self.ADD);
-    NSLog(@"Passing UI2VC Current Dys %ld", (long)self.Dys);
-    NSLog(@"Passing UI2VC Current ADHD %ld", (long)self.ADHD);
+    NSLog(@"Passing UI2VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 
 }
 
@@ -182,12 +182,9 @@
     
     self.age = newAge;
     self.gender = newGender;
-    self.studyInt = newStudyInt;
-    self.breakInt = newBreakInt;
+    self.studySliderInt = newStudyInt;
+    self.breakSliderInt = newBreakInt;
 
-    NSLog(@"Getting UI2VC Current Age %ld", self.age);
-        NSLog(@"Getting UI2VC Current gender %ld", self.gender);
-        NSLog(@"Getting UI2VC Current studyInt %ld", self.studyInt);
-        NSLog(@"Getting UI2VC Current breakInt %ld", self.breakInt);
+    NSLog(@"Getting UI2VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 }
 @end

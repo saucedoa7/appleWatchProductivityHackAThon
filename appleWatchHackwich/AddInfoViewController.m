@@ -64,14 +64,7 @@
     self.ADD = 0;
     self.Dys = 0;
 
-    NSLog(@"Passing AddInfoVC ViewDidApp Current Age %ld /n", (long)self.age);
-    NSLog(@"Passing AddInfoVC ViewDidApp Current Gender %ld", (long)self.gender);
-    NSLog(@"Passing AddInfoVC ViewDidApp Current ADHD %ld", (long)self.ADHD);
-    NSLog(@"Passing AddInfoVC ViewDidApp Current ADD %ld", (long)self.ADD);
-    NSLog(@"Passing AddInfoVC ViewDidApp Current DYS %ld", (long)self.Dys);
-
-    NSLog(@"Passing AddInfoVC ViewDidApp Current Study %ld", (long)self.studyTime);
-    NSLog(@"Passing AddInfoVC ViewDidApp Current Break %ld", (long)self.breakTime);
+    NSLog(@"Passing AddInfoVC ViewDidApp Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 }
 
 
@@ -142,38 +135,36 @@
 
     UserInfoOneViewController *pageOne = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentViewController"];
     UserInfoTwoViewController *pageTwo = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentTwoViewController"];
-    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
 
-    [self GetData];
+    //[self GetData];
 
     self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldStudySlider.value)];
     self.studySliderInt = round(self.sldStudySlider.value);
     NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
 
-    if (![pageOne.txtAge.text  isEqual: @"0"]) {
-        pageOne.txtAge.text = @"0";
-       // [pageOne.txtSleep.text isEqualToString:@"0"];
-    }
+    pageOne.txtAge.text = @"0";
+    pageOne.txtSleep.text = @"0";
 
-    if (pageOne.pickGenderPicker ) {
-        [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
-    }
+    [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
 
     self.age = 0;
     self.gender = 0;
+    self.sleep = 0;
 
-    if ([pageTwo.SwtchADHDSwitch isOn] || [pageTwo.switchADDSwitch isOn] || [pageTwo.switchDyslexiaSwitch isOn]) {
+// May not need this in this VC rather in UI2VC when it finds out that Age, Gender, Sleep == 0
 
-        [pageTwo.SwtchADHDSwitch setOn:NO animated:YES];
-        [currentSettings setBool:NO forKey:@"CurrentADHDState"];
-
-        [pageTwo.switchADDSwitch setOn:NO animated:YES];
-        [currentSettings setBool:NO forKey:@"CurrentADDState"];
-
-        [pageTwo.switchDyslexiaSwitch setOn:NO animated:YES];
-        [currentSettings setBool:NO forKey:@"CurrentDysState"];
-        [currentSettings synchronize];
-    }
+//    if ([pageTwo.SwtchADHDSwitch isOn] || [pageTwo.switchADDSwitch isOn] || [pageTwo.switchDyslexiaSwitch isOn]) {
+//
+//        [pageTwo.SwtchADHDSwitch setOn:NO animated:YES];
+//        [currentSettings setBool:NO forKey:@"CurrentADHDState"];
+//
+//        [pageTwo.switchADDSwitch setOn:NO animated:YES];
+//        [currentSettings setBool:NO forKey:@"CurrentADDState"];
+//
+//        [pageTwo.switchDyslexiaSwitch setOn:NO animated:YES];
+//        [currentSettings setBool:NO forKey:@"CurrentDysState"];
+//        [currentSettings synchronize];
+//    }
 
     [self storeData];
 
@@ -183,37 +174,37 @@
 
     UserInfoOneViewController *pageOne = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentViewController"];
     UserInfoTwoViewController *pageTwo = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentTwoViewController"];
-    NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
 
-    [self GetData];
+    //[self GetData];
 
-    self.lblBreakTime.text = [[NSString alloc] initWithFormat:@"%.0fm", round(self.sldBreakSlider.value)];
-    self.breakSliderInt = round(self.sldBreakSlider.value) ;
+    self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldStudySlider.value)];
+    self.studySliderInt = round(self.sldStudySlider.value);
     NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
 
-    if (![pageOne.txtAge.text  isEqual: @"0"]) {
-        pageOne.txtAge.text = @"0";
-        self.age = 0;
-        // [pageOne.txtSleep.text isEqualToString:@"0"];
-    }
+    pageOne.txtAge.text = @"0";
+    pageOne.txtSleep.text = @"0";
 
-    if (pageOne.pickGenderPicker ) {
-        [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
-    }
+    [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
 
-    if ([pageTwo.SwtchADHDSwitch isOn] || [pageTwo.switchADDSwitch isOn] || [pageTwo.switchDyslexiaSwitch isOn]) {
+    self.age = 0;
+    self.gender = 0;
+    self.sleep = 0;
 
-        [pageTwo.SwtchADHDSwitch setOn:NO animated:YES];
-        [currentSettings setBool:NO forKey:@"CurrentADHDState"];
+    // May not need this in this VC rather in UI2VC when it finds out that Age, Gender, Sleep == 0
 
-        [pageTwo.switchADDSwitch setOn:NO animated:YES];
-        [currentSettings setBool:NO forKey:@"CurrentADDState"];
-
-        [pageTwo.switchDyslexiaSwitch setOn:NO animated:YES];
-        [currentSettings setBool:NO forKey:@"CurrentDysState"];
-        [currentSettings synchronize];
-    }
-
+    //    if ([pageTwo.SwtchADHDSwitch isOn] || [pageTwo.switchADDSwitch isOn] || [pageTwo.switchDyslexiaSwitch isOn]) {
+    //
+    //        [pageTwo.SwtchADHDSwitch setOn:NO animated:YES];
+    //        [currentSettings setBool:NO forKey:@"CurrentADHDState"];
+    //
+    //        [pageTwo.switchADDSwitch setOn:NO animated:YES];
+    //        [currentSettings setBool:NO forKey:@"CurrentADDState"];
+    //
+    //        [pageTwo.switchDyslexiaSwitch setOn:NO animated:YES];
+    //        [currentSettings setBool:NO forKey:@"CurrentDysState"];
+    //        [currentSettings synchronize];
+    //    }
+    
     [self storeData];
 }
 
@@ -222,9 +213,9 @@
     [self viewDidDisappear:NO];
 
     NSLog(@"DONE BUTTON WAS PRESSED!!!!!");
+    [self GetData];
 
     if (self.age == 0 || self.gender == 0) {
-        [self GetData];
         [self storeData];
     }
 }
@@ -268,17 +259,8 @@
 
     [currentSettings synchronize];
 
-    NSLog(@"Passing AddInfoVC Current Age %ld /n", (long)self.age);
-    NSLog(@"Passing AddInfoVC Current Gender %ld", (long)self.gender);
-    NSLog(@"Passing AddInfoVC Current ADHD %ld", (long)self.ADHD);
-    NSLog(@"Passing AddInfoVC Current ADD %ld", (long)self.ADD);
-    NSLog(@"Passing AddInfoVC Current Dys %ld", (long)self.Dys);
+    NSLog(@"Passing AddInfoVC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 
-    NSLog(@"Passing AddInfoVC Current StudyInt %ld", (long)self.studySliderInt);
-    NSLog(@"Passing AddInfoVC Current BreakInt %ld", (long)self.studySliderInt);
-
-    NSLog(@"Passing AddInfoVC Current Study %ld", (long)self.studyTime);
-    NSLog(@"Passing AddInfoVC Current Break %ld", (long)self.breakTime);
 }
 
 -(void)GetData{
@@ -301,14 +283,7 @@
     self.studyTime = self.studySliderInt;
     self.breakTime = self.breakSliderInt;
 
-    NSLog(@"Getting data to VC Current age %ld /n", (long)self.age);
-    NSLog(@"Getting data to VC Current gender %ld", (long)self.gender);
-    NSLog(@"Getting data to VC Current ADHD %ld", (long)self.ADHD);
-    NSLog(@"Getting data to VC Current ADD %ld", (long)self.ADD);
-    NSLog(@"Getting data to VC Current Dys %ld", (long)self.Dys);
-
-    NSLog(@"Getting data to VC Current Study Time %ld", (long)self.studyTime);
-    NSLog(@"Getting data to VC Current Break Time %ld", (long)self.breakTime);
+    NSLog(@"Getting data to VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

@@ -33,6 +33,8 @@
 @property NSInteger age;
 @property NSInteger gender;
 @property NSInteger ADHD;
+@property NSInteger ADD;
+@property NSInteger Dys;
 @property NSInteger sleep;
 
 @property NSUInteger pageIndex;
