@@ -168,7 +168,7 @@
 
     [currentSettings synchronize];
 
-    NSLog(@"Passing UI2VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
+    NSLog(@"\nStoring UI2VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 
 }
 
@@ -177,14 +177,25 @@
 
     NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
     NSInteger newGender = [currentSettings integerForKey:@"CurrentGender"];
-    NSInteger newStudyInt = [currentSettings integerForKey:@"CurrentStudyInt"];
-    NSInteger newBreakInt = [currentSettings integerForKey:@"CurrentBreakInt"];
-    
+    NSInteger newADHD = [currentSettings integerForKey:@"CurrentADHD"];
+    NSInteger newADD = [currentSettings integerForKey:@"CurrentADD"];
+    NSInteger newDys = [currentSettings integerForKey:@"CurrentDys"];
+
+    NSInteger newStudy = [currentSettings integerForKey:@"CurrentStudyTime"];
+    NSInteger newBreak = [currentSettings integerForKey:@"CurrentBreakTime"];
+
     self.age = newAge;
     self.gender = newGender;
-    self.studySliderInt = newStudyInt;
-    self.breakSliderInt = newBreakInt;
+    self.ADHD = newADHD;
+    self.ADD = newADD;
+    self.Dys = newDys;
 
-    NSLog(@"Getting UI2VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
+    self.studySliderInt = newStudy;
+    self.breakSliderInt = newBreak;
+
+    self.studyTime = self.studySliderInt;
+    self.breakTime = self.breakSliderInt;
+
+    NSLog(@"\nGetting UI2VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 }
 @end

@@ -135,18 +135,25 @@
     NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
     NSInteger newGender = [currentSettings integerForKey:@"CurrentGender"];
     NSInteger newADHD = [currentSettings integerForKey:@"CurrentADHD"];
+    NSInteger newADD = [currentSettings integerForKey:@"CurrentADD"];
+    NSInteger newDys = [currentSettings integerForKey:@"CurrentDys"];
 
-    NSInteger newStudyInt = [currentSettings integerForKey:@"CurrentStudyInt"];
-    NSInteger newBreakInt = [currentSettings integerForKey:@"CurrentBreakInt"];
+    NSInteger newStudy = [currentSettings integerForKey:@"CurrentStudyTime"];
+    NSInteger newBreak = [currentSettings integerForKey:@"CurrentBreakTime"];
 
     self.age = newAge;
     self.gender = newGender;
     self.ADHD = newADHD;
+    self.ADD = newADD;
+    self.Dys = newDys;
 
-    self.studyTime = newStudyInt;
-    self.breakTime = newBreakInt;
+    self.studySliderInt = newStudy;
+    self.breakSliderInt = newBreak;
 
-    NSLog(@"Getting data for UI1VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
+    self.studyTime = self.studySliderInt;
+    self.breakTime = self.breakSliderInt;
+
+    NSLog(@"\nGetting data for UI1VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 }
 
 -(void)storeData{
@@ -158,7 +165,7 @@
 
     [currentSettings synchronize];
 
-    NSLog(@"Storing UI1VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
+    NSLog(@"\nStoring UI1VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 }
 - (IBAction)onClear:(UIButton *)sender {
     self.txtAge.text = @"0";
