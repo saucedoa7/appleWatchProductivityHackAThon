@@ -19,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self GetData];
+
     self.genders = @[@"-",@"Male", @"Female"];
     self.pickGenderPicker.dataSource = self;
     self.pickGenderPicker.delegate = self;
@@ -28,7 +30,6 @@
     [self.view addGestureRecognizer:self.tapTohideKB];
     NSLog(@"The age %ld", (long)self.age);
 
-    [self GetData];
 
     self.txtAge.text = [NSString stringWithFormat:@"%ld", self.age];
     [self.pickGenderPicker selectRow:self.gender inComponent:0 animated:YES];
@@ -57,19 +58,19 @@
 
     NSLog(@"UI1VC VIEW WILL DISAPP");
 
-    [self GetData]; //
+    //[self GetData]; //
 
     if ([self.txtAge.text isEqualToString:@""]) {
         self.txtAge.text = @"0";
         self.age = 0;
     }
 
-    self.age = [self.txtAge.text intValue];
+    //self.age = [self.txtAge.text intValue];
 
     NSLog(@"Age %ld", (long)self.age);
     NSLog(@"Gender %ld", (long)self.gender);
 
-    if (self.studySliderInt == !0 && self.age == 0) {
+    if (self.studySliderInt == !0 && self.breakSliderInt == 0) {
         self.studySliderInt = 0;
         NSLog(@"First if UI1VC");
         [self storeData];

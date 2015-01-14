@@ -61,9 +61,6 @@
     [self GetData];
     [self storeData];
 
-    //self.ADD = 0;
-    //self.Dys = 0;
-
     NSLog(@"\nPassing AddInfoVC ViewDidApp Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 }
 
@@ -134,37 +131,21 @@
 - (IBAction)onStudySlide:(UISlider *)sender {
 
     UserInfoOneViewController *pageOne = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-    UserInfoTwoViewController *pageTwo = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentTwoViewController"];
 
-    //[self GetData];
+    [self GetData];
 
     self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldStudySlider.value)];
     self.studySliderInt = round(self.sldStudySlider.value);
     NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
 
     pageOne.txtAge.text = @"0";
-    pageOne.txtSleep.text = @"0";
-
-    [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
-
     self.age = 0;
-    self.gender = 0;
+
+    pageOne.txtSleep.text = @"0";
     self.sleep = 0;
 
-// May not need this in this VC rather in UI2VC when it finds out that Age, Gender, Sleep == 0
-
-//    if ([pageTwo.SwtchADHDSwitch isOn] || [pageTwo.switchADDSwitch isOn] || [pageTwo.switchDyslexiaSwitch isOn]) {
-//
-//        [pageTwo.SwtchADHDSwitch setOn:NO animated:YES];
-//        [currentSettings setBool:NO forKey:@"CurrentADHDState"];
-//
-//        [pageTwo.switchADDSwitch setOn:NO animated:YES];
-//        [currentSettings setBool:NO forKey:@"CurrentADDState"];
-//
-//        [pageTwo.switchDyslexiaSwitch setOn:NO animated:YES];
-//        [currentSettings setBool:NO forKey:@"CurrentDysState"];
-//        [currentSettings synchronize];
-//    }
+    [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+    self.gender = 0;
 
     [self storeData];
 
@@ -173,37 +154,21 @@
 - (IBAction)onBreakTime:(UISlider *)sender {
 
     UserInfoOneViewController *pageOne = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-    UserInfoTwoViewController *pageTwo = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentTwoViewController"];
 
-    //[self GetData];
+    [self GetData];
 
-    self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldStudySlider.value)];
-    self.studySliderInt = round(self.sldStudySlider.value);
+    self.lblBreakTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldBreakSlider.value)];
+    self.breakSliderInt = round(self.sldBreakSlider.value);
     NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
 
     pageOne.txtAge.text = @"0";
-    pageOne.txtSleep.text = @"0";
-
-    [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
-
     self.age = 0;
-    self.gender = 0;
+
+    pageOne.txtSleep.text = @"0";
     self.sleep = 0;
 
-    // May not need this in this VC rather in UI2VC when it finds out that Age, Gender, Sleep == 0
-
-    //    if ([pageTwo.SwtchADHDSwitch isOn] || [pageTwo.switchADDSwitch isOn] || [pageTwo.switchDyslexiaSwitch isOn]) {
-    //
-    //        [pageTwo.SwtchADHDSwitch setOn:NO animated:YES];
-    //        [currentSettings setBool:NO forKey:@"CurrentADHDState"];
-    //
-    //        [pageTwo.switchADDSwitch setOn:NO animated:YES];
-    //        [currentSettings setBool:NO forKey:@"CurrentADDState"];
-    //
-    //        [pageTwo.switchDyslexiaSwitch setOn:NO animated:YES];
-    //        [currentSettings setBool:NO forKey:@"CurrentDysState"];
-    //        [currentSettings synchronize];
-    //    }
+    [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+    self.gender = 0;
     
     [self storeData];
 }

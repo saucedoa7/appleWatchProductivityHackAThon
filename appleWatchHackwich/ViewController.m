@@ -35,10 +35,6 @@
 
 }
 
--(void)viewWillAppear:(BOOL)animated{
-
-}
-
 -(void)viewDidAppear:(BOOL)animated{
     NSLog(@"VC View will appear");
     [self GetData];

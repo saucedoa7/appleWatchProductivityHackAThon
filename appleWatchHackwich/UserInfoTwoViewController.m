@@ -24,7 +24,7 @@
 
 - (IBAction)onADHDSwitch:(UISwitch *)sender {
     if ([self.SwtchADHDSwitch isOn]) {
-        //[self getData];
+        [self getData];
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
                                                         message:@"Make sure you set the age AND gender first"
@@ -46,16 +46,17 @@
         }
     } else {
         [self.SwtchADHDSwitch setOn:NO animated:YES];
-        self.ADD = 0;
+        self.ADHD = 0;
         NSLog(@"ADD Switch is off %ld", (long)self.ADHD);
     }
+    [self storeData];
 }
 
 
 - (IBAction)onDyslexiaSwitch:(UISwitch *)sender {
     if ([self.switchDyslexiaSwitch isOn]) {
 
-        //[self getData];
+        [self getData];
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
                                                         message:@"Make sure you set the age AND gender first"
@@ -75,7 +76,12 @@
             self.Dys = 1;
             NSLog(@"Dys Switch is on %ld", (long)self.Dys);
         }
+    } else {
+        [self.switchDyslexiaSwitch setOn:NO animated:YES];
+        self.Dys = 0;
+        NSLog(@"Dys Switch is off %ld", (long)self.Dys);
     }
+    [self storeData];
 }
 
 - (IBAction)onADDSwitch:(UISwitch *)sender {
@@ -105,6 +111,7 @@
         self.ADD = 0;
         NSLog(@"ADD Switch is off %ld", (long)self.ADD);
     }
+    [self storeData];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -119,6 +126,16 @@
         [self resetSwitches];
     } else if (self.studySliderInt == !0 || self.breakSliderInt == !0 ) {
         [self resetSwitches];
+    }
+
+    if (self.ADD == 1) {
+        [self.switchADDSwitch setOn:YES animated:YES];
+    }
+    if (self.ADHD == 1) {
+        [self.SwtchADHDSwitch setOn:YES animated:YES];
+    }
+    if (self.Dys == 1){
+        [self.switchDyslexiaSwitch setOn:YES animated:YES];
     }
 }
 
