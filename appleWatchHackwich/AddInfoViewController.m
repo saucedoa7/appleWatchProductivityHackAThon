@@ -58,6 +58,8 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+
+    NSLog(@"AddInfo View Did Appear");
     [self GetData];
     [self storeData];
 
@@ -248,7 +250,7 @@
     self.studyTime = self.studySliderInt;
     self.breakTime = self.breakSliderInt;
 
-    NSLog(@"\nGetting data to VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
+    NSLog(@"\nGetting data AddInf0 VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

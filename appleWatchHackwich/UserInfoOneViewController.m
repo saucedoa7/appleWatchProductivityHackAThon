@@ -54,18 +54,17 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     //to Override
-
-
+    
     NSLog(@"UI1VC VIEW WILL DISAPP");
 
-    //[self GetData]; //
+    [self GetData]; //
 
     if ([self.txtAge.text isEqualToString:@""]) {
         self.txtAge.text = @"0";
         self.age = 0;
     }
 
-    //self.age = [self.txtAge.text intValue];
+    self.age = [self.txtAge.text intValue];
 
     NSLog(@"Age %ld", (long)self.age);
     NSLog(@"Gender %ld", (long)self.gender);
@@ -74,25 +73,40 @@
         self.studySliderInt = 0;
         NSLog(@"First if UI1VC");
         [self storeData];
-
     }
 
-    if (self.studyTime == !0 || self.breakTime == !0) {
+    if (!(self.studyTime == 0) || !(self.breakTime == 0)) {
         self.txtAge.text = @"0";
         self.age = 0;
+        [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+        self.gender = 0;
+        
         NSLog(@"second if UI1VC");
         [self storeData];
     }
+
     NSLog(@"NO if UI1VC");
     
     [self storeData];
 }
 
 -(void)hideKeyboard{
+    NSLog(@"REsign KB");
+
+    [self GetData];
+    
+    self.age = [self.txtAge.text intValue];
 
     if ([self.txtAge.text isEqualToString:@""]) {
         self.txtAge.text = @"0";
         self.age = 0;
+    }
+
+    if (!(self.age == 0)) {
+        self.studySliderInt = 0;
+        self.breakSliderInt = 0;
+        self.studyTime = 0;
+        self.breakTime = 0;
     }
 
     [self.txtAge resignFirstResponder];
@@ -124,6 +138,13 @@
     } else if (row == 0){
         NSLog(@"Picker row is - ");
         self.gender = 0;
+    }
+
+    if (!(self.gender == 0)) {
+        self.studySliderInt = 0;
+        self.breakSliderInt = 0;
+        self.studyTime = 0;
+        self.breakTime = 0;
     }
     [self storeData];
 }
@@ -163,6 +184,15 @@
 
     [currentSettings setInteger:self.age forKey:@"CurrentAge"];
     [currentSettings setInteger:self.gender forKey:@"CurrentGender"];
+    [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
+    [currentSettings setInteger:self.ADD forKey:@"CurrentADD"];
+    [currentSettings setInteger:self.Dys forKey:@"CurrentDys"];
+
+    [currentSettings setInteger:self.studyTime forKey:@"CurrentStudyTime"];
+    [currentSettings setInteger:self.breakTime forKey:@"CurrentBreakTime"];
+
+    [currentSettings setInteger:self.studySliderInt forKey:@"CurrentStudyInt"];
+    [currentSettings setInteger:self.breakSliderInt forKey:@"CurrentBreakInt"];
 
     [currentSettings synchronize];
 

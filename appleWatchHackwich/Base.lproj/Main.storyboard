@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14C94b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
     </dependencies>
@@ -226,18 +226,6 @@
                                             <rect key="frame" x="15" y="205" width="152" height="73"/>
                                         </variation>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aek-iJ-SoE">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" title="_clear">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="156" y="43" width="41" height="30"/>
-                                        </variation>
-                                        <connections>
-                                            <action selector="onClear:" destination="PM3-wD-5Ov" eventType="touchUpInside" id="Bad-BS-QV1"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <variation key="default">
@@ -249,7 +237,6 @@
                                         <exclude reference="F8s-1h-BlT"/>
                                         <exclude reference="kHG-9R-UEc"/>
                                         <exclude reference="p7s-2c-vw8"/>
-                                        <exclude reference="aek-iJ-SoE"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
@@ -262,7 +249,6 @@
                                         <include reference="F8s-1h-BlT"/>
                                         <include reference="kHG-9R-UEc"/>
                                         <include reference="p7s-2c-vw8"/>
-                                        <include reference="aek-iJ-SoE"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -289,7 +275,6 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="btnClear" destination="aek-iJ-SoE" id="s3p-J0-2ul"/>
                         <outlet property="lblADHD" destination="6vH-XO-UTa" id="5Rs-1G-M0T"/>
                         <outlet property="lblAge" destination="FlM-Np-NJt" id="kid-5U-lhV"/>
                         <outlet property="lblGender" destination="soC-aM-D1K" id="erC-zH-SEs"/>

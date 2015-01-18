@@ -121,13 +121,12 @@
     NSLog(@"lblStudy Time %@", self.lblStudy.text);
     NSLog(@"lblBreak Time %@", self.lblBreak.text);
 
-    //[self storeData];
+    [self storeData];
 }
 
 -(void)GetData{
 
 #pragma mark Get Data from other VC's
-    // NSUserDefaults *testSettings = [NSUserDefaults standardUserDefaults];
 
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
     NSInteger newAge = [currentSettings integerForKey:@"CurrentAge"];
@@ -159,8 +158,17 @@
 #pragma mark Pass Data To VC
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
 
+    [currentSettings setInteger:self.age forKey:@"CurrentAge"];
+    [currentSettings setInteger:self.gender forKey:@"CurrentGender"];
+    [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
+    [currentSettings setInteger:self.ADD forKey:@"CurrentADD"];
+    [currentSettings setInteger:self.Dys forKey:@"CurrentDys"];
+
     [currentSettings setInteger:self.studyTime forKey:@"CurrentStudyTime"];
     [currentSettings setInteger:self.breakTime forKey:@"CurrentBreakTime"];
+
+    [currentSettings setInteger:self.studySliderInt forKey:@"CurrentStudyInt"];
+    [currentSettings setInteger:self.breakSliderInt forKey:@"CurrentBreakInt"];
 
     [currentSettings synchronize];
 
