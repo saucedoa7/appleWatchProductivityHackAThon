@@ -58,7 +58,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-
+//
     NSLog(@"AddInfo View will Appear");
     [self GetData];
 
