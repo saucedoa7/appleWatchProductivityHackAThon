@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"UI1VC view did load");
     [self GetData];
 
     self.genders = @[@"-",@"Male", @"Female"];
@@ -32,6 +33,8 @@
 
 
     self.txtAge.text = [NSString stringWithFormat:@"%ld", self.age];
+    self.txtSleep.text = [NSString stringWithFormat:@"%ld", self.sleep];
+
     [self.pickGenderPicker selectRow:self.gender inComponent:0 animated:YES];
 }
 
@@ -57,7 +60,7 @@
     
     NSLog(@"UI1VC VIEW WILL DISAPP");
 
-    [self GetData]; //
+    [self GetData];
 
     if ([self.txtAge.text isEqualToString:@""]) {
         self.txtAge.text = @"0";
@@ -102,11 +105,18 @@
         self.age = 0;
     }
 
+    if ([self.txtSleep.text isEqualToString:@""]) {
+        self.txtSleep.text = @"0";
+        self.sleep = 0;
+    }
+
     if (!(self.age == 0)) {
         self.studySliderInt = 0;
         self.breakSliderInt = 0;
         self.studyTime = 0;
         self.breakTime = 0;
+    } else {
+        [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
     }
 
     [self.txtAge resignFirstResponder];
@@ -160,8 +170,8 @@
     NSInteger newADD = [currentSettings integerForKey:@"CurrentADD"];
     NSInteger newDys = [currentSettings integerForKey:@"CurrentDys"];
 
-    NSInteger newStudy = [currentSettings integerForKey:@"CurrentStudyTime"];
-    NSInteger newBreak = [currentSettings integerForKey:@"CurrentBreakTime"];
+    NSInteger newStudy = [currentSettings integerForKey:@"CurrentStudyInt"];
+    NSInteger newBreak = [currentSettings integerForKey:@"CurrentBreakInt"];
 
     self.age = newAge;
     self.gender = newGender;

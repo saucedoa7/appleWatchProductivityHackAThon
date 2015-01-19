@@ -57,10 +57,20 @@
     self.breakSliderInt = self.sldBreakSlider.value;
 }
 
--(void)viewDidAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated{
 
-    NSLog(@"AddInfo View Did Appear");
+    NSLog(@"AddInfo View will Appear");
     [self GetData];
+
+    if (!(self.studySliderInt == 0) || !(self.breakSliderInt == 0)) {
+
+        self.sldStudySlider.value = self.studySliderInt;
+        self.sldBreakSlider.value = self.breakSliderInt;
+
+        self.lblStudyTime.text = [NSString stringWithFormat:@"%ldm", self.studySliderInt];
+        self.lblBreakTime.text = [NSString stringWithFormat:@"%ldm", self.breakSliderInt];
+    }
+
     [self storeData];
 
     NSLog(@"\nPassing AddInfoVC ViewDidApp Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
@@ -132,21 +142,16 @@
 
 - (IBAction)onStudySlide:(UISlider *)sender {
 
-    UserInfoOneViewController *pageOne = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-
     [self GetData];
 
     self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldStudySlider.value)];
     self.studySliderInt = round(self.sldStudySlider.value);
     NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
 
-    pageOne.txtAge.text = @"0";
+    [self overRide];
+
     self.age = 0;
-
-    pageOne.txtSleep.text = @"0";
     self.sleep = 0;
-
-    [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
     self.gender = 0;
 
     [self storeData];
@@ -155,23 +160,18 @@
 
 - (IBAction)onBreakTime:(UISlider *)sender {
 
-    UserInfoOneViewController *pageOne = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-
     [self GetData];
 
     self.lblBreakTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldBreakSlider.value)];
     self.breakSliderInt = round(self.sldBreakSlider.value);
     NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
 
-    pageOne.txtAge.text = @"0";
+    [self overRide];
+
     self.age = 0;
-
-    pageOne.txtSleep.text = @"0";
     self.sleep = 0;
-
-    [pageOne.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
     self.gender = 0;
-    
+
     [self storeData];
 }
 
@@ -185,12 +185,18 @@
     if (self.age == 0 || self.gender == 0) {
         [self storeData];
     }
+
+    if (!(self.age == 0) || !(self.gender == 0)) {
+        [self.sldStudySlider setValue:0.0];
+        [self.sldBreakSlider setValue:0.0];
+    }
 }
 
 -(void)overRide{
 
-    UserInfoOneViewController *pageOne = [UserInfoOneViewController new];
-    UserInfoTwoViewController *pageTwo = [UserInfoTwoViewController new];
+    UserInfoOneViewController *pageOne = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+    UserInfoTwoViewController *pageTwo = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentTwoViewController"];
+
 
     self.age = 0;
     pageOne.txtAge.text = @"0";
@@ -241,11 +247,18 @@
     NSInteger newADD = [currentSettings integerForKey:@"CurrentADD"];
     NSInteger newDys = [currentSettings integerForKey:@"CurrentDys"];
 
+    NSInteger newStudyInt = [currentSettings integerForKey:@"CurrentStudyInt"];
+    NSInteger newBreakInt = [currentSettings integerForKey:@"CurrentBreakInt"];
+
     self.age = newAge;
     self.gender = newGender;
     self.ADHD = newADHD;
     self.ADD = newADD;
     self.Dys = newDys;
+
+    self.studySliderInt = newStudyInt;
+    self.breakSliderInt = newBreakInt;
+
 
     self.studyTime = self.studySliderInt;
     self.breakTime = self.breakSliderInt;

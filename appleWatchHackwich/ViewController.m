@@ -35,6 +35,10 @@
 
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [self GetData];
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     NSLog(@"VC View will appear");
     [self GetData];
