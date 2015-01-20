@@ -57,7 +57,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     //to Override
-    
+
     NSLog(@"UI1VC VIEW WILL DISAPP");
 
     [self GetData];
@@ -83,13 +83,13 @@
         self.age = 0;
         [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
         self.gender = 0;
-        
+
         NSLog(@"second if UI1VC");
         [self storeData];
     }
 
     NSLog(@"NO if UI1VC");
-    
+
     [self storeData];
 }
 
@@ -97,7 +97,7 @@
     NSLog(@"REsign KB");
 
     [self GetData];
-    
+
     self.age = [self.txtAge.text intValue];
 
     if ([self.txtAge.text isEqualToString:@""]) {
@@ -117,6 +117,7 @@
         self.breakTime = 0;
     } else {
         [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+        self.gender = 0;
     }
 
     [self.txtAge resignFirstResponder];

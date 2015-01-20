@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5045FA5F1A6DC9F5001C98EA /* asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5045FA5E1A6DC9F5001C98EA /* asset.xcassets */; };
 		505918131A4BB29E004C4503 /* AddInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505918121A4BB29E004C4503 /* AddInfoViewController.m */; };
 		505918161A4BB4CD004C4503 /* UserInfoTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505918151A4BB4CD004C4503 /* UserInfoTwoViewController.m */; };
+		50781C991A6DD78500AA7D71 /* logo_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50781C981A6DD78500AA7D71 /* logo_Icon@2x.png */; };
 		509E20CD1A33A8CF005F335B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 509E20CC1A33A8CF005F335B /* main.m */; };
 		509E20D01A33A8CF005F335B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 509E20CF1A33A8CF005F335B /* AppDelegate.m */; };
 		509E20D31A33A8CF005F335B /* appleWatchHackwich.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 509E20D11A33A8CF005F335B /* appleWatchHackwich.xcdatamodeld */; };
 		509E20D61A33A8CF005F335B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509E20D51A33A8CF005F335B /* ViewController.m */; };
 		509E20D91A33A8CF005F335B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 509E20D71A33A8CF005F335B /* Main.storyboard */; };
-		509E20DB1A33A8CF005F335B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509E20DA1A33A8CF005F335B /* Images.xcassets */; };
 		509E20DE1A33A8CF005F335B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509E20DC1A33A8CF005F335B /* LaunchScreen.xib */; };
 		509E20EA1A33A8CF005F335B /* appleWatchHackwichTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 509E20E91A33A8CF005F335B /* appleWatchHackwichTests.m */; };
 		509E20F51A33A9EB005F335B /* UserInfoOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 509E20F41A33A9EB005F335B /* UserInfoOneViewController.m */; };
@@ -69,10 +70,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5045FA5E1A6DC9F5001C98EA /* asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = asset.xcassets; sourceTree = "<group>"; };
 		505918111A4BB29E004C4503 /* AddInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddInfoViewController.h; sourceTree = "<group>"; };
 		505918121A4BB29E004C4503 /* AddInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddInfoViewController.m; sourceTree = "<group>"; };
 		505918141A4BB4CD004C4503 /* UserInfoTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoTwoViewController.h; sourceTree = "<group>"; };
 		505918151A4BB4CD004C4503 /* UserInfoTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoTwoViewController.m; sourceTree = "<group>"; };
+		50781C981A6DD78500AA7D71 /* logo_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_Icon@2x.png"; sourceTree = "<group>"; };
 		50830D691A342C1700A3587C /* appleWatchHackwich.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = appleWatchHackwich.entitlements; sourceTree = "<group>"; };
 		50830D6A1A3433DD00A3587C /* appleWatchHackwich WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "appleWatchHackwich WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		509E20C71A33A8CF005F335B /* appleWatchHackwich.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appleWatchHackwich.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +87,6 @@
 		509E20D41A33A8CF005F335B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		509E20D51A33A8CF005F335B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		509E20D81A33A8CF005F335B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		509E20DA1A33A8CF005F335B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		509E20DD1A33A8CF005F335B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		509E20E31A33A8CF005F335B /* appleWatchHackwichTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appleWatchHackwichTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		509E20E81A33A8CF005F335B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,6 +141,8 @@
 		509E20BE1A33A8CE005F335B = {
 			isa = PBXGroup;
 			children = (
+				50781C981A6DD78500AA7D71 /* logo_Icon@2x.png */,
+				5045FA5E1A6DC9F5001C98EA /* asset.xcassets */,
 				509E20C91A33A8CF005F335B /* appleWatchHackwich */,
 				509E20E61A33A8CF005F335B /* appleWatchHackwichTests */,
 				50A04B3F1A33B91C0001C392 /* appleWatchHackwich WatchKit Extension */,
@@ -170,7 +174,6 @@
 				509EA49C1A59FFFC0051E385 /* AddInfoVC */,
 				509EA49D1A5A00080051E385 /* UI1VC */,
 				509EA49E1A5A00110051E385 /* UI2VC */,
-				509E20DA1A33A8CF005F335B /* Images.xcassets */,
 				509E20DC1A33A8CF005F335B /* LaunchScreen.xib */,
 				509E20D11A33A8CF005F335B /* appleWatchHackwich.xcdatamodeld */,
 				509E20CA1A33A8CF005F335B /* Supporting Files */,
@@ -430,7 +433,8 @@
 			files = (
 				509E20D91A33A8CF005F335B /* Main.storyboard in Resources */,
 				509E20DE1A33A8CF005F335B /* LaunchScreen.xib in Resources */,
-				509E20DB1A33A8CF005F335B /* Images.xcassets in Resources */,
+				50781C991A6DD78500AA7D71 /* logo_Icon@2x.png in Resources */,
+				5045FA5F1A6DC9F5001C98EA /* asset.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
