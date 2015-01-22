@@ -160,6 +160,7 @@
 
 - (IBAction)onBreakTime:(UISlider *)sender {
 
+
     [self GetData];
 
     self.lblBreakTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldBreakSlider.value)];
@@ -194,9 +195,8 @@
 
 -(void)overRide{
 
-    UserInfoOneViewController *pageOne = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-    UserInfoTwoViewController *pageTwo = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"PageContentTwoViewController"];
-
+    UserInfoOneViewController *pageOne = [[UserInfoOneViewController alloc] initWithNibName:@"UserInfoOneViewController" bundle:nil];
+    UserInfoTwoViewController *pageTwo = [[UserInfoTwoViewController alloc] initWithNibName:@"UserInfoTwoViewController" bundle:nil];
 
     self.age = 0;
     pageOne.txtAge.text = @"0";
