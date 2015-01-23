@@ -17,7 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
-    self.detailsView.hidden = YES;
+    if (self.studyTime == 0) {
+        self.detailsView.hidden = YES;
+    }
 
     NSLog(@"VIEW DID LOAD!!!!!");
     [self GetData];
@@ -27,19 +29,27 @@
 
 -(IBAction)unWindToMainVCDone:(UIStoryboardSegue *)sender{
 
-    self.detailsView.hidden = NO;
+    if (self.studyTime == 0) {
+        self.detailsView.hidden = YES;
+    }
+    //self.detailsView.hidden = NO;
 }
 
 -(IBAction)unWindToMainVCCancel:(UIStoryboardSegue *)sender{
-    self.detailsView.hidden = NO;
+
+    if (self.studyTime == 0) {
+        self.detailsView.hidden = YES;
+    }
+    //self.detailsView.hidden = NO;
 
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
+    NSLog(@"VC View Will Disappear");
     [self GetData];
 }
 
--(void)viewDidAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated{
     NSLog(@"VC View will appear");
     [self GetData];
 
@@ -124,6 +134,17 @@
 
     NSLog(@"lblStudy Time %@", self.lblStudy.text);
     NSLog(@"lblBreak Time %@", self.lblBreak.text);
+
+    if (self.age > 0) {
+        self.studySliderInt = 0;
+        self.breakSliderInt = 0;
+    }
+
+    if (self.studyTime == 0) {
+        self.detailsView.hidden = YES;
+    } else {
+        self.detailsView.hidden = NO;
+    }
 
     [self storeData];
 }

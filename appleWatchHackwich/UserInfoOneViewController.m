@@ -32,8 +32,8 @@
     NSLog(@"The age %ld", (long)self.age);
 
 
-    self.txtAge.text = [NSString stringWithFormat:@"%ld", self.age];
-    self.txtSleep.text = [NSString stringWithFormat:@"%ld", self.sleep];
+    self.txtAge.text = [NSString stringWithFormat:@"%ld", (long)self.age];
+    self.txtSleep.text = [NSString stringWithFormat:@"%ld", (long)self.sleep];
 
     [self.pickGenderPicker selectRow:self.gender inComponent:0 animated:YES];
 }

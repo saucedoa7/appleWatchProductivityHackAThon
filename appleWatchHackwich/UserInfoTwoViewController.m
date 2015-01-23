@@ -32,8 +32,8 @@
                                               cancelButtonTitle:@"Got it"
                                               otherButtonTitles:nil, nil ];
 
-        NSLog(@"Page one AGE %ld", self.age);
-        NSLog(@"Page one Gen %ld", self.gender);
+        NSLog(@"Page one AGE %ld", (long)self.age);
+        NSLog(@"Page one Gen %ld", (long)self.gender);
 
         if (self.age == 0 || self.gender == 0 /*self.sleep == 0*/) {
             [alert show];
@@ -64,8 +64,8 @@
                                               cancelButtonTitle:@"Got it"
                                               otherButtonTitles:nil, nil ];
 
-        NSLog(@"Page one AGE %ld", self.age);
-        NSLog(@"Page one Gen %ld", self.gender);
+        NSLog(@"Page one AGE %ld", (long)self.age);
+        NSLog(@"Page one Gen %ld", (long)self.gender);
 
         if (self.age == 0 || self.gender == 0) {
             [alert show];
@@ -94,8 +94,8 @@
                                               cancelButtonTitle:@"Got it"
                                               otherButtonTitles:nil, nil ];
 
-        NSLog(@"Page one AGE %ld", self.age);
-        NSLog(@"Page one Gen %ld", self.gender);
+        NSLog(@"Page one AGE %ld", (long)self.age);
+        NSLog(@"Page one Gen %ld", (long)self.gender);
 
         if (self.age == 0 || self.gender == 0) {
             [alert show];
@@ -119,8 +119,8 @@
 
     [self getData];
 
-    NSLog(@"Age %ld Gender %ld", self.age, self.gender);
-    NSLog(@"Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
+    NSLog(@"Age %ld Gender %ld", (long)self.age, (long)self.gender);
+    NSLog(@"Study %ld Break %ld", (long)self.studySliderInt, (long)self.breakSliderInt);
 
     if (self.age == 0 || self.gender == 0 /*|| self.slepp == 0*/) {
         [self resetSwitches];
@@ -161,26 +161,26 @@
 
     if (self.ADD == 1) {
         [currentSettings setBool:self.switchADDSwitch.on forKey:@"CurrentADDSwitch"];
-        NSLog(@"ADD Switch state on %lu", [self.switchADDSwitch state]);
+        NSLog(@"ADD Switch state on");
     } else {
         [currentSettings setBool:self.switchADDSwitch forKey:@"CurrentADDSwitch"];
-        NSLog(@"ADD Switch state off %lu", [self.switchADDSwitch state]);
+        NSLog(@"ADD Switch state off");
     }
 
     if (self.ADHD == 1) {
         [currentSettings setBool:self.SwtchADHDSwitch.on forKey:@"CurrentADHDSwitch"];
-        NSLog(@"ADHD Switch state on %lu", [self.SwtchADHDSwitch state]);
+        NSLog(@"ADHD Switch state on");
     } else {
         [currentSettings setBool:self.SwtchADHDSwitch forKey:@"CurrentADHDSwitch"];
-        NSLog(@"ADHD Switch state off %lu", [self.SwtchADHDSwitch state]);
+        NSLog(@"ADHD Switch state off");
     }
 
     if (self.Dys == 1) {
         [currentSettings setBool:self.switchDyslexiaSwitch.on forKey:@"CurrentDYSSwitch"];
-        NSLog(@"Dys Switch state on %lu", [self.switchDyslexiaSwitch state]);
+        NSLog(@"Dys Switch state on");
     } else {
         [currentSettings setBool:self.switchDyslexiaSwitch forKey:@"CurrentDYSSwitch"];
-        NSLog(@"Dys Switch state off %lu", [self.switchDyslexiaSwitch state]);
+        NSLog(@"Dys Switch state off");
     }
 
     [currentSettings synchronize];

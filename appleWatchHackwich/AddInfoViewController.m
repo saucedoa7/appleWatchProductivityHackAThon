@@ -67,8 +67,8 @@
         self.sldStudySlider.value = self.studySliderInt;
         self.sldBreakSlider.value = self.breakSliderInt;
 
-        self.lblStudyTime.text = [NSString stringWithFormat:@"%ldm", self.studySliderInt];
-        self.lblBreakTime.text = [NSString stringWithFormat:@"%ldm", self.breakSliderInt];
+        self.lblStudyTime.text = [NSString stringWithFormat:@"%ldm", (long)self.studySliderInt];
+        self.lblBreakTime.text = [NSString stringWithFormat:@"%ldm", (long)self.breakSliderInt];
     }
 
     [self storeData];
@@ -146,7 +146,7 @@
 
     self.lblStudyTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldStudySlider.value)];
     self.studySliderInt = round(self.sldStudySlider.value);
-    NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
+    NSLog(@"SLider initial values Study %ld Break %ld", (long)self.studySliderInt, (long)self.breakSliderInt);
 
     [self overRide];
 
@@ -165,7 +165,7 @@
 
     self.lblBreakTime.text =[[NSString alloc] initWithFormat:@"%.0fm", round(self.sldBreakSlider.value)];
     self.breakSliderInt = round(self.sldBreakSlider.value);
-    NSLog(@"SLider initial values Study %ld Break %ld", self.studySliderInt, self.breakSliderInt);
+    NSLog(@"SLider initial values Study %ld Break %ld", (long)self.studySliderInt, (long)self.breakSliderInt);
 
     [self overRide];
 
@@ -258,7 +258,6 @@
 
     self.studySliderInt = newStudyInt;
     self.breakSliderInt = newBreakInt;
-
 
     self.studyTime = self.studySliderInt;
     self.breakTime = self.breakSliderInt;
