@@ -25,7 +25,7 @@
                                         <color key="textColor" red="0.2901960784" green="0.3921568627" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="14" y="137" width="87" height="21"/>
+                                            <rect key="frame" x="14" y="151" width="87" height="21"/>
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Break Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Yi-RE-xt8">
@@ -34,16 +34,7 @@
                                         <color key="textColor" red="0.2901960784" green="0.3921568627" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="238" y="137" width="87" height="21"/>
-                                        </variation>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1d-Lm-h06">
-                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                        <color key="textColor" red="0.2901960784" green="0.3921568627" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="187" width="133" height="54"/>
+                                            <rect key="frame" x="238" y="151" width="87" height="21"/>
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLm-pQ-55M">
@@ -52,16 +43,7 @@
                                         <color key="textColor" red="0.2901960784" green="0.3921568627" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="141" y="210" width="61" height="21"/>
-                                        </variation>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great! Now it's time to be more productive! Check your AppleWatch" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cB-ih-XjV">
-                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <color key="textColor" red="0.2901960784" green="0.3921568627" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="-20" y="23" width="382" height="66"/>
+                                            <rect key="frame" x="141" y="224" width="61" height="21"/>
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylg-t2-XEP">
@@ -70,7 +52,38 @@
                                         <color key="textColor" red="0.2901960784" green="0.3921568627" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="212" y="186" width="138" height="56"/>
+                                            <rect key="frame" x="212" y="200" width="138" height="56"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great! Now it's time to be more productive! Check your AppleWatch" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cB-ih-XjV">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <color key="textColor" red="0.2901960784" green="0.3921568627" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="-20" y="14" width="382" height="66"/>
+                                        </variation>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqK-s8-gdg">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="Start">
+                                            <color key="titleColor" red="0.76384608610000004" green="0.83923364239999998" blue="0.94128787879999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="155" y="126" width="33" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onStartTimer:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qNG-w4-u06"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1d-Lm-h06">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                        <color key="textColor" red="0.2901960784" green="0.3921568627" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="-9" y="201" width="133" height="54"/>
                                         </variation>
                                     </label>
                                 </subviews>
@@ -79,21 +92,23 @@
                                     <mask key="subviews">
                                         <exclude reference="zLc-pr-e0R"/>
                                         <exclude reference="7Yi-RE-xt8"/>
-                                        <exclude reference="k1d-Lm-h06"/>
                                         <exclude reference="kLm-pQ-55M"/>
-                                        <exclude reference="8cB-ih-XjV"/>
                                         <exclude reference="ylg-t2-XEP"/>
+                                        <exclude reference="8cB-ih-XjV"/>
+                                        <exclude reference="nqK-s8-gdg"/>
+                                        <exclude reference="k1d-Lm-h06"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="406" width="343" height="253"/>
+                                    <rect key="frame" x="16" y="392" width="343" height="267"/>
                                     <mask key="subviews">
                                         <include reference="zLc-pr-e0R"/>
                                         <include reference="7Yi-RE-xt8"/>
-                                        <include reference="k1d-Lm-h06"/>
                                         <include reference="kLm-pQ-55M"/>
-                                        <include reference="8cB-ih-XjV"/>
                                         <include reference="ylg-t2-XEP"/>
+                                        <include reference="8cB-ih-XjV"/>
+                                        <include reference="nqK-s8-gdg"/>
+                                        <include reference="k1d-Lm-h06"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -120,6 +135,47 @@
                                     <segue destination="fDz-GZ-6Fq" kind="presentation" identifier="segueToUserInfo" modalTransitionStyle="flipHorizontal" id="WSJ-Cy-NkE"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCK-oL-lBj">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUc-TE-mG9">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="Pause">
+                                            <color key="titleColor" red="0.76384608610000004" green="0.83923364239999998" blue="0.94128787879999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="292" y="42" width="43" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onPauseTimer:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dFO-c9-onC"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="le Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NC1-yH-dR6">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="67"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="0.0" y="108" width="343" height="120"/>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.14000000000000001" colorSpace="calibratedWhite"/>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="HUc-TE-mG9"/>
+                                        <exclude reference="NC1-yH-dR6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="358" width="343" height="301"/>
+                                    <mask key="subviews">
+                                        <include reference="HUc-TE-mG9"/>
+                                        <include reference="NC1-yH-dR6"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.52156862745098043" green="0.6470588235294118" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <variation key="default">
@@ -127,6 +183,7 @@
                                 <exclude reference="LJf-1r-AAh"/>
                                 <exclude reference="hAD-1N-ovC"/>
                                 <exclude reference="xhq-wE-jBS"/>
+                                <exclude reference="XCK-oL-lBj"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -134,6 +191,7 @@
                                 <include reference="LJf-1r-AAh"/>
                                 <include reference="hAD-1N-ovC"/>
                                 <include reference="xhq-wE-jBS"/>
+                                <include reference="XCK-oL-lBj"/>
                             </mask>
                         </variation>
                     </view>
@@ -141,9 +199,12 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="btnStart" destination="nqK-s8-gdg" id="qav-iE-J8U"/>
                         <outlet property="detailsView" destination="LJf-1r-AAh" id="c6u-PL-rh4"/>
                         <outlet property="lblBreak" destination="ylg-t2-XEP" id="LMx-86-xSZ"/>
                         <outlet property="lblStudy" destination="k1d-Lm-h06" id="a2g-XK-jl6"/>
+                        <outlet property="lblTimer" destination="NC1-yH-dR6" id="kRP-ij-hPZ"/>
+                        <outlet property="timerView" destination="XCK-oL-lBj" id="dXo-mh-5wD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -495,20 +556,6 @@
                                     <rect key="frame" x="16" y="611" width="159" height="36"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cl-Ul-vnd">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="25"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="0.81568627450980391" green="0.89411764705882357" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="20" width="78" height="40"/>
-                                </variation>
-                                <connections>
-                                    <segue destination="JZT-Ei-ZWe" kind="unwind" unwindAction="unWindToMainVCDone:" id="hgv-wH-t5a"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSn-Vs-X50">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -542,7 +589,6 @@
                                 <exclude reference="q64-Kz-tmb"/>
                                 <exclude reference="UHg-N0-FSJ"/>
                                 <exclude reference="k6L-ER-zG5"/>
-                                <exclude reference="8cl-Ul-vnd"/>
                                 <exclude reference="VSn-Vs-X50"/>
                                 <exclude reference="6aD-8T-k1P"/>
                             </mask>
@@ -557,7 +603,6 @@
                                 <include reference="q64-Kz-tmb"/>
                                 <include reference="UHg-N0-FSJ"/>
                                 <include reference="k6L-ER-zG5"/>
-                                <include reference="8cl-Ul-vnd"/>
                                 <include reference="VSn-Vs-X50"/>
                                 <include reference="6aD-8T-k1P"/>
                             </mask>

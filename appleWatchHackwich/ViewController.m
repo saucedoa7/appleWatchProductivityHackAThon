@@ -19,7 +19,9 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     if (self.studyTime == 0) {
         self.detailsView.hidden = YES;
+        self.timerView.hidden = YES;
     }
+
 
     NSLog(@"VIEW DID LOAD!!!!!");
     [self GetData];
@@ -41,11 +43,12 @@
         self.detailsView.hidden = YES;
     }
     //self.detailsView.hidden = NO;
-
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     NSLog(@"VC View Will Disappear");
+    [self.timer invalidate];
+    self.timerView.hidden = YES;
     [self GetData];
 }
 
@@ -147,6 +150,65 @@
     }
 
     [self storeData];
+}
+
+//Call This to Start timer, will tick every second
+- (IBAction)onStartTimer:(UIButton *)sender {
+    self.detailsView.hidden = YES;
+    self.timerView.hidden = NO;
+    [self GetData];
+
+    self.studyTime = self.studySliderInt * 60;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
+}
+
+//Event called every time the NSTimer ticks.
+- (void)timerTick:(NSTimer *)timer
+{
+    NSLog(@"Start Timer");
+
+    NSLog(@"timeSec %d", self.timeSec);
+
+    if (self.timeSec != 0) {
+        self.timeSec = self.timeSec;
+        NSLog(@"BEFORE !0 seconds just passed %f", self.studyTime);
+
+        self.studyTime = self.studyTime - 1;
+
+        NSLog(@"AFTER !0 seconds just passed %f", self.studyTime);
+
+        self.timeMin = self.studyTime / 60 ;
+        self.timeSec = self.timeSec - 1 ;
+    } else {
+        NSLog(@"BEFORE 60 seconds just passed %f", self.studyTime);
+        self.studyTime = self.studyTime - 1;
+        NSLog(@"AFTER 60 seconds just passed %f", self.studyTime);
+
+        self.timeMin = self.studyTime / 60 ;
+        self.timeSec = self.studyTime - (self.timeMin * 60);
+    }
+
+    NSString *timerOutput = [NSString stringWithFormat:@"%.2d:%.2d", self.timeMin, self.timeSec];
+    NSLog(@"Timer Output %@", timerOutput);
+    self.lblTimer.text  = timerOutput;
+
+    if (self.studyTime == 0) {
+        [self.timer invalidate];
+    }
+}
+
+- (IBAction)onPauseTimer:(UIButton *)sender {
+    NSLog(@"Pause Timer");
+    self.detailsView.hidden = NO;
+    self.timerView.hidden = YES;
+
+    [self.timer invalidate];
+    self.lblStudy.text = [NSString stringWithFormat:@"%.2d:%.2d", self.timeMin, self.timeSec];
+    self.studyTime = self.timeMin;
+
+    self.timeSec = self.timeSec;
+    NSLog(@"timeSec %d", self.timeSec);
+
 }
 
 -(void)GetData{
