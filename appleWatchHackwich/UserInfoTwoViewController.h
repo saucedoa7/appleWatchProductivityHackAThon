@@ -25,4 +25,10 @@
 @property NSInteger Dys;
 @property NSInteger sleep;
 
+#pragma mark TableView Properties
+
+@property NSMutableArray *switchStates;
+@property NSMutableArray *disabilities;
+@property (strong, nonatomic) IBOutlet UITableView *disabilitiesTableView;
+
 @end

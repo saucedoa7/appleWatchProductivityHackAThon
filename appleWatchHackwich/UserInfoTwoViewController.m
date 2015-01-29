@@ -9,7 +9,7 @@
 #import "UserInfoTwoViewController.h"
 #import "UserInfoOneViewController.h"
 
-@interface UserInfoTwoViewController ()
+@interface UserInfoTwoViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -20,6 +20,8 @@
     NSLog(@"VIEW DID LOAD US2VC");
     [self.switchADDSwitch setOn:NO animated:YES];
     self.ADHD = 0;
+
+    self.disabilities = [[NSMutableArray alloc] initWithObjects:@"A.D.D", @"A.D.H.D",@"Dyslexia",@"Test1", nil];
 }
 
 - (IBAction)onADHDSwitch:(UISwitch *)sender {
@@ -152,6 +154,90 @@
     [self storeData];
 }
 
+#pragma mark TableView Helper Methods
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.disabilities count];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 71;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellID"];
+    UISwitch *theSwitch = nil;
+
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MainCellID"];
+        theSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+        theSwitch.tag = 100;
+        [theSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+        cell.backgroundColor = [UIColor clearColor];
+        [cell.contentView addSubview:theSwitch];
+
+        CGRect switchFrame = theSwitch.frame;
+        switchFrame.origin.x = 250;
+        switchFrame.origin.y = 20;
+        theSwitch.frame = switchFrame;
+
+        CGRect labelFrame = cell.frame;
+        labelFrame.origin.x = -123;
+        labelFrame.origin.y = 0;
+        cell.frame = labelFrame;
+
+        CGRectMake(20, 20, 20, 30);
+
+        NSLog(@"label frame %@", NSStringFromCGRect(labelFrame));
+
+        [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica Light" size:30]];
+        cell.textLabel.textColor = [UIColor colorWithRed:0.22 green:0.3 blue:0.44 alpha:1];
+
+        cell.textLabel.text = self.disabilities [indexPath.row];
+        NSLog(@"Text label %@", self.disabilities [indexPath.row]);
+    }
+
+    if ([[self.switchStates objectAtIndex:indexPath.row] isEqualToString:@"ON"]) {
+        theSwitch.on = YES;
+    } else {
+        theSwitch.on = NO;
+    }
+
+    if ([self.disabilities [indexPath.row] isEqualToString:@"A.D.D"]) {
+        self.ADD = 1;
+        [theSwitch addTarget:self action:@selector(onADDSwitch:) forControlEvents:UIControlEventValueChanged];
+        NSLog(@"Switch is on %@", self.disabilities [indexPath.row]);
+    } else if ([self.disabilities [indexPath.row] isEqualToString:@"A.D.H.D"]){
+        self.ADHD = 1;
+        [theSwitch addTarget:self action:@selector(onADHDSwitch:) forControlEvents:UIControlEventValueChanged];
+        NSLog(@"Switch is on %@", self.disabilities [indexPath.row]);
+
+    } else if ([self.disabilities [indexPath.row] isEqualToString:@"Dyslexia"]){
+        self.Dys = 0;
+        [theSwitch addTarget:self action:@selector(onDyslexiaSwitch:) forControlEvents:UIControlEventValueChanged];
+        NSLog(@"Switch is on %@", self.disabilities [indexPath.row]);
+    }
+
+
+    return cell;
+}
+
+-(void)switchChanged:(UISwitch *)sender{
+    UITableViewCell *cell = [[sender superview] superview];
+    NSIndexPath *indexPathOfSwitch = [self.disabilitiesTableView indexPathForCell:cell];
+
+    if (sender.on) {
+        [self.switchStates replaceObjectAtIndex:indexPathOfSwitch.row withObject:@"ON"];
+        sender.onTintColor = [UIColor colorWithRed:0.22 green:0.3 blue:0.44 alpha:1];
+    } else {
+        [self.switchStates replaceObjectAtIndex:indexPathOfSwitch.row withObject:@"OFF"];
+    }
+}
 
 -(void)storeData{
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
