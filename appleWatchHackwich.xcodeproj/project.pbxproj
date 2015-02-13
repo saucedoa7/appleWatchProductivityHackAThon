@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5045FA5F1A6DC9F5001C98EA /* asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5045FA5E1A6DC9F5001C98EA /* asset.xcassets */; };
+		504F093D1A8ABB9600F3A92B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504F093B1A8ABB9600F3A92B /* Crashlytics.framework */; };
+		504F093E1A8ABB9600F3A92B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504F093C1A8ABB9600F3A92B /* Fabric.framework */; };
 		505918131A4BB29E004C4503 /* AddInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505918121A4BB29E004C4503 /* AddInfoViewController.m */; };
 		505918161A4BB4CD004C4503 /* UserInfoTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 505918151A4BB4CD004C4503 /* UserInfoTwoViewController.m */; };
 		50781C991A6DD78500AA7D71 /* logo_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50781C981A6DD78500AA7D71 /* logo_Icon@2x.png */; };
@@ -28,6 +30,8 @@
 		50A04B581A33B91C0001C392 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50A04B571A33B91C0001C392 /* Interface.storyboard */; };
 		50A04B5A1A33B91C0001C392 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50A04B591A33B91C0001C392 /* Images.xcassets */; };
 		50A04B5D1A33B91C0001C392 /* appleWatchHackwich WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 50A04B3B1A33B91C0001C392 /* appleWatchHackwich WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		50F365E11A8DA23C003A655F /* MoPub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F365DF1A8DA23C003A655F /* MoPub.framework */; };
+		50F365E21A8DA23C003A655F /* MoPub.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 50F365E01A8DA23C003A655F /* MoPub.bundle */; };
 		50F750171A4266290024E239 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F750161A4266290024E239 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +75,8 @@
 
 /* Begin PBXFileReference section */
 		5045FA5E1A6DC9F5001C98EA /* asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = asset.xcassets; sourceTree = "<group>"; };
+		504F093B1A8ABB9600F3A92B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		504F093C1A8ABB9600F3A92B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		505918111A4BB29E004C4503 /* AddInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddInfoViewController.h; sourceTree = "<group>"; };
 		505918121A4BB29E004C4503 /* AddInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddInfoViewController.m; sourceTree = "<group>"; };
 		505918141A4BB4CD004C4503 /* UserInfoTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoTwoViewController.h; sourceTree = "<group>"; };
@@ -108,6 +114,8 @@
 		50A04B561A33B91C0001C392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50A04B571A33B91C0001C392 /* Interface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		50A04B591A33B91C0001C392 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		50F365DF1A8DA23C003A655F /* MoPub.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MoPub.framework; sourceTree = "<group>"; };
+		50F365E01A8DA23C003A655F /* MoPub.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MoPub.bundle; path = MoPub.framework/Versions/A/Resources/MoPub.bundle; sourceTree = "<group>"; };
 		50F750161A4266290024E239 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -116,7 +124,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				504F093D1A8ABB9600F3A92B /* Crashlytics.framework in Frameworks */,
 				50F750171A4266290024E239 /* Foundation.framework in Frameworks */,
+				50F365E11A8DA23C003A655F /* MoPub.framework in Frameworks */,
+				504F093E1A8ABB9600F3A92B /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +152,8 @@
 		509E20BE1A33A8CE005F335B = {
 			isa = PBXGroup;
 			children = (
+				50F365DF1A8DA23C003A655F /* MoPub.framework */,
+				50F365E01A8DA23C003A655F /* MoPub.bundle */,
 				50781C981A6DD78500AA7D71 /* logo_Icon@2x.png */,
 				5045FA5E1A6DC9F5001C98EA /* asset.xcassets */,
 				509E20C91A33A8CF005F335B /* appleWatchHackwich */,
@@ -149,6 +162,8 @@
 				50A04B541A33B91C0001C392 /* appleWatchHackwich Watch App */,
 				50A04B3C1A33B91C0001C392 /* Frameworks */,
 				509E20C81A33A8CF005F335B /* Products */,
+				504F093B1A8ABB9600F3A92B /* Crashlytics.framework */,
+				504F093C1A8ABB9600F3A92B /* Fabric.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -306,6 +321,7 @@
 				509E20C41A33A8CF005F335B /* Frameworks */,
 				509E20C51A33A8CF005F335B /* Resources */,
 				50A04B641A33B91C0001C392 /* Embed App Extensions */,
+				504F093A1A8ABB3000F3A92B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -433,6 +449,7 @@
 			files = (
 				509E20D91A33A8CF005F335B /* Main.storyboard in Resources */,
 				509E20DE1A33A8CF005F335B /* LaunchScreen.xib in Resources */,
+				50F365E21A8DA23C003A655F /* MoPub.bundle in Resources */,
 				50781C991A6DD78500AA7D71 /* logo_Icon@2x.png in Resources */,
 				5045FA5F1A6DC9F5001C98EA /* asset.xcassets in Resources */,
 			);
@@ -464,6 +481,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		504F093A1A8ABB3000F3A92B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 53e608051a794bd8ce7a6b60808bbb6ad2019544 81e1c7ec34a2d10e2f4e3625fa74a339fd00467cc99a04e8bd1173c078b3dd00";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		509E20C31A33A8CF005F335B /* Sources */ = {
@@ -621,6 +654,10 @@
 				CODE_SIGN_ENTITLEMENTS = appleWatchHackwich/appleWatchHackwich.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = appleWatchHackwich/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -636,6 +673,10 @@
 				CODE_SIGN_ENTITLEMENTS = appleWatchHackwich/appleWatchHackwich.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = appleWatchHackwich/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

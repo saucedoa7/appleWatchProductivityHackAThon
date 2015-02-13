@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14C106a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
     </dependencies>
@@ -154,7 +154,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="le Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NC1-yH-dR6">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="67"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="0.0" y="108" width="343" height="120"/>
@@ -390,10 +390,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="SwtchADHDSwitch" destination="zXw-ks-68U" id="9ZX-Ki-FRX"/>
                         <outlet property="disabilitiesTableView" destination="0E5-Ym-Z0J" id="wGZ-7K-zgD"/>
-                        <outlet property="switchADDSwitch" destination="ukm-w1-Spw" id="uJH-uv-FMu"/>
-                        <outlet property="switchDyslexiaSwitch" destination="19t-rl-Pic" id="O4O-Qy-GbP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaQ-Sr-azj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -430,9 +427,6 @@
                                         <variation key="widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="265" y="8" width="51" height="31"/>
                                         </variation>
-                                        <connections>
-                                            <action selector="onADDSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="Gpj-2I-usn"/>
-                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADHD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vH-XO-UTa">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -449,9 +443,6 @@
                                         <variation key="widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="265" y="218" width="51" height="31"/>
                                         </variation>
-                                        <connections>
-                                            <action selector="onADHDSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="Hdd-aH-Tfv"/>
-                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dyslexia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0s-zK-Hh7">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -468,9 +459,6 @@
                                         <variation key="widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="265" y="114" width="51" height="31"/>
                                         </variation>
-                                        <connections>
-                                            <action selector="onDyslexiaSwitch:" destination="VEK-GN-ndY" eventType="valueChanged" id="hjF-Ct-MKN"/>
-                                        </connections>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -583,7 +571,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manual Adjustments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHg-N0-FSJ">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="25"/>
-                                <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.16470588235294117" green="0.22745098039215686" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="65" y="405" width="244" height="36"/>
