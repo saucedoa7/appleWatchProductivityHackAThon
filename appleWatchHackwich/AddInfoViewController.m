@@ -1,4 +1,4 @@
-//
+// VC2
 //  AddInfoViewController.m
 //  appleWatchHackwich
 //
@@ -156,6 +156,7 @@
 
     [self storeData];
 
+    [self saveSliderValues];
 }
 
 - (IBAction)onBreakTime:(UISlider *)sender {
@@ -267,5 +268,13 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
+}
+
+-(void)saveSliderValues{
+    [self GetData];
+
+    NSLog(@"Delegate study %ld break %ld", self.studySliderInt, self.breakSliderInt);
+    [self.delegate sendingStudyValue:self.studySliderInt andBreakValue:self.breakSliderInt];
+
 }
 @end

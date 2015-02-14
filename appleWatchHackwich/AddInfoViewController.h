@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SliderDelegate<NSObject>
+
+-(void)sendingStudyValue:(NSInteger)studyValue andBreakValue:(NSInteger)breakValue;
+
+@end
+
 @interface AddInfoViewController : UIViewController
+
+@property (nonatomic, weak) id<SliderDelegate>delegate;
+
 @property (strong, nonatomic) IBOutlet UISlider *sldStudySlider;
 @property (strong, nonatomic) IBOutlet UISlider *sldBreakSlider;
 @property (strong, nonatomic) IBOutlet UILabel *lblStudyTime;

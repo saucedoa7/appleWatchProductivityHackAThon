@@ -1,4 +1,4 @@
-//
+// VC1
 //  UserInfoViewController.m
 //  appleWatchHackwich
 //
@@ -11,7 +11,7 @@
 #import "AddInfoViewController.h"
 #import "UserInfoTwoViewController.h"
 
-@interface UserInfoOneViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>
+@interface UserInfoOneViewController ()<UIPickerViewDelegate, UIPickerViewDataSource, SliderDelegate>
 
 @end
 
@@ -36,6 +36,7 @@
     self.txtSleep.text = [NSString stringWithFormat:@"%ld", (long)self.sleep];
 
     [self.pickGenderPicker selectRow:self.gender inComponent:0 animated:YES];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -187,6 +188,8 @@
     self.breakTime = self.breakSliderInt;
 
     NSLog(@"\nGetting data for UI1VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
+
+
 }
 
 -(void)storeData{
@@ -207,11 +210,27 @@
 
     [currentSettings synchronize];
 
+ //[self sendingStudyValue:self.studySliderInt andBreakValue:self.breakSliderInt];
+
     NSLog(@"\nStoring UI1VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
+
 }
 - (IBAction)onClear:(UIButton *)sender {
     self.txtAge.text = @"0";
     NSLog(@"Clear button");
+}
+
+-(void)presentAddInfo{
+    AddInfoViewController *addInfo = [AddInfoViewController new];
+    [addInfo setDelegate: self];
+}
+
+-(void)sendingStudyValue:(NSInteger)studyValue andBreakValue:(NSInteger)breakValue{
+    if (studyValue != 0 || breakValue != 0) {
+        self.txtAge.text = @"0";
+        self.age = 0;
+    }
+    
 }
 
 @end
