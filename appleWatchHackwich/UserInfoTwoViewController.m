@@ -18,8 +18,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"VIEW DID LOAD US2VC");
-    [self.switchADDSwitch setOn:YES animated:YES];
     self.disabilities = [[NSMutableArray alloc] initWithObjects:@"A.D.D",@"A.D.H.D",@"Dyslexia", nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableView:cellForRowAtIndexPath:) name:@"switchUpdate" object:nil];
+
+}
+
+-(void)updateSwitches:(UISwitch *)sender{
+    [self getData];
+
+    self.ADD = 0;
+    self.ADHD = 0;
+    self.Dys = 0;
+
+    UITableView *tableView;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellID"];
+    NSIndexPath *indexPathOfSwitch = [self.disabilitiesTableView indexPathForCell:cell];
+
+
+    if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"]) {
+        [sender setOn:NO animated:YES];
+    }
+
+    if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"]) {
+        [sender setOn:NO animated:YES];
+    }
+
+    if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]) {
+        [sender setOn:NO animated:YES];
+    }
+
+    [self storeData];
 }
 
 - (IBAction)onADHDSwitch:(UISwitch *)sender {
@@ -91,13 +120,9 @@
 - (IBAction)onADDSwitch:(UISwitch *)sender {
     NSLog(@"onADDSwitch:");
 
-    UISwitch *theSwitch;
-
     UITableView *tableView;
-
-   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellID"];
-
-   NSIndexPath *indexPathOfSwitch = [self.disabilitiesTableView indexPathForCell:cell];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellID"];
+    NSIndexPath *indexPathOfSwitch = [self.disabilitiesTableView indexPathForCell:cell];
 
     if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"]) {
 
@@ -114,20 +139,23 @@
 
         if (self.age == 0 || self.gender == 0) {
             [alert show];
+            [sender setOn:NO animated:YES];
             [self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"];
-            NSLog(@"ADD that ");
-            [theSwitch setOn:NO animated:YES];
+            NSLog(@"ADD that switch %@ ", sender);
             self.ADD = 0;
-        } else {
-            [theSwitch setOn:YES animated:YES];
-            self.ADD = 1;
-            NSLog(@"ADD Switch is on %ld", (long)self.ADD);
         }
+
+        if (self.ADD == 1) {
+            [sender setOn:YES animated:YES];
+        }
+        NSLog(@"ADD Switch is on %ld", (long)self.ADD);
     } else {
-        [theSwitch setOn:NO animated:YES];
+        [sender setOn:NO animated:YES];
         self.ADD = 0;
         NSLog(@"ADD Switch is off %ld", (long)self.ADD);
     }
+
+
     [self storeData];
 }
 
@@ -143,16 +171,6 @@
         [self resetSwitches];
     } else if (self.studySliderInt == !0 || self.breakSliderInt == !0 ) {
         [self resetSwitches];
-    }
-
-    if (self.ADD == 1) {
-        [self.switchADDSwitch setOn:YES animated:YES];
-    }
-    if (self.ADHD == 1) {
-        [self.SwtchADHDSwitch setOn:YES animated:YES];
-    }
-    if (self.Dys == 1){
-        [self.switchDyslexiaSwitch setOn:YES animated:YES];
     }
 }
 
@@ -185,8 +203,11 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellID"];
     UISwitch *theSwitch = nil;
+
+    [self getData];
 
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MainCellID"];
@@ -208,8 +229,6 @@
 
         CGRectMake(20, 20, 20, 30);
 
-        NSLog(@"label frame %@", NSStringFromCGRect(labelFrame));
-
         [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica Light" size:25]];
         cell.textLabel.textColor = [UIColor colorWithRed:0.22 green:0.3 blue:0.44 alpha:1];
 
@@ -224,20 +243,35 @@
     }
 
     if ([self.disabilities [indexPath.row] isEqualToString:@"A.D.D"]) {
-        self.ADD = 1;
-        [theSwitch addTarget:self action:@selector(onADDSwitch:) forControlEvents:UIControlEventValueChanged];
-        NSLog(@"Switch is on %@", self.disabilities [indexPath.row]);
-    } else if ([self.disabilities [indexPath.row] isEqualToString:@"A.D.H.D"]){
-        self.ADHD = 1;
-        [theSwitch addTarget:self action:@selector(onADHDSwitch:) forControlEvents:UIControlEventValueChanged];
-        NSLog(@"Switch is on %@", self.disabilities [indexPath.row]);
-
-    } else if ([self.disabilities [indexPath.row] isEqualToString:@"Dyslexia"]){
-        self.Dys = 0;
-        [theSwitch addTarget:self action:@selector(onDyslexiaSwitch:) forControlEvents:UIControlEventValueChanged];
-        NSLog(@"Switch is on %@", self.disabilities [indexPath.row]);
+        if (self.ADD == 0) {
+            theSwitch.on = NO;
+        } else {
+            self.ADD = 1;
+            theSwitch.onTintColor = [UIColor colorWithRed:0.22 green:0.3 blue:0.44 alpha:1];
+            theSwitch.on = YES;
+        }
     }
 
+    if ([self.disabilities [indexPath.row] isEqualToString:@"A.D.H.D"]){
+        if (self.ADHD == 0) {
+            theSwitch.on = NO;
+        } else {
+            self.ADHD = 1;
+            theSwitch.onTintColor = [UIColor colorWithRed:0.22 green:0.3 blue:0.44 alpha:1];
+            theSwitch.on = YES;
+        }
+
+    }
+
+    if ([self.disabilities [indexPath.row] isEqualToString:@"Dyslexia"]){
+        if (self.Dys == 0) {
+            theSwitch.on = NO;
+        } else {
+            self.Dys = 1;
+            theSwitch.onTintColor = [UIColor colorWithRed:0.22 green:0.3 blue:0.44 alpha:1];
+            theSwitch.on = YES;
+        }
+    }
 
     return cell;
 }
@@ -245,23 +279,29 @@
 -(void)switchChanged:(UISwitch *)sender{
     NSLog(@"SwitchCahnged:");
 
-    UITableViewCell *cell = [[sender superview] superview];
+    UITableViewCell *cell = sender.superview.superview;
     NSIndexPath *indexPathOfSwitch = [self.disabilitiesTableView indexPathForCell:cell];
+    
 
     if (sender.on == YES) {
         [self.switchStates replaceObjectAtIndex:indexPathOfSwitch.row withObject:@"ON"];
         sender.onTintColor = [UIColor colorWithRed:0.22 green:0.3 blue:0.44 alpha:1];
+
         if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"]) {
             self.ADD = 1;
             [sender setOn:YES animated:YES];
             [self storeData];
             [sender addTarget:self action:@selector(onADDSwitch:) forControlEvents:UIControlEventValueChanged];
-        } else if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"]){
+        }
+
+        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"]){
             self.ADHD = 1;
             [sender setOn:YES animated:YES];
             [self storeData];
             [sender addTarget:self action:@selector(onADHDSwitch:) forControlEvents:UIControlEventValueChanged];
-        } else if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]){
+        }
+
+        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]){
             self.Dys = 1;
             [sender setOn:YES animated:YES];
             [self storeData];
@@ -275,12 +315,16 @@
             [sender setOn:NO animated:YES];
             [self storeData];
             [sender addTarget:self action:@selector(onADDSwitch:) forControlEvents:UIControlEventValueChanged];
-        } else if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"]){
+        }
+
+        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"]){
             self.ADHD = 0;
             [sender setOn:NO animated:YES];
             [self storeData];
             [sender addTarget:self action:@selector(onADHDSwitch:) forControlEvents:UIControlEventValueChanged];
-        } else if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]){
+        }
+
+        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]){
             self.Dys = 0;
             [sender setOn:NO animated:YES];
             [self storeData];
@@ -296,29 +340,29 @@
     [currentSettings setInteger:self.Dys forKey:@"CurrentDys"];
     [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
 
-    if (self.ADD == 1) {
-        [currentSettings setBool:self.switchADDSwitch.on forKey:@"CurrentADDSwitch"];
-        NSLog(@"ADD Switch state on");
-    } else {
-        [currentSettings setBool:self.switchADDSwitch forKey:@"CurrentADDSwitch"];
-        NSLog(@"ADD Switch state off");
-    }
-
-    if (self.ADHD == 1) {
-        [currentSettings setBool:self.SwtchADHDSwitch.on forKey:@"CurrentADHDSwitch"];
-        NSLog(@"ADHD Switch state on");
-    } else {
-        [currentSettings setBool:self.SwtchADHDSwitch forKey:@"CurrentADHDSwitch"];
-        NSLog(@"ADHD Switch state off");
-    }
-
-    if (self.Dys == 1) {
-        [currentSettings setBool:self.switchDyslexiaSwitch.on forKey:@"CurrentDYSSwitch"];
-        NSLog(@"Dys Switch state on");
-    } else {
-        [currentSettings setBool:self.switchDyslexiaSwitch forKey:@"CurrentDYSSwitch"];
-        NSLog(@"Dys Switch state off");
-    }
+//    if (self.ADD == 1) {
+//        [currentSettings setBool:self.switchADDSwitch.on forKey:@"CurrentADDSwitch"];
+//        NSLog(@"ADD Switch state on");
+//    } else {
+//        [currentSettings setBool:self.switchADDSwitch forKey:@"CurrentADDSwitch"];
+//        NSLog(@"ADD Switch state off");
+//    }
+//
+//    if (self.ADHD == 1) {
+//        [currentSettings setBool:self.SwtchADHDSwitch.on forKey:@"CurrentADHDSwitch"];
+//        NSLog(@"ADHD Switch state on");
+//    } else {
+//        [currentSettings setBool:self.SwtchADHDSwitch forKey:@"CurrentADHDSwitch"];
+//        NSLog(@"ADHD Switch state off");
+//    }
+//
+//    if (self.Dys == 1) {
+//        [currentSettings setBool:self.switchDyslexiaSwitch.on forKey:@"CurrentDYSSwitch"];
+//        NSLog(@"Dys Switch state on");
+//    } else {
+//        [currentSettings setBool:self.switchDyslexiaSwitch forKey:@"CurrentDYSSwitch"];
+//        NSLog(@"Dys Switch state off");
+//    }
 
     [currentSettings synchronize];
 

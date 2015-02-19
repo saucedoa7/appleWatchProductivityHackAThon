@@ -421,13 +421,6 @@
                                             <rect key="frame" x="38" y="8" width="107" height="36"/>
                                         </variation>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ukm-w1-Spw">
-                                        <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <color key="onTintColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="265" y="8" width="51" height="31"/>
-                                        </variation>
-                                    </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADHD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vH-XO-UTa">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
@@ -460,27 +453,34 @@
                                             <rect key="frame" x="265" y="114" width="51" height="31"/>
                                         </variation>
                                     </switch>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ukm-w1-Spw">
+                                        <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="153" y="10" width="51" height="31"/>
+                                        </variation>
+                                    </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="9H4-Gk-4hp"/>
-                                        <exclude reference="ukm-w1-Spw"/>
                                         <exclude reference="6vH-XO-UTa"/>
                                         <exclude reference="zXw-ks-68U"/>
                                         <exclude reference="t0s-zK-Hh7"/>
                                         <exclude reference="19t-rl-Pic"/>
+                                        <exclude reference="ukm-w1-Spw"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="24" y="75" width="352" height="334"/>
                                     <mask key="subviews">
                                         <include reference="9H4-Gk-4hp"/>
-                                        <include reference="ukm-w1-Spw"/>
                                         <include reference="6vH-XO-UTa"/>
                                         <include reference="zXw-ks-68U"/>
                                         <include reference="t0s-zK-Hh7"/>
                                         <include reference="19t-rl-Pic"/>
+                                        <include reference="ukm-w1-Spw"/>
                                     </mask>
                                 </variation>
                             </view>

@@ -224,6 +224,11 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"valUpdate" object:nil];
 }
 
+-(void)saveSwitch{
+    [self GetData];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"switchUpdate" object:nil];
+}
+
 -(void)updateTexts{
     [self GetData];
 
