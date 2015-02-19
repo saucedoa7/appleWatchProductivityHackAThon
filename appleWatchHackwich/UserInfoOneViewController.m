@@ -1,4 +1,4 @@
-//
+// VC1
 //  UserInfoViewController.m
 //  appleWatchHackwich
 //
@@ -36,6 +36,9 @@
     self.txtSleep.text = [NSString stringWithFormat:@"%ld", (long)self.sleep];
 
     [self.pickGenderPicker selectRow:self.gender inComponent:0 animated:YES];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTexts) name:@"txtUpdate" object:nil];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -46,7 +49,6 @@
     if (self.studySliderInt == !0 || self.breakSliderInt == !0 ) {
         [self resetSliderInts];
     }
-
     [self storeData];
 }
 
@@ -87,9 +89,7 @@
         NSLog(@"second if UI1VC");
         [self storeData];
     }
-
     NSLog(@"NO if UI1VC");
-
     [self storeData];
 }
 
@@ -110,7 +110,7 @@
         self.sleep = 0;
     }
 
-    if (!(self.age == 0)) {
+    if (self.age != 0) {
         self.studySliderInt = 0;
         self.breakSliderInt = 0;
         self.studyTime = 0;
@@ -124,6 +124,8 @@
     [self.txtSleep resignFirstResponder];
 
     [self storeData];
+    [self saveTexts];
+
     // Use this when swiping thru pages and hiding previous labels
 }
 
@@ -157,7 +159,9 @@
         self.studyTime = 0;
         self.breakTime = 0;
     }
+
     [self storeData];
+    [self saveTexts];
 }
 
 -(void)GetData{
@@ -209,9 +213,40 @@
 
     NSLog(@"\nStoring UI1VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 }
+
 - (IBAction)onClear:(UIButton *)sender {
     self.txtAge.text = @"0";
     NSLog(@"Clear button");
 }
 
+-(void)saveTexts{
+    [self GetData];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"valUpdate" object:nil];
+}
+
+-(void)saveSwitch{
+    [self GetData];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"switchUpdate" object:nil];
+}
+
+-(void)updateTexts{
+    [self GetData];
+
+    if (self.studySliderInt != 0 || self.breakSliderInt != 0) {
+        self.txtAge.text = @"0";
+        self.age = 0;
+        [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+        self.gender = 0;
+        self.txtSleep.text = @"0";
+        self.sleep = 0;
+    }
+
+    if (self.age == 0) {
+        [self.pickGenderPicker selectRow:0 inComponent:0 animated:YES];
+        self.gender = 0;
+    }
+    
+    [self storeData];
+    NSLog(@"Setting text %@", self.txtAge.text);
+}
 @end

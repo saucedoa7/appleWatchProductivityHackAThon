@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AddInfoViewController : UIViewController
+
 @property (strong, nonatomic) IBOutlet UISlider *sldStudySlider;
 @property (strong, nonatomic) IBOutlet UISlider *sldBreakSlider;
 @property (strong, nonatomic) IBOutlet UILabel *lblStudyTime;
