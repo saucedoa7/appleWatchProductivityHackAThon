@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AddInfoViewController.h"
 
-@interface UserInfoOneViewController : UIViewController <SliderDelegate>
-//           AKA PageContentVC
+@interface UserInfoOneViewController : UIViewController 
 
 @property (strong, nonatomic) IBOutlet UIPickerView *pickGenderPicker;
 @property (strong, nonatomic) IBOutlet UITextField *txtAge;

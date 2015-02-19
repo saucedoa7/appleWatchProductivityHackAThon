@@ -55,27 +55,23 @@
 
     self.studySliderInt = self.sldStudySlider.value;
     self.breakSliderInt = self.sldBreakSlider.value;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSliderValues) name:@"valUpdate" object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-//
-    NSLog(@"AddInfo View will Appear");
     [self GetData];
-
-    if (!(self.studySliderInt == 0) || !(self.breakSliderInt == 0)) {
-
         self.sldStudySlider.value = self.studySliderInt;
         self.sldBreakSlider.value = self.breakSliderInt;
 
         self.lblStudyTime.text = [NSString stringWithFormat:@"%ldm", (long)self.studySliderInt];
         self.lblBreakTime.text = [NSString stringWithFormat:@"%ldm", (long)self.breakSliderInt];
+
+    if (!(self.age == 0) || !(self.gender == 0)) {
+        [self.sldStudySlider setValue:0.0];
+        [self.sldBreakSlider setValue:0.0];
     }
-
-    [self storeData];
-
-    NSLog(@"\nPassing AddInfoVC ViewDidApp Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 }
-
 
 #pragma mark UIPageController
 
@@ -175,11 +171,14 @@
     self.gender = 0;
 
     [self storeData];
+    [self saveSliderValues];
 }
 
 - (IBAction)onDoneButtonPressed:(UIButton *)sender {
 
     [self viewDidDisappear:NO];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"txtUpdate" object:nil];
 
     NSLog(@"DONE BUTTON WAS PRESSED!!!!!");
     [self GetData];
@@ -267,14 +266,36 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
+
+}
+
+-(void)updateSliderValues{
+    NSLog(@"AddInfo View will Appear");
+    [self GetData];
+
+    if (self.studySliderInt != 0 || self.breakSliderInt != 0) {
+
+        self.sldStudySlider.value = self.studySliderInt;
+        self.sldBreakSlider.value = self.breakSliderInt;
+
+        self.lblStudyTime.text = [NSString stringWithFormat:@"%ldm", (long)self.studySliderInt];
+        self.lblBreakTime.text = [NSString stringWithFormat:@"%ldm", (long)self.breakSliderInt];
+    }
+
+    if (!(self.age == 0) || !(self.gender == 0)) {
+        [self.sldStudySlider setValue:0.0];
+        [self.sldBreakSlider setValue:0.0];
+        self.lblStudyTime.text = [NSString stringWithFormat:@"%ldm", (long)self.studySliderInt];
+        self.lblBreakTime.text = [NSString stringWithFormat:@"%ldm", (long)self.breakSliderInt];
+    }
+
+    [self storeData];
+
+    NSLog(@"\nPassing AddInfoVC ViewDidApp Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 }
 
 -(void)saveSliderValues{
     [self GetData];
-
-    NSLog(@"Delegate study %ld break %ld", self.studySliderInt, self.breakSliderInt);
-    [self.delegate sendingStudyValue:self.studySliderInt andBreakValue:self.breakSliderInt];
-
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"txtUpdate" object:nil];
 }
 @end

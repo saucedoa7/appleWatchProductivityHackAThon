@@ -22,7 +22,6 @@
         self.timerView.hidden = YES;
     }
 
-
     NSLog(@"VIEW DID LOAD!!!!!");
     [self GetData];
     [self storeData];
