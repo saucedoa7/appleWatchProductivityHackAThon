@@ -21,7 +21,7 @@
     self.disabilities = [[NSMutableArray alloc] initWithObjects:@"A.D.D",@"A.D.H.D",@"Dyslexia", nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableView:cellForRowAtIndexPath:) name:@"switchUpdate" object:nil];
-
+//
 }
 
 -(void)updateSwitches:(UISwitch *)sender{
