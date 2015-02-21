@@ -15,21 +15,40 @@
 
 @implementation UserInfoTwoViewController
 
+#pragma mark View Methods
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"VIEW DID LOAD US2VC");
     self.disabilities = [[NSMutableArray alloc] initWithObjects:@"A.D.D",@"A.D.H.D",@"Dyslexia", nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableView:cellForRowAtIndexPath:) name:@"switchUpdate" object:nil];
-    //
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSwitchPressed:) name:@"switchUpdate" object:nil];
 }
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [self storeData];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"US2VC view will appear");
+
+    [self getData];
+
+    NSLog(@"Age %ld Gender %ld", (long)self.age, (long)self.gender);
+    NSLog(@"Study %ld Break %ld", (long)self.studySliderInt, (long)self.breakSliderInt);
+
+    if (self.age == 0 || self.gender == 0 /*|| self.slepp == 0*/) {
+        [self resetSwitches];
+    } else if (self.studySliderInt == !0 || self.breakSliderInt == !0 ) {
+        [self resetSwitches];
+    }
+}
+
+#pragma mark  Switch Methods
 
 -(void)updateSwitches:(UISwitch *)sender{
     [self getData];
-
-    self.ADD = 0;
-    self.ADHD = 0;
-    self.Dys = 0;
+    [self resetSwitches];
 
     UITableView *tableView;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellID"];
@@ -51,8 +70,8 @@
     [self storeData];
 }
 
-- (IBAction)onADDSwitch:(UISwitch *)sender {
-    NSLog(@"onADDSwitch:");
+- (void)onSwitchPressed:(UISwitch *)sender {
+    NSLog(@"onSwitchPressed:");
 
     [self getData];
 
@@ -62,105 +81,75 @@
                                           cancelButtonTitle:@"Got it"
                                           otherButtonTitles:nil, nil ];
 
-    NSLog(@"Page one AGE %ld", (long)self.age);
-    NSLog(@"Page one Gen %ld", (long)self.gender);
-
     if (self.age == 0 || self.gender == 0) {
         [alert show];
         [sender setOn:NO animated:YES];
-        self.ADD = 0;
+        [self resetSwitches];
         NSLog(@"A.D.H.D that switch %@ ", sender);
-    } else if (self.ADD == 1) {
+    } else if (self.ADD == 1 || self.ADHD == 1 || self.Dys == 1) {
         [sender setOn:YES animated:YES];
         NSLog(@"A.D.D Switch is on %ld", (long)self.ADD);
     } else {
         [sender setOn:NO animated:YES];
-        self.ADHD = 0;
+        [self resetSwitches];
         NSLog(@"A.D.D Switch is off %ld", (long)self.ADD);
     }
     [self storeData];
 }
 
-- (IBAction)onADHDSwitch:(UISwitch *)sender {
-    NSLog(@"onADHDSwitch:");
+-(void)switchChanged:(UISwitch *)sender{
+    NSLog(@"SwitchCahnged:");
 
-    [self getData];
+    UITableViewCell *cell = sender.superview.superview;
+    NSIndexPath *indexPathOfSwitch = [self.disabilitiesTableView indexPathForCell:cell];
+    sender.onTintColor = [UIColor colorWithRed:0.22 green:0.3 blue:0.44 alpha:1];
 
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
-                                                    message:@"Make sure you set the age AND gender first"
-                                                   delegate:self
-                                          cancelButtonTitle:@"Got it"
-                                          otherButtonTitles:nil, nil ];
+    if (sender.on == YES) {
+        [self.switchStates replaceObjectAtIndex:indexPathOfSwitch.row withObject:@"ON"];
+        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"]) {
+            self.ADD = 1;
+            [self storeData];
+            [self onSwitchPressed:sender];
+        }
 
-    if (self.age == 0 || self.gender == 0) {
-        [alert show];
-        [sender setOn:NO animated:YES];
-        self.ADHD = 0;
-        NSLog(@"A.D.H.D that switch %@ ", sender);
-    } else if (self.ADHD == 1) {
-        [sender setOn:YES animated:YES];
-        NSLog(@"A.D.H.D Switch is on %ld", (long)self.ADHD);
-    } else {
-        [sender setOn:NO animated:YES];
-        self.ADHD = 0;
-        NSLog(@"A.D.H.D Switch is off %ld", (long)self.ADHD);
-    }
-    [self storeData];
-}
+        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"]){
+            self.ADHD = 1;
+            [self storeData];
+            [self onSwitchPressed:sender];
+        }
 
-- (IBAction)onDyslexiaSwitch:(UISwitch *)sender {
-    NSLog(@"onDysSwitch:");
+        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]){
+            self.Dys = 1;
+            [self storeData];
+            [self onSwitchPressed:sender];
+        }
 
-    [self getData];
+    } else if (sender.on == NO){
+        [self.switchStates replaceObjectAtIndex:indexPathOfSwitch.row withObject:@"OFF"];
+        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"]) {
+            self.ADD = 0;
+            [self storeData];
+            [sender addTarget:self action:@selector(onSwitchPressed:) forControlEvents:UIControlEventValueChanged];
+        }
 
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
-                                                    message:@"Make sure you set the age AND gender first"
-                                                   delegate:self
-                                          cancelButtonTitle:@"Got it"
-                                          otherButtonTitles:nil, nil ];
+        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"]){
+            self.ADHD = 0;
+            [self storeData];
+            [sender addTarget:self action:@selector(onSwitchPressed:) forControlEvents:UIControlEventValueChanged];
+        }
 
-    if (self.age == 0 || self.gender == 0) {
-        [alert show];
-        [sender setOn:NO animated:YES];
-        self.Dys = 0;
-        NSLog(@"A.D.H.D that switch %@ ", sender);
-    } else if (self.Dys == 1) {
-        [sender setOn:YES animated:YES];
-        NSLog(@"A.D.D Switch is on %ld", (long)self.Dys);
-    } else {
-        [sender setOn:NO animated:YES];
-        self.Dys = 0;
-        NSLog(@"A.D.D Switch is off %ld", (long)self.Dys);
-    }
-    [self storeData];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    NSLog(@"US2VC view will appear");
-
-    [self getData];
-
-    NSLog(@"Age %ld Gender %ld", (long)self.age, (long)self.gender);
-    NSLog(@"Study %ld Break %ld", (long)self.studySliderInt, (long)self.breakSliderInt);
-
-    if (self.age == 0 || self.gender == 0 /*|| self.slepp == 0*/) {
-        [self resetSwitches];
-    } else if (self.studySliderInt == !0 || self.breakSliderInt == !0 ) {
-        [self resetSwitches];
+        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]){
+            self.Dys = 0;
+            [self storeData];
+            [sender addTarget:self action:@selector(onSwitchPressed:) forControlEvents:UIControlEventValueChanged];
+        }
     }
 }
 
 -(void)resetSwitches{
-    [self.switchADDSwitch setOn:NO animated:YES];
-    [self.switchDyslexiaSwitch setOn:NO animated:YES];
-    [self.SwtchADHDSwitch setOn:NO animated:YES];
     self.ADD = 0;
     self.Dys = 0;
     self.ADHD = 0;
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [self storeData];
 }
 
 #pragma mark TableView Helper Methods
@@ -249,55 +238,6 @@
     }
 
     return cell;
-}
-
--(void)switchChanged:(UISwitch *)sender{
-    NSLog(@"SwitchCahnged:");
-
-    UITableViewCell *cell = sender.superview.superview;
-    NSIndexPath *indexPathOfSwitch = [self.disabilitiesTableView indexPathForCell:cell];
-    sender.onTintColor = [UIColor colorWithRed:0.22 green:0.3 blue:0.44 alpha:1];
-
-    if (sender.on == YES) {
-        [self.switchStates replaceObjectAtIndex:indexPathOfSwitch.row withObject:@"ON"];
-        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"]) {
-            self.ADD = 1;
-            [self storeData];
-            [self onADDSwitch:sender];
-        }
-
-        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"]){
-            self.ADHD = 1;
-            [self storeData];
-            [self onADHDSwitch:sender];
-        }
-
-        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]){
-            self.Dys = 1;
-            [self storeData];
-            [self onDyslexiaSwitch:sender];
-        }
-
-    } else if (sender.on == NO){
-        [self.switchStates replaceObjectAtIndex:indexPathOfSwitch.row withObject:@"OFF"];
-        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"]) {
-            self.ADD = 0;
-            [self storeData];
-            [sender addTarget:self action:@selector(onADDSwitch:) forControlEvents:UIControlEventValueChanged];
-        }
-
-        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"]){
-            self.ADHD = 0;
-            [self storeData];
-            [sender addTarget:self action:@selector(onADHDSwitch:) forControlEvents:UIControlEventValueChanged];
-        }
-
-        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]){
-            self.Dys = 0;
-            [self storeData];
-            [sender addTarget:self action:@selector(onDyslexiaSwitch:) forControlEvents:UIControlEventValueChanged];
-        }
-    }
 }
 
 -(void)storeData{

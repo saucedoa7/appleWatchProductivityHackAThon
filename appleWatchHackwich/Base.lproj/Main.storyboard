@@ -336,7 +336,6 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="lblADHD" destination="6vH-XO-UTa" id="5Rs-1G-M0T"/>
                         <outlet property="lblAge" destination="FlM-Np-NJt" id="kid-5U-lhV"/>
                         <outlet property="lblGender" destination="soC-aM-D1K" id="erC-zH-SEs"/>
                         <outlet property="pickGenderPicker" destination="2B9-Pm-hrH" id="bKD-Kj-fs7"/>
@@ -396,111 +395,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaQ-Sr-azj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3516.75" y="716.5"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ANU-kx-p7p">
-            <objects>
-                <viewController id="elN-C7-zzh" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="shf-2o-dvU"/>
-                        <viewControllerLayoutGuide type="bottom" id="J4u-Q4-YfG"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="y1b-V5-PWv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38s-WW-iWx">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A.D.D" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9H4-Gk-4hp">
-                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
-                                        <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="38" y="8" width="107" height="36"/>
-                                        </variation>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADHD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vH-XO-UTa">
-                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
-                                        <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="38" y="216" width="107" height="36"/>
-                                        </variation>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zXw-ks-68U">
-                                        <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <color key="onTintColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="265" y="218" width="51" height="31"/>
-                                        </variation>
-                                    </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dyslexia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0s-zK-Hh7">
-                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
-                                        <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="38" y="112" width="114" height="36"/>
-                                        </variation>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="19t-rl-Pic">
-                                        <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <color key="onTintColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="265" y="114" width="51" height="31"/>
-                                        </variation>
-                                    </switch>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ukm-w1-Spw">
-                                        <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <color key="onTintColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="153" y="10" width="51" height="31"/>
-                                        </variation>
-                                    </switch>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="9H4-Gk-4hp"/>
-                                        <exclude reference="6vH-XO-UTa"/>
-                                        <exclude reference="zXw-ks-68U"/>
-                                        <exclude reference="t0s-zK-Hh7"/>
-                                        <exclude reference="19t-rl-Pic"/>
-                                        <exclude reference="ukm-w1-Spw"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="24" y="75" width="352" height="334"/>
-                                    <mask key="subviews">
-                                        <include reference="9H4-Gk-4hp"/>
-                                        <include reference="6vH-XO-UTa"/>
-                                        <include reference="zXw-ks-68U"/>
-                                        <include reference="t0s-zK-Hh7"/>
-                                        <include reference="19t-rl-Pic"/>
-                                        <include reference="ukm-w1-Spw"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="38s-WW-iWx"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="38s-WW-iWx"/>
-                            </mask>
-                        </variation>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bXr-ck-vFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4164" y="683"/>
         </scene>
         <!--Add Info View Controller-->
         <scene sceneID="1Lx-h1-GrS">
