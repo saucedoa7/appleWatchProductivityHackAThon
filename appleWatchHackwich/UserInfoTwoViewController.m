@@ -54,47 +54,6 @@
 - (IBAction)onADDSwitch:(UISwitch *)sender {
     NSLog(@"onADDSwitch:");
 
-    UITableView *tableView;
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellID"];
-    NSIndexPath *indexPathOfSwitch = [self.disabilitiesTableView indexPathForCell:cell];
-
-    if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"]) {
-
-        [self getData];
-
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
-                                                        message:@"Make sure you set the age AND gender first"
-                                                       delegate:self
-                                              cancelButtonTitle:@"Got it"
-                                              otherButtonTitles:nil, nil ];
-
-        NSLog(@"Page one AGE %ld", (long)self.age);
-        NSLog(@"Page one Gen %ld", (long)self.gender);
-
-        if (self.age == 0 || self.gender == 0) {
-
-            [alert show];
-            [sender setOn:NO animated:YES];
-            [self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"];
-            NSLog(@"ADD that switch %@ ", sender);
-            self.ADD = 0;
-        }
-
-        if (self.ADD == 1) {
-            [sender setOn:YES animated:YES];
-        }
-        NSLog(@"ADD Switch is on %ld", (long)self.ADD);
-    } else {
-        [sender setOn:NO animated:YES];
-        self.ADD = 0;
-        NSLog(@"ADD Switch is off %ld", (long)self.ADD);
-    }
-    [self storeData];
-}
-
-- (IBAction)onADHDSwitch:(UISwitch *)sender {
-    NSLog(@"onADHDSwitch:");
-    
     [self getData];
 
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
@@ -105,6 +64,33 @@
 
     NSLog(@"Page one AGE %ld", (long)self.age);
     NSLog(@"Page one Gen %ld", (long)self.gender);
+
+    if (self.age == 0 || self.gender == 0) {
+        [alert show];
+        [sender setOn:NO animated:YES];
+        self.ADD = 0;
+        NSLog(@"A.D.H.D that switch %@ ", sender);
+    } else if (self.ADD == 1) {
+        [sender setOn:YES animated:YES];
+        NSLog(@"A.D.D Switch is on %ld", (long)self.ADD);
+    } else {
+        [sender setOn:NO animated:YES];
+        self.ADHD = 0;
+        NSLog(@"A.D.D Switch is off %ld", (long)self.ADD);
+    }
+    [self storeData];
+}
+
+- (IBAction)onADHDSwitch:(UISwitch *)sender {
+    NSLog(@"onADHDSwitch:");
+
+    [self getData];
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
+                                                    message:@"Make sure you set the age AND gender first"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Got it"
+                                          otherButtonTitles:nil, nil ];
 
     if (self.age == 0 || self.gender == 0) {
         [alert show];
@@ -125,45 +111,29 @@
 - (IBAction)onDyslexiaSwitch:(UISwitch *)sender {
     NSLog(@"onDysSwitch:");
 
-    UITableView *tableView;
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellID"];
-    NSIndexPath *indexPathOfSwitch = [self.disabilitiesTableView indexPathForCell:cell];
+    [self getData];
 
-    if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]) {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
+                                                    message:@"Make sure you set the age AND gender first"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Got it"
+                                          otherButtonTitles:nil, nil ];
 
-        [self getData];
-
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
-                                                        message:@"Make sure you set the age AND gender first"
-                                                       delegate:self
-                                              cancelButtonTitle:@"Got it"
-                                              otherButtonTitles:nil, nil ];
-
-        NSLog(@"Page one AGE %ld", (long)self.age);
-        NSLog(@"Page one Gen %ld", (long)self.gender);
-
-        if (self.age == 0 || self.gender == 0) {
-
-            [alert show];
-            [sender setOn:NO animated:YES];
-            [self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"];
-            NSLog(@"Dyslexia that switch %@ ", sender);
-            self.Dys = 0;
-        }
-
-        if (self.Dys == 1) {
-            [sender setOn:YES animated:YES];
-        }
-        NSLog(@"Dyslexia Switch is on %ld", (long)self.Dys);
+    if (self.age == 0 || self.gender == 0) {
+        [alert show];
+        [sender setOn:NO animated:YES];
+        self.Dys = 0;
+        NSLog(@"A.D.H.D that switch %@ ", sender);
+    } else if (self.Dys == 1) {
+        [sender setOn:YES animated:YES];
+        NSLog(@"A.D.D Switch is on %ld", (long)self.Dys);
     } else {
         [sender setOn:NO animated:YES];
         self.Dys = 0;
-        NSLog(@"Dyslexia Switch is off %ld", (long)self.Dys);
+        NSLog(@"A.D.D Switch is off %ld", (long)self.Dys);
     }
     [self storeData];
 }
-
-
 
 -(void)viewWillAppear:(BOOL)animated{
     NSLog(@"US2VC view will appear");
