@@ -154,8 +154,6 @@
 		509E20BE1A33A8CE005F335B = {
 			isa = PBXGroup;
 			children = (
-				50F365DF1A8DA23C003A655F /* MoPub.framework */,
-				50F365E01A8DA23C003A655F /* MoPub.bundle */,
 				50781C981A6DD78500AA7D71 /* logo_Icon@2x.png */,
 				5045FA5E1A6DC9F5001C98EA /* asset.xcassets */,
 				50FB2FD51A9558E30066A80D /* background.png */,
@@ -165,6 +163,8 @@
 				50A04B541A33B91C0001C392 /* appleWatchHackwich Watch App */,
 				50A04B3C1A33B91C0001C392 /* Frameworks */,
 				509E20C81A33A8CF005F335B /* Products */,
+				50F365E01A8DA23C003A655F /* MoPub.bundle */,
+				50F365DF1A8DA23C003A655F /* MoPub.framework */,
 				504F093B1A8ABB9600F3A92B /* Crashlytics.framework */,
 				504F093C1A8ABB9600F3A92B /* Fabric.framework */,
 			);

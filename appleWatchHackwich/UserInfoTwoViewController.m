@@ -51,72 +51,6 @@
     [self storeData];
 }
 
-- (IBAction)onADHDSwitch:(UISwitch *)sender {
-    NSLog(@"onADHDSwitch:");
-
-    if ([self.SwtchADHDSwitch isOn]) {
-        [self getData];
-
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
-                                                        message:@"Make sure you set the age AND gender first"
-                                                       delegate:self
-                                              cancelButtonTitle:@"Got it"
-                                              otherButtonTitles:nil, nil ];
-
-        NSLog(@"Page one AGE %ld", (long)self.age);
-        NSLog(@"Page one Gen %ld", (long)self.gender);
-
-        if (self.age == 0 || self.gender == 0 /*self.sleep == 0*/) {
-            [alert show];
-            [self.SwtchADHDSwitch setOn:NO animated:YES];
-            self.ADHD = 0;
-        } else {
-            [self.SwtchADHDSwitch setOn:YES animated:YES];
-            self.ADHD = 1;
-            NSLog(@"ADD Switch is on %ld", (long)self.ADHD);
-        }
-    } else {
-        [self.SwtchADHDSwitch setOn:NO animated:YES];
-        self.ADHD = 0;
-        NSLog(@"ADD Switch is off %ld", (long)self.ADHD);
-    }
-    [self storeData];
-}
-
-
-- (IBAction)onDyslexiaSwitch:(UISwitch *)sender {
-
-    NSLog(@"onDysSwitch:");
-    if ([self.switchDyslexiaSwitch isOn]) {
-
-        [self getData];
-
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
-                                                        message:@"Make sure you set the age AND gender first"
-                                                       delegate:self
-                                              cancelButtonTitle:@"Got it"
-                                              otherButtonTitles:nil, nil ];
-
-        NSLog(@"Page one AGE %ld", (long)self.age);
-        NSLog(@"Page one Gen %ld", (long)self.gender);
-
-        if (self.age == 0 || self.gender == 0) {
-            [alert show];
-            [self.switchDyslexiaSwitch setOn:NO animated:YES];
-            self.Dys = 0;
-        } else {
-            [self.switchDyslexiaSwitch setOn:YES animated:YES];
-            self.Dys = 1;
-            NSLog(@"Dys Switch is on %ld", (long)self.Dys);
-        }
-    } else {
-        [self.switchDyslexiaSwitch setOn:NO animated:YES];
-        self.Dys = 0;
-        NSLog(@"Dys Switch is off %ld", (long)self.Dys);
-    }
-    [self storeData];
-}
-
 - (IBAction)onADDSwitch:(UISwitch *)sender {
     NSLog(@"onADDSwitch:");
 
@@ -138,6 +72,7 @@
         NSLog(@"Page one Gen %ld", (long)self.gender);
 
         if (self.age == 0 || self.gender == 0) {
+
             [alert show];
             [sender setOn:NO animated:YES];
             [self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"];
@@ -154,10 +89,92 @@
         self.ADD = 0;
         NSLog(@"ADD Switch is off %ld", (long)self.ADD);
     }
-
-
     [self storeData];
 }
+
+- (IBAction)onADHDSwitch:(UISwitch *)sender {
+    NSLog(@"onADHDSwitch:");
+
+    UITableView *tableView;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellID"];
+    NSIndexPath *indexPathOfSwitch = [self.disabilitiesTableView indexPathForCell:cell];
+
+    if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"]) {
+
+        [self getData];
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
+                                                        message:@"Make sure you set the age AND gender first"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Got it"
+                                              otherButtonTitles:nil, nil ];
+
+        NSLog(@"Page one AGE %ld", (long)self.age);
+        NSLog(@"Page one Gen %ld", (long)self.gender);
+
+        if (self.age == 0 || self.gender == 0) {
+
+            [alert show];
+            [sender setOn:NO animated:YES];
+            [self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"];
+            NSLog(@"A.D.H.D that switch %@ ", sender);
+            self.ADHD = 0;
+        }
+
+        if (self.ADHD == 1) {
+            [sender setOn:YES animated:YES];
+        }
+        NSLog(@"A.D.H.D Switch is on %ld", (long)self.ADHD);
+    } else {
+        [sender setOn:NO animated:YES];
+        self.ADHD = 0;
+        NSLog(@"A.D.H.D Switch is off %ld", (long)self.ADHD);
+    }
+    [self storeData];
+}
+
+- (IBAction)onDyslexiaSwitch:(UISwitch *)sender {
+    NSLog(@"onDysSwitch:");
+
+    UITableView *tableView;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellID"];
+    NSIndexPath *indexPathOfSwitch = [self.disabilitiesTableView indexPathForCell:cell];
+
+    if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]) {
+
+        [self getData];
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Set Age & Gender"
+                                                        message:@"Make sure you set the age AND gender first"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Got it"
+                                              otherButtonTitles:nil, nil ];
+
+        NSLog(@"Page one AGE %ld", (long)self.age);
+        NSLog(@"Page one Gen %ld", (long)self.gender);
+
+        if (self.age == 0 || self.gender == 0) {
+
+            [alert show];
+            [sender setOn:NO animated:YES];
+            [self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"];
+            NSLog(@"Dyslexia that switch %@ ", sender);
+            self.Dys = 0;
+        }
+
+        if (self.Dys == 1) {
+            [sender setOn:YES animated:YES];
+        }
+        NSLog(@"Dyslexia Switch is on %ld", (long)self.Dys);
+    } else {
+        [sender setOn:NO animated:YES];
+        self.Dys = 0;
+        NSLog(@"Dyslexia Switch is off %ld", (long)self.Dys);
+    }
+    [self storeData];
+}
+
+
 
 -(void)viewWillAppear:(BOOL)animated{
     NSLog(@"US2VC view will appear");
@@ -260,7 +277,6 @@
             theSwitch.onTintColor = [UIColor colorWithRed:0.22 green:0.3 blue:0.44 alpha:1];
             theSwitch.on = YES;
         }
-
     }
 
     if ([self.disabilities [indexPath.row] isEqualToString:@"Dyslexia"]){
@@ -281,52 +297,43 @@
 
     UITableViewCell *cell = sender.superview.superview;
     NSIndexPath *indexPathOfSwitch = [self.disabilitiesTableView indexPathForCell:cell];
-    
+    sender.onTintColor = [UIColor colorWithRed:0.22 green:0.3 blue:0.44 alpha:1];
 
     if (sender.on == YES) {
         [self.switchStates replaceObjectAtIndex:indexPathOfSwitch.row withObject:@"ON"];
-        sender.onTintColor = [UIColor colorWithRed:0.22 green:0.3 blue:0.44 alpha:1];
-
         if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"]) {
             self.ADD = 1;
-            [sender setOn:YES animated:YES];
             [self storeData];
-            [sender addTarget:self action:@selector(onADDSwitch:) forControlEvents:UIControlEventValueChanged];
+            [self onADDSwitch:sender];
         }
 
         if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"]){
             self.ADHD = 1;
-            [sender setOn:YES animated:YES];
             [self storeData];
-            [sender addTarget:self action:@selector(onADHDSwitch:) forControlEvents:UIControlEventValueChanged];
+            [self onADHDSwitch:sender];
         }
 
         if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]){
             self.Dys = 1;
-            [sender setOn:YES animated:YES];
             [self storeData];
-            [sender addTarget:self action:@selector(onDyslexiaSwitch:) forControlEvents:UIControlEventValueChanged];
+            [self onDyslexiaSwitch:sender];
         }
     } else if (sender.on == NO){
         [self.switchStates replaceObjectAtIndex:indexPathOfSwitch.row withObject:@"OFF"];
-        sender.onTintColor = [UIColor colorWithRed:0.22 green:0.3 blue:0.44 alpha:1];
         if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"]) {
             self.ADD = 0;
-            [sender setOn:NO animated:YES];
             [self storeData];
             [sender addTarget:self action:@selector(onADDSwitch:) forControlEvents:UIControlEventValueChanged];
         }
 
         if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"]){
             self.ADHD = 0;
-            [sender setOn:NO animated:YES];
             [self storeData];
             [sender addTarget:self action:@selector(onADHDSwitch:) forControlEvents:UIControlEventValueChanged];
         }
 
         if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]){
             self.Dys = 0;
-            [sender setOn:NO animated:YES];
             [self storeData];
             [sender addTarget:self action:@selector(onDyslexiaSwitch:) forControlEvents:UIControlEventValueChanged];
         }
@@ -339,30 +346,6 @@
     [currentSettings setInteger:self.ADD forKey:@"CurrentADD"];
     [currentSettings setInteger:self.Dys forKey:@"CurrentDys"];
     [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
-
-//    if (self.ADD == 1) {
-//        [currentSettings setBool:self.switchADDSwitch.on forKey:@"CurrentADDSwitch"];
-//        NSLog(@"ADD Switch state on");
-//    } else {
-//        [currentSettings setBool:self.switchADDSwitch forKey:@"CurrentADDSwitch"];
-//        NSLog(@"ADD Switch state off");
-//    }
-//
-//    if (self.ADHD == 1) {
-//        [currentSettings setBool:self.SwtchADHDSwitch.on forKey:@"CurrentADHDSwitch"];
-//        NSLog(@"ADHD Switch state on");
-//    } else {
-//        [currentSettings setBool:self.SwtchADHDSwitch forKey:@"CurrentADHDSwitch"];
-//        NSLog(@"ADHD Switch state off");
-//    }
-//
-//    if (self.Dys == 1) {
-//        [currentSettings setBool:self.switchDyslexiaSwitch.on forKey:@"CurrentDYSSwitch"];
-//        NSLog(@"Dys Switch state on");
-//    } else {
-//        [currentSettings setBool:self.switchDyslexiaSwitch forKey:@"CurrentDYSSwitch"];
-//        NSLog(@"Dys Switch state off");
-//    }
 
     [currentSettings synchronize];
 
