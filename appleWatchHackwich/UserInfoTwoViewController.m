@@ -9,6 +9,7 @@
 #import "UserInfoTwoViewController.h"
 #import "UserInfoOneViewController.h"
 
+
 @interface UserInfoTwoViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
@@ -22,7 +23,7 @@
     NSLog(@"VIEW DID LOAD US2VC");
     self.disabilities = [[NSMutableArray alloc] initWithObjects:@"A.D.D",@"A.D.H.D",@"Dyslexia", nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSwitchPressed:) name:@"switchUpdate" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSwitches:) name:@"switchUpdate" object:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -53,18 +54,29 @@
     UITableView *tableView;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainCellID"];
     NSIndexPath *indexPathOfSwitch = [self.disabilitiesTableView indexPathForCell:cell];
+    UISwitch *theSwitch = nil;
+
+    [theSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
 
 
-    if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"]) {
-        [sender setOn:NO animated:YES];
+
+    if (self.ADD == 0) {
+        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.D"]) {
+            [theSwitch setOn:NO animated:YES];
+            //sender.on = NO;
+        }
     }
 
-    if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"]) {
-        [sender setOn:NO animated:YES];
+    if (self.ADHD == 0) {
+        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"A.D.H.D"]) {
+            [theSwitch setOn:NO animated:YES];
+        }
     }
 
-    if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]) {
-        [sender setOn:NO animated:YES];
+    if (self.Dys == 0) {
+        if ([self.disabilities [indexPathOfSwitch.row] isEqualToString:@"Dyslexia"]) {
+            [theSwitch setOn:NO animated:YES];
+        }
     }
 
     [self storeData];
@@ -97,7 +109,7 @@
     [self storeData];
 }
 
--(void)switchChanged:(UISwitch *)sender{
+-(UISwitch*)switchChanged:(UISwitch *)sender{
     NSLog(@"SwitchCahnged:");
 
     UITableViewCell *cell = sender.superview.superview;
@@ -144,6 +156,8 @@
             [sender addTarget:self action:@selector(onSwitchPressed:) forControlEvents:UIControlEventValueChanged];
         }
     }
+
+    return sender;
 }
 
 -(void)resetSwitches{
@@ -210,6 +224,7 @@
     if ([self.disabilities [indexPath.row] isEqualToString:@"A.D.D"]) {
         if (self.ADD == 0) {
             theSwitch.on = NO;
+
         } else {
             self.ADD = 1;
             theSwitch.onTintColor = [UIColor colorWithRed:0.22 green:0.3 blue:0.44 alpha:1];
@@ -240,16 +255,26 @@
     return cell;
 }
 
+#pragma mark NSUserDefaults
+
 -(void)storeData{
-    NSLog(@"Store Data:");
     NSUserDefaults *currentSettings = [[NSUserDefaults alloc] initWithSuiteName:@"group.A1Sauce.TodayExtensionSharingDefaults"];
+
+    [currentSettings setInteger:self.age forKey:@"CurrentAge"];
+    [currentSettings setInteger:self.gender forKey:@"CurrentGender"];
+    [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
     [currentSettings setInteger:self.ADD forKey:@"CurrentADD"];
     [currentSettings setInteger:self.Dys forKey:@"CurrentDys"];
-    [currentSettings setInteger:self.ADHD forKey:@"CurrentADHD"];
+
+    [currentSettings setInteger:self.studyTime forKey:@"CurrentStudyTime"];
+    [currentSettings setInteger:self.breakTime forKey:@"CurrentBreakTime"];
+
+    [currentSettings setInteger:self.studySliderInt forKey:@"CurrentStudyInt"];
+    [currentSettings setInteger:self.breakSliderInt forKey:@"CurrentBreakInt"];
 
     [currentSettings synchronize];
 
-    NSLog(@"\nStoring UI2VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
+    NSLog(@"\nStoring UI1VC Current Age %ld, Gender %ld, ADHD %ld, ADD %ld, Dys %ld, StudyInt %ld, BreakInt %ld, Study %ld ,Break %ld",(long)self.age,(long)self.gender,(long)self.ADHD,(long)self.ADD,(long)self.Dys,(long)self.studySliderInt,(long)self.breakSliderInt,(long)self.studyTime,(long)self.breakTime);
 
 }
 

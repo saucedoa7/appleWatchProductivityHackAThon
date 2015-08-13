@@ -297,5 +297,7 @@
 -(void)saveSliderValues{
     [self GetData];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"txtUpdate" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"switchUpdate" object:nil];
+
 }
 @end

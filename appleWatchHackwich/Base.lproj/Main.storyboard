@@ -235,15 +235,6 @@
                                             <rect key="frame" x="15" y="8" width="107" height="36"/>
                                         </variation>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dky-gK-ahr">
-                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                        <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="227" y="11" width="78" height="30"/>
-                                        </variation>
-                                    </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soC-aM-D1K">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
@@ -266,7 +257,7 @@
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="227" y="227" width="78" height="30"/>
+                                            <rect key="frame" x="294" y="227" width="50" height="30"/>
                                         </variation>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*With in the last 7 days" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHG-9R-UEc">
@@ -287,29 +278,38 @@
                                             <rect key="frame" x="15" y="205" width="152" height="73"/>
                                         </variation>
                                     </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dky-gK-ahr">
+                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <color key="textColor" red="0.16318658" green="0.22568421490000001" blue="0.36354993390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="30"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="294" y="11" width="50" height="30"/>
+                                        </variation>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="FlM-Np-NJt"/>
-                                        <exclude reference="dky-gK-ahr"/>
                                         <exclude reference="soC-aM-D1K"/>
                                         <exclude reference="2B9-Pm-hrH"/>
                                         <exclude reference="F8s-1h-BlT"/>
                                         <exclude reference="kHG-9R-UEc"/>
                                         <exclude reference="p7s-2c-vw8"/>
+                                        <exclude reference="dky-gK-ahr"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="11" y="62" width="352" height="334"/>
                                     <mask key="subviews">
                                         <include reference="FlM-Np-NJt"/>
-                                        <include reference="dky-gK-ahr"/>
                                         <include reference="soC-aM-D1K"/>
                                         <include reference="2B9-Pm-hrH"/>
                                         <include reference="F8s-1h-BlT"/>
                                         <include reference="kHG-9R-UEc"/>
                                         <include reference="p7s-2c-vw8"/>
+                                        <include reference="dky-gK-ahr"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -480,6 +480,12 @@
                                     <rect key="frame" x="16" y="611" width="159" height="36"/>
                                 </variation>
                             </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6aD-8T-k1P">
+                                <rect key="frame" x="-19" y="-18" width="39" height="37"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="168" y="382" width="39" height="37"/>
+                                </variation>
+                            </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSn-Vs-X50">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -488,19 +494,13 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="250" y="20" width="62" height="40"/>
+                                    <rect key="frame" x="297" y="20" width="62" height="40"/>
                                 </variation>
                                 <connections>
                                     <action selector="onDoneButtonPressed:" destination="fDz-GZ-6Fq" eventType="touchUpInside" id="dKP-i0-nCF"/>
                                     <segue destination="JZT-Ei-ZWe" kind="unwind" unwindAction="unWindToMainVCDone:" id="vrX-WD-Pxt"/>
                                 </connections>
                             </button>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6aD-8T-k1P">
-                                <rect key="frame" x="-19" y="-18" width="39" height="37"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="168" y="382" width="39" height="37"/>
-                                </variation>
-                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -513,8 +513,8 @@
                                 <exclude reference="q64-Kz-tmb"/>
                                 <exclude reference="UHg-N0-FSJ"/>
                                 <exclude reference="k6L-ER-zG5"/>
-                                <exclude reference="VSn-Vs-X50"/>
                                 <exclude reference="6aD-8T-k1P"/>
+                                <exclude reference="VSn-Vs-X50"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -527,8 +527,8 @@
                                 <include reference="q64-Kz-tmb"/>
                                 <include reference="UHg-N0-FSJ"/>
                                 <include reference="k6L-ER-zG5"/>
-                                <include reference="VSn-Vs-X50"/>
                                 <include reference="6aD-8T-k1P"/>
+                                <include reference="VSn-Vs-X50"/>
                             </mask>
                         </variation>
                     </view>
